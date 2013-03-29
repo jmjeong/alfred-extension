@@ -15,7 +15,7 @@ Mountain Lion's Launchpad is pretty good but it's still hard to get something ou
 ### References
 
 - [Tidy up lanchpad in Mountain Lion(Laine lee)](http://hints.macworld.com/article.php?story=20130318145836521)
-- [Back To The Mac Blog](http://macnews.tistory.com/1007#comment7336762)
+- [Back To The Mac Blog- OS X 런치패드에서 사용자가 원치않는 프로그램 아이콘을 손쉽고 간편하게 감출 수 있는 방법](http://macnews.tistory.com/1007)
 - [Icon : Launch Pad(NoSmokingBandit)](http://macthemes.net/forum/viewtopic.php?p=823123)
 
 ### Version History 
