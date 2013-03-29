@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.jmjeong.alfredv2.ealfred</string>
+	<key>connections</key>
+	<dict>
+		<key>72C0E636-C427-4039-A22B-257320B6540F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2C061F82-3E73-48A5-9F80-775A646DC5C5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7469D626-98F3-465E-A33A-0749AA29828D</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Browse in Alfred</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Reveal File in Finder</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>72C0E636-C427-4039-A22B-257320B6540F</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Launch extension with the first keyword</string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jaemok Jeong</string>
+	<key>description</key>
+	<string>enter: browse in alfred, cmd : open in finder (v5)</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Manage Alfred Extension</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.action.revealfile</string>
+			<key>uid</key>
+			<string>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>8</integer>
+				<key>script</key>
+				<string>tell application "Alfred 2"
+	search "{query}"
+end tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.script</string>
+			<key>uid</key>
+			<string>2C061F82-3E73-48A5-9F80-775A646DC5C5</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
+				<string>alf</string>
+				<key>runningsubtext</key>
+				<string>loading...</string>
+				<key>script</key>
+				<string>python main.py {query}</string>
+				<key>title</key>
+				<string>Browse Alfred Extension</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>7469D626-98F3-465E-A33A-0749AA29828D</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python launch.py {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>72C0E636-C427-4039-A22B-257320B6540F</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>enter : Open folder in Finder
+ctl : Reveal folder in Finder
+shift : Launch this extension with the first keyword</string>
+	<key>uidata</key>
+	<dict>
+		<key>2C061F82-3E73-48A5-9F80-775A646DC5C5</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>72C0E636-C427-4039-A22B-257320B6540F</key>
+		<dict>
+			<key>ypos</key>
+			<real>440</real>
+		</dict>
+		<key>7469D626-98F3-465E-A33A-0749AA29828D</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+		<key>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</key>
+		<dict>
+			<key>ypos</key>
+			<real>140</real>
+		</dict>
+		<key>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</key>
+		<dict>
+			<key>ypos</key>
+			<real>280</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://jmjeong.com</string>
+</dict>
+</plist>
