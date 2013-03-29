@@ -42,10 +42,11 @@ If there is *'export.json'*, this configuration is used. This is used for making
 
 ### Version History 
 
-#### 2.1 - March 29, 2013
+#### 2.2 - March 29, 2013
 
 - Export feature : Default directory is ~/Downloads
 - Toggle extensions with fn modifier
+- Fix a bug in export function
 
 #### 2.0 - March 29, 2013
 

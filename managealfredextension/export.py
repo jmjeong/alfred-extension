@@ -43,7 +43,7 @@ compiled_ignore_patterns = []
 
 def get_title(info_file):
     try:
-        plist = plistlib.readPlist('info.plist')
+        plist = plistlib.readPlist(info_file)
         title = plist['name'].replace(" ", "").replace("/","")
     except:
         title = "default-extension"
@@ -56,18 +56,20 @@ def should_ignore_pattern(name):
     return False
 
 def do_archive(dirname, filename):
+    print dirname
     files = [f for f in os.listdir(dirname)
              if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_pattern(f)]
+
     with zipfile.ZipFile(filename, 'w') as z:
         for f in files:
-            z.write(f)
+            z.write(os.path.join(dirname,f), f)
     z.close()
 
 def do_src_archive(dirname, targetdir):
     if dirname == targetdir:
         return
     
-    files = [f for f in os.listdir(dirname)
+    files = [os.path.join(dirname,f) for f in os.listdir(dirname)
              if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_pattern(f)]
     
     for f in files:
