@@ -1,13 +1,13 @@
 ## miseng ([Download](https://raw.github.com/jmjeong/alfred-extension/master/miseng/miseng.alfredworkflow))
 
-Comic Viewer - 미생 (Korean Webtoon)
+Comic Viewer - 미생웹툰 (Korean Webtoon)
 
 ![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/miseng/screenshot.png)
 
 ###  Usage
 
 ```
- miseng         :: Display index for web-toon
+ miseng         :: 웹툰 <미생>의 최신호 list를 보여주고 클릭시 해당회로 이동합니다 
 ```
 
 ### Version History 
