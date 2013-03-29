@@ -2,7 +2,7 @@
 
 Comic Viewer - 미생 (Korean Webtoon)
 
-![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/miseng/screenshot.jpg)
+![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/miseng/screenshot.png)
 
 ###  Usage
 
