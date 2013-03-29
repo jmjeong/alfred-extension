@@ -13,11 +13,11 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-if len(sys.argv) == 2:
+if len(sys.argv) >= 2:
     query = sys.argv[1].lower().strip()
 else:
-    query = ""
-
+    query = u""
+    
 dockpath = os.path.expanduser("~/Library/Application Support/Dock/")
 
 dbnames = [os.path.join(dockpath,f) for f in os.listdir(dockpath)
@@ -35,17 +35,16 @@ for db in dbnames:
         conn.close()
         continue
 
-    appnames.extend(c.fetchall())
+    appnames.extend([unicodedata.normalize('NFC',f[0]) for f in c.fetchall()])
     conn.close()
 
 appnames = list(set(appnames))
     
-results = [alfred.Item(title=f[0],
+results = [alfred.Item(title=f,
                        subtitle="",
                        attributes = {'uid':uuid4(),
-                                     'arg':f[0],
-                                     'autocomplete':f[0]},
-                       ) for f in appnames if query in f[0].lower()]
-
+                                     'arg':f,
+                                     'autocomplete':f},
+                       ) for f in appnames if query in f.lower()]
 
 alfred.write(alfred.xml(results,maxresults=None))
