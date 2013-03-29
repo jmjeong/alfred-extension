@@ -48,7 +48,7 @@ To export the selected extension, *'export.json'* file should be created in that
 #### 2.0 - March 29, 2013
 
 - Export feature
-- Open terminal 
+- Open terminal in the installed directory
 - Support Alleyoop's auto update plugin
 - Display 'disabled' extension
 
