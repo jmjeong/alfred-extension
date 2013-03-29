@@ -67,7 +67,7 @@ def load_json(filename):
         with open(filename) as f:
             export_info = json.load(f, encoding="utf-8")
     except:
-        print "Invalid export.json file"
+        print "No export.json file"
         sys.exit(1)
     return export_info
 
