@@ -8,6 +8,7 @@ import subprocess
 import re
 import os
 import plistlib
+from uuid import uuid4
 
 import sys
 reload(sys)
@@ -32,6 +33,7 @@ for (idx,d) in enumerate(dirs):
     
     title = plist['name']
     createdby = plist['createdby']
+    disabled = plist.get('disabled', None)
     try:
         keyword = ",".join([o['config']['keyword'] for o in plist['objects'] if 'alfred.workflow.input' in o['type'] ])
     except KeyError:
@@ -43,9 +45,10 @@ for (idx,d) in enumerate(dirs):
     if not query in title.lower() + createdby.lower() + keyword.lower():
         continue
 
-    results.append(alfred.Item(title=title,
+    displayTitle = title + (' - disabled' if disabled else '')
+    results.append(alfred.Item(title=displayTitle,
                                subtitle=" by " + createdby + keyword,
-                               attributes = {'uid':idx, 'arg':os.path.join(dirname,d)},
+                               attributes = {'uid':uuid4(), 'arg':os.path.join(dirname,d)},
                                icon=os.path.join(dirname, d, u"icon.png")))
     
 alfred.write(alfred.xml(results,maxresults=None))

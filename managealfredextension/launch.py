@@ -3,9 +3,9 @@
 #
 # jmjeong, 2013/3/25
 
-import alfred
 import os
 import plistlib
+import subprocess
 
 import sys
 reload(sys)
@@ -16,4 +16,5 @@ dirname = sys.argv[1]
 plist = plistlib.readPlist(os.path.join(dirname, 'info.plist'))
 keyword = [o['config']['keyword'] for o in plist['objects'] if 'alfred.workflow.input' in o['type']][0]
 
-alfred.write(keyword)
+launchArgs = "tell application \"Alfred 2\" to search \"%s\"" % keyword 
+subprocess.check_call(["osascript", "-e", launchArgs])
