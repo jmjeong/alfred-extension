@@ -7,7 +7,7 @@ Alfred2 extension made by Jaemok(jmjeong)
 
 Search and manage the installed extension
 
-### Usage
+###  Usage
 
 ```
  alf                :: display the installed extensions
@@ -19,3 +19,40 @@ Search and manage the installed extension
  cmd                :: Open terminal in the installed folder
  shift              :: Export the extension for distribusion (need export.json file)
 ```
+
+### export.json 
+
+The file format is as follows:
+
+```json
+{
+    "workflow-export" :
+	    {"directory" : "~/git/alfred-extension/managealfredextension",
+		 "enable": true},
+    "source-export":
+		{"directory" : "~/git/alfred-extension/managealfredextension",
+		 "enable": false}
+}
+```
+
+*'workflow-export'* specifies the directory where <extension>.alfredworkflow is exported.
+*'source-export'* specifies the directory where extension source is copied.  
+
+To publish and share the extension, this feature can be used.
+
+
+### Version History 
+
+#### 2.0 - March 29, 2013
+
+* Export feature
+* Open terminal 
+* Support Alleyoop's auto update plugin
+* Display 'disabled' extension
+
+### 1.x - March 28, 2013
+
+* Initial version
+
+ 
+
