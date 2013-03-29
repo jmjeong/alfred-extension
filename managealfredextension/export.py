@@ -56,7 +56,6 @@ def should_ignore_pattern(name):
     return False
 
 def do_archive(dirname, filename):
-    print dirname
     files = [f for f in os.listdir(dirname)
              if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_pattern(f)]
 
@@ -74,7 +73,6 @@ def do_src_archive(dirname, targetdir):
     
     for f in files:
         shutil.copy(f, targetdir)
-
 
 def load_json(filename):
     try:
