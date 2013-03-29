@@ -1,5 +1,5 @@
 {
-    "version": 1.7,
+    "version": 2.0,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "add alleyoop - auto update"
+    "description": "export feature (alt modifier)"
 }
