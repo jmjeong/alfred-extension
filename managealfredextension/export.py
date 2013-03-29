@@ -25,6 +25,7 @@ ignore_patterns = [
     r".*pyc",              #Python compiled file
     r".*alfredworkflow",   #alfred workflow
     r"screenshot.png",     #extension screenshot
+    r"README.md",          #README.md file 
     ]
 
 compiled_ignore_patterns = []
