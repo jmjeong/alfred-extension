@@ -67,7 +67,7 @@ def load_json(filename):
         with open(filename) as f:
             export_info = json.load(f, encoding="utf-8")
     except:
-        print "No export.json file"
+        print "Invalid export.json file"
         sys.exit(1)
     return export_info
 
@@ -112,7 +112,7 @@ def main(argv):
         if will_source_export:
             do_src_archive(srcdir, source_export_dir)
             
-        print "Export successful"
+        print "Export : %s" % workflow_export_dir
     except:
         print "Export fail"
         
