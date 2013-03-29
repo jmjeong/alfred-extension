@@ -1,4 +1,4 @@
 {
-    "version": 1.5,
-    "remote_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
+    "version": 1.6,
+    "remote_json": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/update-info.json"
 }
