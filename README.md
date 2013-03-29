@@ -19,7 +19,7 @@ Search and manage the installed extension
  ctrl               :: Reveal the installed folder in Finder
  shift              :: Execute extension with the first keyword
  cmd                :: Open terminal in the installed folder
- shift              :: Export the extension for distribusion (need export.json file)
+ shift              :: Export the extension for distribution (need export.json file)
 ```
 
 ### export.json 
@@ -47,14 +47,11 @@ To publish and share the extension, this feature can be used. To export the sele
 
 #### 2.0 - March 29, 2013
 
-* Export feature
-* Open terminal 
-* Support Alleyoop's auto update plugin
-* Display 'disabled' extension
+- Export feature
+- Open terminal 
+- Support Alleyoop's auto update plugin
+- Display 'disabled' extension
 
-### 1.x - March 28, 2013
+#### 1.x - March 28, 2013
 
-* Initial version
-
- 
-
+- Initial version
