@@ -32,8 +32,8 @@ The file format is as follows:
 }
 ```
 
-#'workflow-export'* specifies the directory where <extension>.alfredworkflow is exported.
-#'source-export'* specifies the directory where extension source is copied.  
+*'workflow-export'* specifies the directory where <extension>.alfredworkflow is exported.
+*'source-export'* specifies the directory where extension source is copied.  
 
 To publish and share the extension, this feature can be used. To export the selected extension, *'export.json'* file is created in that directory.
 
@@ -42,14 +42,14 @@ To publish and share the extension, this feature can be used. To export the sele
 
 #### 2.0 - March 29, 2013
 
-# Export feature
-# Open terminal 
-# Support Alleyoop's auto update plugin
-# Display 'disabled' extension
+- Export feature
+- Open terminal 
+- Support Alleyoop's auto update plugin
+- Display 'disabled' extension
 
-### 1.x - March 28, 2013
+#### 1.x - March 28, 2013
 
-# Initial version
+- Initial version
 
  
 
