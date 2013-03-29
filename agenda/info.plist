@@ -16,7 +16,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>agenda v0.2</string>
+	<string>agenda</string>
 	<key>objects</key>
 	<array>
 		<dict>
