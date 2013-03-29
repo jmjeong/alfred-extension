@@ -67,7 +67,7 @@ def load_json(filename):
         with open(filename) as f:
             export_info = json.load(f, encoding="utf-8")
     except:
-        print "invalid export_json file"
+        print "Invalid export.json file"
         sys.exit(1)
     return export_info
 
@@ -81,10 +81,10 @@ def read_json_var(export_info):
         alfred._create(source_export_dir)
         will_source_export = export_info['source-export']['enable']
     except KeyError:
-        print "invalid export_json file"
+        print "Invalid export.json file"
         sys.exit(1)
     except IOError:
-        print "io error"
+        print "Io error"
         sys.exit(1)
     return (workflow_export_dir, will_workflow_export, source_export_dir, will_source_export)
 
@@ -96,18 +96,15 @@ def compile_ignore_pattern():
             compiled_ignore_patterns.append(p)
 
 def main(argv):
-    title = get_title('info.plist')
-    
-    export_info = load_json('export.json')
-    (workflow_export_dir, will_workflow_export, source_export_dir, will_source_export) = read_json_var(export_info)
-
-    if len(argv) > 2:
+    if len(argv) >= 2:
         srcdir = os.path.abspath(sys.argv[1])
     else:
         srcdir = os.path.abspath(".")
 
-    print srcdir
-    print source_export_dir
+    title = get_title(os.path.join(srcdir, 'info.plist'))
+    
+    export_info = load_json(os.path.join(srcdir, 'export.json'))
+    (workflow_export_dir, will_workflow_export, source_export_dir, will_source_export) = read_json_var(export_info)
 
     try:
         if will_workflow_export:
