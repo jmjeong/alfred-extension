@@ -49,7 +49,10 @@ class Item(object):
                 (value, attributes) = value
             except:
                 attributes = {}
-            SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
+            try:
+                SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
+            except:
+                pass
         return item
 
 def args(characters=None):

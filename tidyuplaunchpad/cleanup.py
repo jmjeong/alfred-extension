@@ -23,8 +23,13 @@ dbnames = [os.path.join(dockpath,f) for f in os.listdir(dockpath)
 for db in dbnames:
     conn = sqlite3.connect(db)
     c = conn.cursor()
-    c.execute("delete from apps where title=\"%s\"" % query)
-    conn.commit()
+    try:
+        c.execute("delete from apps where title=\"%s\"" % query)
+        conn.commit()
+    except sqlite3.OperationalError, sqlite3.DatabaseError:
+        conn.close()
+        continue
+    
     conn.close()
 
 launchArgs = "tell application \"Dock\" to quit"
