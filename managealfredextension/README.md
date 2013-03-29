@@ -14,7 +14,7 @@ Search and manage the installed extension
  ctrl               :: Reveal the installed folder in Finder
  shift              :: Execute extension with the first keyword
  cmd                :: Open terminal in the installed folder
- shift              :: Export the extension for distribusion (need export.json file)
+ shift              :: Export the extension for distribution (need export.json file)
 ```
 
 ### export.json 
