@@ -48,7 +48,15 @@
 				<key>modifiers</key>
 				<integer>524288</integer>
 				<key>modifiersubtext</key>
-				<string>Export extension (need to set export.json)</string>
+				<string>Export extension (~/Downloads, you can customize by export.json)</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</string>
+				<key>modifiers</key>
+				<integer>8388608</integer>
+				<key>modifiersubtext</key>
+				<string>Enable/Disable extension</string>
 			</dict>
 		</array>
 		<key>B5338C09-9349-4854-8115-B77CE546946A</key>
@@ -56,6 +64,17 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>33F588E7-C7A1-429E-9EC0-3B9434B9042C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -139,6 +158,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python toggle.py {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -175,6 +209,29 @@
 			<string>72C0E636-C427-4039-A22B-257320B6540F</string>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Toggle visibility</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</string>
+		</dict>
+		<dict>
 			<key>type</key>
 			<string>alfred.workflow.action.revealfile</string>
 			<key>uid</key>
@@ -192,10 +249,15 @@ shift : Launch this extension with the first keyword</string>
 			<key>ypos</key>
 			<real>570</real>
 		</dict>
+		<key>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</key>
+		<dict>
+			<key>ypos</key>
+			<real>780</real>
+		</dict>
 		<key>72C0E636-C427-4039-A22B-257320B6540F</key>
 		<dict>
 			<key>ypos</key>
-			<real>440</real>
+			<real>410</real>
 		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
@@ -215,12 +277,17 @@ shift : Launch this extension with the first keyword</string>
 		<key>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</key>
 		<dict>
 			<key>ypos</key>
-			<real>280</real>
+			<real>260</real>
 		</dict>
 		<key>B5338C09-9349-4854-8115-B77CE546946A</key>
 		<dict>
 			<key>ypos</key>
-			<real>570</real>
+			<real>530</real>
+		</dict>
+		<key>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</key>
+		<dict>
+			<key>ypos</key>
+			<real>770</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

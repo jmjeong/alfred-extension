@@ -28,6 +28,17 @@ ignore_patterns = [
     r"README.md",          #README.md file 
     ]
 
+default_export_setting = """
+{
+    "workflow-export" :
+	    {"directory" : "~/Downloads",
+		 "enable": true},
+    "source-export":
+		{"directory" : "~/Downloads/src",
+		 "enable": false}
+}    
+"""
+
 compiled_ignore_patterns = []
 
 def get_title(info_file):
@@ -68,8 +79,7 @@ def load_json(filename):
         with open(filename) as f:
             export_info = json.load(f, encoding="utf-8")
     except:
-        print "Invalid export.json file"
-        sys.exit(1)
+        export_info = json.loads(default_export_setting, encoding="utf-8")
     return export_info
 
 def read_json_var(export_info):
@@ -87,6 +97,7 @@ def read_json_var(export_info):
     except IOError:
         print "Io error"
         sys.exit(1)
+        
     return (workflow_export_dir, will_workflow_export, source_export_dir, will_source_export)
 
 def compile_ignore_pattern():

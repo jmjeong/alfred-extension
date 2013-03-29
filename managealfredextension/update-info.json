@@ -1,5 +1,5 @@
 {
-    "version": 2.0,
+    "version": 2.1,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "export feature (alt modifier)"
+    "description": "set default-export-directory to ~/Downloads(alt), toggle extension(fn key)"
 }

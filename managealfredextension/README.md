@@ -14,7 +14,9 @@ Search and manage the installed extension
  ctrl               :: Reveal the installed folder in Finder
  shift              :: Execute extension with the first keyword
  cmd                :: Open terminal in the installed folder
- shift              :: Export the extension for distribution (need export.json file)
+ shift              :: Export the extension for distribution 
+                       (Default: ~/Downloads, you can customize it with export.json file)
+ fn                 :: Enable or Disable an extension
 ```
 
 ### export.json 
@@ -35,10 +37,15 @@ The file format is as follows:
 *'workflow-export'* specifies the directory where <extension>.alfredworkflow is exported.
 *'source-export'* specifies the directory where extension source is copied.  
 
-To export the selected extension, *'export.json'* file should created in that directory. This feature is used for distribution.
+If there is *'export.json'*, this configuration is used. This is used for making distribution file.
 
 
 ### Version History 
+
+#### 2.1 - March 29, 2013
+
+- Export feature : Default directory is ~/Downloads
+- Toggle extensions with fn modifier
 
 #### 2.0 - March 29, 2013
 
