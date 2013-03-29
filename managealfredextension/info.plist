@@ -56,7 +56,7 @@
 	<key>createdby</key>
 	<string>Jaemok Jeong</string>
 	<key>description</key>
-	<string>enter: browse in alfred, cmd : open in finder (v5)</string>
+	<string>enter: browse in alfred, cmd : open in finder</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
