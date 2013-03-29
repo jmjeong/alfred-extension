@@ -239,9 +239,16 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>enter : Open folder in Finder
-ctl : Reveal folder in Finder
-shift : Launch this extension with the first keyword</string>
+	<string> alf                :: display the installed extensions
+ alf search-term    :: search extension by title, author name, and keyword
+
+ enter              :: Browse the installed folder in Alfred
+ ctrl               :: Reveal the installed folder in Finder
+ shift              :: Execute extension with the first keyword
+ cmd                :: Open terminal in the installed folder
+ shift              :: Export the extension for distribution 
+                       (Default: ~/Downloads, you can customize it with export.json file)
+ fn                 :: Enable or Disable an extension</string>
 	<key>uidata</key>
 	<dict>
 		<key>33F588E7-C7A1-429E-9EC0-3B9434B9042C</key>
