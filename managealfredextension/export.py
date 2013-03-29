@@ -3,7 +3,8 @@
 #
 # Make distribution file for alfred extension
 #
-# Jaemok Jeong(jmjeong@gmail.com), [2013/03/29]
+# Copyright 2013 Jaemok Jeong(jmjeong@gmail.com)
+# [2013/03/29]
 
 import alfred
 import os
@@ -51,6 +52,7 @@ def do_archive(dirname, filename):
     z.close()
 
 def do_src_archive(dirname, targetdir):
+    print dirname, targetdir
     files = [f for f in os.listdir(dirname)
              if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_path(f)]
     
@@ -63,7 +65,7 @@ def main():
         with open('export.json') as f:
             export_info = json.load(f, encoding="utf-8")
     except:
-        print "no export_json file"
+        print "invalid export_json file"
         sys.exit(1)
 
     try:
