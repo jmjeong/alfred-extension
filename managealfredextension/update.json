@@ -1,5 +1,5 @@
 {
     "version": 1.6,
-    "download_uri": "http://alfred.daniel.sh/Workflows/Things.alfredworkflow",
+    "download_uri": "https://github.com/jmjeong/alfred-extension/blob/master/managealfredextension/ManageAlfredExtension.alfredworkflow"
     "description": "Add Alleyoop. Error handling"
 }
