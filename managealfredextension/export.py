@@ -25,7 +25,8 @@ ignore_patterns = [
     r".*pyc",              #Python compiled file
     r".*alfredworkflow",   #alfred workflow
     r"screenshot.png",     #extension screenshot
-    r"README.md",          #README.md file 
+    r"README.md",          #README.md file
+    r".DS_Store",          #DS_STORE
     ]
 
 default_export_setting = """
