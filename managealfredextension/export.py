@@ -37,43 +37,47 @@ def get_title(info_file):
         title = "default-extension"
     return title
 
-def should_ignore_path(path):
+def should_ignore_pattern(name):
     for p in compiled_ignore_patterns:
-        if p.match(path):
+        if p.match(name):
             return True
     return False
 
 def do_archive(dirname, filename):
     files = [f for f in os.listdir(dirname)
-             if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_path(f)]
+             if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_pattern(f)]
     with zipfile.ZipFile(filename, 'w') as z:
         for f in files:
             z.write(f)
     z.close()
 
 def do_src_archive(dirname, targetdir):
-    print dirname, targetdir
+    if dirname == targetdir:
+        return
+    
     files = [f for f in os.listdir(dirname)
-             if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_path(f)]
+             if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_pattern(f)]
     
     for f in files:
         shutil.copy(f, targetdir)
 
-def main():
-    title = get_title('info.plist')
+
+def load_json(filename):
     try:
-        with open('export.json') as f:
+        with open(filename) as f:
             export_info = json.load(f, encoding="utf-8")
     except:
         print "invalid export_json file"
         sys.exit(1)
+    return export_info
 
+def read_json_var(export_info):
     try:
-        workflow_export_dir = os.path.expanduser(export_info['workflow-export']['directory'])
+        workflow_export_dir = os.path.abspath(os.path.expanduser(export_info['workflow-export']['directory']))
         alfred._create(workflow_export_dir)
         will_workflow_export = export_info['workflow-export']['enable']
 
-        source_export_dir = os.path.expanduser(export_info['source-export']['directory'])
+        source_export_dir = os.path.abspath(os.path.expanduser(export_info['source-export']['directory']))
         alfred._create(source_export_dir)
         will_source_export = export_info['source-export']['enable']
     except KeyError:
@@ -82,24 +86,39 @@ def main():
     except IOError:
         print "io error"
         sys.exit(1)
-        
-    def compile_ignore_pattern():
-        for p in ignore_patterns:
-            if type(p) in (str,unicode):
-                compiled_ignore_patterns.append(re.compile(p,re.IGNORECASE))
-            else:
-                compiled_ignore_patterns.append(p)
-                
-    compile_ignore_pattern()
+    return (workflow_export_dir, will_workflow_export, source_export_dir, will_source_export)
+
+def compile_ignore_pattern():
+    for p in ignore_patterns:
+        if type(p) in (str,unicode):
+            compiled_ignore_patterns.append(re.compile(p,re.IGNORECASE))
+        else:
+            compiled_ignore_patterns.append(p)
+
+def main(argv):
+    title = get_title('info.plist')
+    
+    export_info = load_json('export.json')
+    (workflow_export_dir, will_workflow_export, source_export_dir, will_source_export) = read_json_var(export_info)
+
+    if len(argv) > 2:
+        srcdir = os.path.abspath(sys.argv[1])
+    else:
+        srcdir = os.path.abspath(".")
+
+    print srcdir
+    print source_export_dir
 
     try:
         if will_workflow_export:
-            do_archive(".", os.path.join(workflow_export_dir, title+".alfredworkflow"))
+            do_archive(srcdir, os.path.join(workflow_export_dir, title+".alfredworkflow"))
         if will_source_export:
-            do_src_archive(".", source_export_dir)
+            do_src_archive(srcdir, source_export_dir)
+            
         print "Export successful"
     except:
         print "Export fail"
         
 if __name__ == '__main__':
-    main()
+    compile_ignore_pattern()
+    main(sys.argv)

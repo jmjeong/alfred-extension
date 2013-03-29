@@ -1,8 +1,8 @@
 {
     "workflow-export" :
-	    {"directory" : "~/git/alfred-extension/managealfredextension/",
+	    {"directory" : "~/git/alfred-extension/managealfredextension",
 		 "enable": true},
     "source-export":
-		{"directory" : "~/git/alfred-extension/managealfredextension/",
-		 "enable": false}
+		{"directory" : "~/git/alfred-extension/managealfredextension",
+		 "enable": true}
 }
