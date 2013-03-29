@@ -9,49 +9,13 @@ Search and manage the installed extension
 
 ![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/screenshot.png)
 
-###  Usage
+- [Link](https://github.com/jmjeong/alfred-extension/tree/master/managealfredextension)
 
-```
- alf                :: display the installed extensions
- alf <search>       :: search extension by title, author name, and keyword
+## agenda ([Download](https://raw.github.com/jmjeong/alfred-extension/master/agenda/agenda.alfredworkflow))
 
- enter              :: Browse the installed folder in Alfred
- ctrl               :: Reveal the installed folder in Finder
- shift              :: Execute extension with the first keyword
- cmd                :: Open terminal in the installed folder
- shift              :: Export the extension for distribution (need export.json file)
-```
+Display events and reminder from the OS X
 
-### export.json 
+- [Link](https://github.com/jmjeong/alfred-extension/tree/master/agenda)
 
-The file format is as follows:
+![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/agenda/screenshot.jpg)
 
-```json
-{
-    "workflow-export" :
-	    {"directory" : "~/git/alfred-extension/managealfredextension",
-		 "enable": true},
-    "source-export":
-		{"directory" : "~/git/alfred-extension/managealfredextension",
-		 "enable": false}
-}
-```
-
-*'workflow-export'* specifies the directory where <extension>.alfredworkflow is exported.
-*'source-export'* specifies the directory where extension source is copied.  
-
-To export the selected extension, *'export.json'* file should be created in that directory.
-
-
-### Version History 
-
-#### 2.0 - March 29, 2013
-
-- Export feature
-- Open terminal in the installed directory
-- Support Alleyoop's auto update plugin
-- Display 'disabled' extension
-
-#### 1.x - March 28, 2013
-
-- Initial version
