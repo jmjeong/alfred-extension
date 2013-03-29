@@ -7,6 +7,8 @@ Alfred2 extension made by Jaemok(jmjeong)
 
 Search and manage the installed extension
 
+![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/screenshot.png)
+
 ###  Usage
 
 ```
