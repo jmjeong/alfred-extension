@@ -33,3 +33,9 @@ Tidy up LaunchPad in Mountain Lion
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/tidyuplaunchpad/screenshot.png)
 
+## Cmd ([Link](https://github.com/jmjeong/alfred-extension/tree/master/cmd),[Download](https://raw.github.com/jmjeong/alfred-extension/master/cmd/cmd.alfredworkflow))
+
+Yet another applescript utility made by Jaemok
+
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/cmd/screenshot.png)
+
