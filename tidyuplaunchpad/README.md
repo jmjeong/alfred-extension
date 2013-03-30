@@ -20,6 +20,11 @@ Mountain Lion's Launchpad is pretty good but it's still hard to get something ou
 
 ### Version History 
 
+#### 1.2 - March 30, 2013
+
+- Add help item
+- Sort app names alphabetically
+
 #### 1.1 - March 30, 2013
 
 - Fix a problem of filename with korean encoding
