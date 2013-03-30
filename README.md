@@ -19,7 +19,7 @@ Display events and reminder from the OS X
 
 Comic Viewer - 미생웹툰 (Korean Webtoon)
 
-![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/miseng/screenshot.jpg)
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/miseng/screenshot.png)
 
 ## Back To The Mac ([Link](https://github.com/jmjeong/alfred-extension/tree/master/backtothemac), [Download](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/BackToTheMac.alfredworkflow))
 
