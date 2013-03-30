@@ -2,7 +2,7 @@
 
 Yet another applescript utility made by Jaemok
 
-![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/cmd/screenshot.jpg)
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/cmd/screenshot.png)
 
 ###  Usage
 
