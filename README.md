@@ -27,3 +27,9 @@ Display the recent article from [Back to The Mac](http://macnews.tistory.com)
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/screenshot.png)
 
+## Tidy up LaunchPad in Mountain Lion([Link](https://github.com/jmjeong/alfred-extension/tree/master/tidyuplaunchpad), [Download](https://raw.github.com/jmjeong/alfred-extension/master/tidyuplaunchpad/TidyupLaunchPad.alfredworkflow))
+
+Tidy up LaunchPad in Mountain Lion
+
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/tidyuplaunchpad/screenshot.png)
+
