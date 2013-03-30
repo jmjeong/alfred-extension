@@ -45,6 +45,7 @@ results = [alfred.Item(title=f,
                        attributes = {'uid':uuid4(),
                                      'arg':f,
                                      'autocomplete':f},
+                       icon=u"icon.png"
                        ) for f in appnames if query in f.lower()]
 
 alfred.write(alfred.xml(results,maxresults=None))
