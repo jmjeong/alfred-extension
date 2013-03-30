@@ -39,7 +39,6 @@ def read_appnames():
     return sorted(appnames)
 
 def write_output(appnames,query):
-    
     results = [alfred.Item(title=f,
                            subtitle="",
                            attributes = {'uid':uuid4(),
@@ -47,8 +46,8 @@ def write_output(appnames,query):
                                          'autocomplete':f},
                            icon=u"icon.png"
                            ) for f in appnames if query in f.lower()]
-    results.insert(0, alfred.Item(title=u"Tidy up LaunchPad",
-                           subtitle="Hide app icon from LaunchPad. It wouldn't delete Application.",
+    results.insert(0, alfred.Item(title=u"Tidy up LaunchPad : tdl [appname]",
+                           subtitle="Hide app icon from LaunchPad. It wouldn't delete App itself.",
                            attributes = {'uid':uuid4(),
                                          'valid':"no"},
                            icon=u"icon.png"
@@ -60,7 +59,6 @@ def process(query):
     appnames = read_appnames()
 
     write_output(appnames, query=query)
-
 
 if __name__ == '__main__':
     try:
