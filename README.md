@@ -39,3 +39,9 @@ Yet another command utility
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/cmd/screenshot.png)
 
+
+## date ([Link](https://github.com/jmjeong/alfred-extension/tree/date/cmd),[Download](https://raw.github.com/jmjeong/alfred-extension/master/date/date.alfredworkflow))
+
+오늘의 양력, 음력 날짜 출력과 양력, 음력 변환하는 workflow
+
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/date/screenshot.png)
