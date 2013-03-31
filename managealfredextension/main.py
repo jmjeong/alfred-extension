@@ -46,9 +46,14 @@ for (idx,d) in enumerate(dirs):
         continue
 
     displayTitle = title + (' - disabled' if disabled else '')
-    results.append(alfred.Item(title=displayTitle,
-                               subtitle=" by " + createdby + keyword,
-                               attributes = {'uid':uuid4(), 'arg':os.path.join(dirname,d)},
-                               icon=os.path.join(dirname, d, u"icon.png")))
+
+    results.append({'title': displayTitle, 'createdby' : createdby, 'disabled' : disabled,
+                    'keyword': keyword, 'directory' : d})
+
+results = sorted(results, key=lambda a: a['title'].lower())
+
+resultsData = [alfred.Item(title=f['title'], subtitle=' by ' + f['createdby'] + f['keyword'],
+                       attributes = {'uid':uuid4(), 'arg':os.path.join(dirname,f['directory'])},
+                       icon=os.path.join(dirname, f['directory'], u"icon.png")) for f in results]    
     
-alfred.write(alfred.xml(results,maxresults=None))
+alfred.write(alfred.xml(resultsData,maxresults=None))

@@ -1,5 +1,5 @@
 {
-    "version": 2.2,
+    "version": 2.3,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "Fix a bug in export funciton"
+    "description": "extension is displayed in sorted order by title"
 }
