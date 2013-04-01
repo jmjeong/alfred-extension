@@ -111,7 +111,7 @@
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
-				<string>python export.py {query}</string>
+				<string>python export.py "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -121,12 +121,10 @@
 			<string>B5338C09-9349-4854-8115-B77CE546946A</string>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict/>
 			<key>type</key>
-			<string>alfred.workflow.action.browseinalfred</string>
+			<string>alfred.workflow.action.revealfile</string>
 			<key>uid</key>
-			<string>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</string>
+			<string>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -161,7 +159,7 @@
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
-				<string>python toggle.py {query}</string>
+				<string>python toggle.py "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -199,7 +197,7 @@
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
-				<string>python launch.py {query}</string>
+				<string>python launch.py "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -232,10 +230,12 @@
 			<string>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</string>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict/>
 			<key>type</key>
-			<string>alfred.workflow.action.revealfile</string>
+			<string>alfred.workflow.action.browseinalfred</string>
 			<key>uid</key>
-			<string>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</string>
+			<string>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</string>
 		</dict>
 	</array>
 	<key>readme</key>

@@ -42,6 +42,14 @@ If there is *'export.json'*, this configuration is used. This is used for making
 
 ### Version History 
 
+#### 2.4 - April 1, 2013
+
+- Fix a bug about pathname with space
+
+#### 2.3 - March 31, 2013
+
+- Title is sorted by alphabetically
+
 #### 2.2 - March 29, 2013
 
 - Export feature : Default directory is ~/Downloads

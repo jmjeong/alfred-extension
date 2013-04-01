@@ -1,5 +1,5 @@
 {
-    "version": 2.3,
+    "version": 2.4,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "extension is displayed in sorted order by title"
+    "description": "Fix a bug aboutn pathname with space"
 }
