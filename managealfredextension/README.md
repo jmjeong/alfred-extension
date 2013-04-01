@@ -37,8 +37,8 @@ The file format is as follows:
 *'workflow-export'* specifies the directory where <extension>.alfredworkflow is exported.
 *'source-export'* specifies the directory where extension source is copied.  
 
-If there is *'export.json'*, this configuration is used. This is used for making distribution file.
-
+If there is no '*export.json*' file or there is an error in '*export.json*' file, 
+*~/Downloads* directory is used for workflow export. 
 
 ### Version History 
 
