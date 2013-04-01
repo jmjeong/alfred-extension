@@ -1,5 +1,5 @@
 {
-    "version": 1.2,
+    "version": 1.3,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/BackToTheMac.alfredworkflow", 
-    "description": "the max number of article is now 18"
+    "description": "이미지때문에 alfred에서 가끔 표시안되는 문제로 default 이미지로 수정"
 }

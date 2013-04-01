@@ -12,14 +12,18 @@ Display the recent article from [Back to The Mac](http://macnews.tistory.com)
 
 ### Version History 
 
-#### 1.1 - April 1, 2013
+#### 1.3 - April 1, 2013
 
-- The max article number is now 18.
+- 잘못된 이미지로딩으로 표시 안되는 문제발생, default 이미지로 변경
+
+#### 1.2 - April 1, 2013
+
+- 최대 읽어오는 갯수 18개로 조정(2 page)
 
 #### 1.1 - March 30, 2013
 
-- Move to github 
-- Preserve the article order
+- Github로 이전
+- 각 기사의 순서 유지
 
 #### 1.0 - March 27, 2013
 
