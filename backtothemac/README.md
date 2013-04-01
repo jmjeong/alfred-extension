@@ -12,6 +12,10 @@ Display the recent article from [Back to The Mac](http://macnews.tistory.com)
 
 ### Version History 
 
+#### 1.1 - April 1, 2013
+
+- The max article number is now 18.
+
 #### 1.1 - March 30, 2013
 
 - Move to github 

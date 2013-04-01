@@ -15,12 +15,12 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 imageregex = re.compile(r"img.*src=\"(.*?)\"")
-MAX_RESULT = 9
+MAX_RESULTS = 18
 
 results = []
 
 d = feedparser.parse('http://macnews.tistory.com/rss')
-for (idx,e) in enumerate(itertools.islice(d.entries,MAX_RESULT)):
+for (idx,e) in enumerate(itertools.islice(d.entries,MAX_RESULTS)):
     imageurl = imageregex.search(e.description)
     if imageurl:
         url = imageurl.group(1)
@@ -33,4 +33,4 @@ for (idx,e) in enumerate(itertools.islice(d.entries,MAX_RESULT)):
         
     results.append(alfred.Item(title=e.title,subtitle=e.published,attributes={'uid':uuid.uuid4(), 'arg':e.link},icon=imageurl))
     
-alfred.write(alfred.xml(results))
+alfred.write(alfred.xml(results, maxresults=MAX_RESULTS))

@@ -1,5 +1,5 @@
 {
-    "version": 1.1,
+    "version": 1.2,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/BackToTheMac.alfredworkflow", 
-    "description": "auto updater, preserve the article order"
+    "description": "the max number of article is now 18"
 }
