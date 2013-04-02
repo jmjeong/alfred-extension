@@ -12,6 +12,10 @@ Display the recent article from [Back to The Mac](http://macnews.tistory.com)
 
 ### Version History 
 
+#### 1.4 - April 1, 2013
+
+- 최대 읽어오는 갯수 9로 다시 조정(너무 길면 alfre에서 parsing이 안 되는 듯?)
+
 #### 1.3 - April 1, 2013
 
 - 잘못된 이미지로딩으로 표시 안되는 문제발생, default 이미지로 변경
