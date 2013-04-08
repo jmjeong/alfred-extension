@@ -42,6 +42,11 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History 
 
+#### 2.5 - April 8, 2013
+
+- Display hotkey information 
+  - Hotkey information is borrowed from (com.help.shawn.rice) by Shawn Rice
+
 #### 2.4 - April 1, 2013
 
 - Fix a bug about pathname with space

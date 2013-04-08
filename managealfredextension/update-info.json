@@ -1,5 +1,5 @@
 {
-    "version": 2.4,
+    "version": 2.5,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "Fix a bug about pathname with space"
+    "description": "Display hotkey infomation"
 }
