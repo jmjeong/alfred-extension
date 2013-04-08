@@ -13,10 +13,18 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+
+def enum(names):
+    "Create a simple enumeration having similarities to C."
+    return type('enum', (), dict(map(reversed, enumerate(
+        names.replace(',', ' ').split()))))()
+
 def process(query):
+    mode = enum('today,convert_luar,convert_solar,error')
+    
     query = query.strip()
     if query == "":
-        mode = "mode_today"
+        mode_type = mode.today
         
         targetdate = lunardate.today()
     else:
@@ -28,11 +36,11 @@ def process(query):
 
         if '-' in param[0]:
             lunar = True
-            mode = "mode_convert_lunar"
+            mode_type = mode.convert_luar
             
         else:
             lunar = False
-            mode = "mode_convert_solar"
+            mode_type = mode.convert_solar
 
         date = param[0].replace('-', '')
 
@@ -55,7 +63,7 @@ def process(query):
                 targetdate = lunardate.fromsolardate(datetime.date(year,month,day))
 
         except ValueError as error:
-            mode = "mode_error"
+            mode_type = mode.error
             error_str = error
         
     results = [alfred.Item(title= u"입력 양식 : [-]y/m/d [leap]",
@@ -64,9 +72,9 @@ def process(query):
                                          'valid':"no"},
                            icon=u"icon.png"
                            )]
-    if mode == "mode_today" or mode == "mode_convert_solar":
+    if mode_type == mode.today or mode_type == mode.convert_solar:
         results.append(alfred.Item(title=targetdate.strftime('양력 %Y년 %m월 %d일 %a'), 
-                                   subtitle=(mode=="mode_today") and u"오늘은..." or u"양력날짜는...",
+                                   subtitle=(mode_type==mode.today) and u"오늘은..." or u"양력날짜는...",
                                    attributes = {'uid':uuid4(),
                                                  'valid':"no"},
                                    icon=u"solar.png"))
@@ -78,7 +86,7 @@ def process(query):
                                                  'valid':"no"},
                                    icon=u"lunar.png"
                                    ))
-    elif mode == "mode_convert_lunar":
+    elif mode_type == mode.convert_lunar:
         isleap = targetdate.lunarleap and '(윤달)' or ''
         results.append(alfred.Item(title=targetdate.strftime('음력 %LY년 %Lm월 %Ld일') + isleap, 
                                    subtitle=u"음력날짜는...",
@@ -92,7 +100,7 @@ def process(query):
                                    attributes = {'uid':uuid4(),
                                                  'valid':"no"},
                                    icon=u"solar.png"))
-    elif mode == "mode_error":
+    elif mode_type == mode.error:
         results.append(alfred.Item(title=error_str,
                                    subtitle=u"오류 메시지",
                                    attributes = {'uid':uuid4(),
