@@ -1,0 +1,5 @@
+{
+    "version": 1.0,
+    "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow", 
+    "description": "Initial github release"
+}
