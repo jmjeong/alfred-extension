@@ -23,7 +23,7 @@ Comic Viewer - 미생웹툰 (Korean Webtoon)
 
 ## Back To The Mac ([Link](https://github.com/jmjeong/alfred-extension/tree/master/backtothemac), [Download](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/BackToTheMac.alfredworkflow))
 
-Display the recent article from [Back to The Mac](http://macnews.tistory.com)
+Display the recent articles from [Back to The Mac](http://macnews.tistory.com)
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/screenshot.png)
 

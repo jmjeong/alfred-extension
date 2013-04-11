@@ -1,5 +1,5 @@
 {
-    "version": 2.5,
+    "version": 2.6,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "Display hotkey infomation"
+    "description": "Handle sub-directory during export"
 }

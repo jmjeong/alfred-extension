@@ -1,6 +1,6 @@
 ## Back To The Mac ([Download](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/BackToTheMac.alfredworkflow))
 
-Display the recent article from [Back to The Mac](http://macnews.tistory.com)
+Display the recent articles from [Back to The Mac](http://macnews.tistory.com)
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/screenshot.png)
 

@@ -42,6 +42,10 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History 
 
+#### 2.5 - April 11, 2013
+
+- Handle subdirectory during export
+
 #### 2.5 - April 8, 2013
 
 - Display hotkey information 
