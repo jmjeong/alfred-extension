@@ -70,10 +70,9 @@ def get_files(dirname):
 def do_archive(dirname, filename):
     files = get_files(dirname)
 
-    with zipfile.ZipFile(filename, 'a') as z:
+    with zipfile.ZipFile(filename, 'w') as z:
         for f in files:
             relfile = f.replace(dirname+"/", '')
-            print f, relfile
             z.write(f, relfile)
     z.close()
 
