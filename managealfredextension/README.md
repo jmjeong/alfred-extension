@@ -42,7 +42,7 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History 
 
-#### 2.5 - April 11, 2013
+#### 2.6 - April 11, 2013
 
 - Handle subdirectory during export
 
