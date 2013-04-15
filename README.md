@@ -52,7 +52,7 @@ Display the external IP address
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/screenshot.png)
 
-## Search Mac AppStore ([Link](https://github.com/jmjeong/alfred-extension/tree/searchmacappstore), [Download](https://raw.github.com/jmjeong/alfred-extension/master/searchmacappstore/SearchMacAppStore.alfredworkflow))
+## Search Mac AppStore ([Link](https://github.com/jmjeong/alfred-extension/tree/master/searchmacappstore), [Download](https://raw.github.com/jmjeong/alfred-extension/master/searchmacappstore/SearchMacAppStore.alfredworkflow))
 
 Search Mac AppStore
 
