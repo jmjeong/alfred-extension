@@ -40,14 +40,21 @@ Yet another command utility
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/cmd/screenshot.png)
 
 
-## date ([Link](https://github.com/jmjeong/alfred-extension/tree/date/cmd),[Download](https://raw.github.com/jmjeong/alfred-extension/master/date/date.alfredworkflow))
+## date ([Link](https://github.com/jmjeong/alfred-extension/tree/date),[Download](https://raw.github.com/jmjeong/alfred-extension/master/date/date.alfredworkflow))
 
 오늘의 양력, 음력 날짜 출력과 양력, 음력 변환하는 workflow
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/date/screenshot.png)
 
-## ipaddr ([Link](https://github.com/jmjeong/alfred-extension/tree/ipaddr/cmd),[Download](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow))
+## ipaddr ([Link](https://github.com/jmjeong/alfred-extension/tree/ipaddr),[Download](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow))
 
 Display the external IP address
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/screenshot.png)
+
+## Search Mac AppStore ([Link](https://github.com/jmjeong/alfred-extension/tree/searchmacappstore), [Download](https://raw.github.com/jmjeong/alfred-extension/master/searchmacappstore/SearchMacAppStore.alfredworkflow))
+
+Search Mac AppStore
+
+![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/searchmacappstore/screenshot.png)
+
