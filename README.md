@@ -46,7 +46,7 @@ Yet another command utility
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/date/screenshot.png)
 
-## ipaddr ([Link](https://github.com/jmjeong/alfred-extension/tree/ipaddr),[Download](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow))
+## ipaddr ([Link](https://github.com/jmjeong/alfred-extension/tree/master/ipaddr),[Download](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow))
 
 Display the external IP address
 
