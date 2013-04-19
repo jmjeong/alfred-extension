@@ -42,7 +42,7 @@ for prog in progList:
     for entry in entries:
         e = lineSpliterRe.split(entry)
 
-        results.append(alfred.Item(attributes={'uid':alfred.uid(count)},
+        results.append(alfred.Item(attributes={},
                         title = alfred.decode(e[0]),
                         subtitle = alfred.decode(','.join(e[1:])),
                         icon = prog[1]))

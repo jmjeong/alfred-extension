@@ -1,5 +1,5 @@
 {
-    "version": 1.4,
+    "version": 1.5,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/BackToTheMac.alfredworkflow", 
-    "description": "이미지 교체 후에도 안나오는 문제가 있어 갯수를 다시 9개로 조정 - alfred에 크기 제한?"
+    "description": "alfred 2.0.3의 UUID patch 대응"
 }

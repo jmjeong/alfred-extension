@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import alfred
-import uuid
 
 commands = ( ('Hide Hidden Files', 'defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'),
              ('Show Hidden Files', 'defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'),
@@ -10,6 +9,6 @@ commands = ( ('Hide Hidden Files', 'defaults write com.apple.finder AppleShowAll
              ('Clean up Duplicate AppleScript Dictionary', '/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'),
             )
 
-results = [alfred.Item(title=t,subtitle=sub,attributes={'uid':uuid.uuid4(),'arg':sub},icon='icon.png') for (t, sub) in commands];
+results = [alfred.Item(title=t,subtitle=sub,attributes={'arg':sub},icon='icon.png') for (t, sub) in commands];
 
 alfred.write(alfred.xml(results))

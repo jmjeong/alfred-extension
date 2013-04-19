@@ -16,6 +16,10 @@
 
 ### Version History 
 
+#### 1.1 - April 19, 2013
+
+- Alfred 2.0.3 release 대응 : UUID를 optional 처리 
+
 #### 1.0 - March 31, 2013
 
 - Initial release

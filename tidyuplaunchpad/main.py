@@ -7,7 +7,6 @@ import alfred
 import os
 import sqlite3
 import unicodedata
-from uuid import uuid4
 
 import sys
 reload(sys)
@@ -41,15 +40,13 @@ def read_appnames():
 def write_output(appnames,query):
     results = [alfred.Item(title=f,
                            subtitle="",
-                           attributes = {'uid':uuid4(),
-                                         'arg':f,
+                           attributes = {'arg':f,
                                          'autocomplete':f},
                            icon=u"icon.png"
                            ) for f in appnames if query in f.lower()]
     results.insert(0, alfred.Item(title=u"Tidy up LaunchPad : tdl [appname]",
                            subtitle="Hide app icon from LaunchPad. It wouldn't delete App itself.",
-                           attributes = {'uid':uuid4(),
-                                         'valid':"no"},
+                           attributes = {'valid':"no"},
                            icon=u"icon.png"
                            ))
 
@@ -66,4 +63,4 @@ if __name__ == '__main__':
     except IndexError:
         query = u""
 
-    process(query)    
+    process(query)

@@ -8,7 +8,6 @@ import re
 import urllib
 import alfred
 import os
-import uuid
 
 import sys
 reload(sys)
@@ -57,7 +56,7 @@ for (idx,e) in enumerate(itertools.islice(resultData, MAX_RESULT)):
         
     subtitle = "%s, Price: %s, Rating : %s" % (e['artistName'], e['formattedPrice'], averageUserRating)
     results.append(alfred.Item(title=e['trackName'],subtitle=subtitle,
-                               attributes={'uid':uuid.uuid4(), 'arg':macAppStoreUrl%e['trackId']},
+                               attributes={'arg':macAppStoreUrl%e['trackId']},
                                icon=imageurl))
-    
+
 alfred.write(alfred.xml(results,maxresults=None))

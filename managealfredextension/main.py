@@ -8,7 +8,6 @@ import subprocess
 import re
 import os
 import plistlib
-from uuid import uuid4
 
 import sys
 reload(sys)
@@ -80,7 +79,7 @@ def process(query):
     results = sorted(results, key=lambda a: a['title'].lower())
 
     resultsData = [alfred.Item(title=f['title'], subtitle=' by ' + (f['createdby'] or "[noinfo]") + f['keyword'],
-                           attributes = {'uid':uuid4(), 'arg':os.path.join(dirname,f['directory'])},
+                           attributes = {'arg':os.path.join(dirname,f['directory'])},
                            icon=os.path.join(dirname, f['directory'], u"icon.png")) for f in results]    
 
     alfred.write(alfred.xml(resultsData,maxresults=None))

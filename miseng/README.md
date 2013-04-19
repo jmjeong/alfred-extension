@@ -12,6 +12,10 @@ Comic Viewer - 미생웹툰 (Korean Webtoon)
 
 ### Version History 
 
+#### 1.3 - April 19, 2013
+
+- UUID option 처리 for alfred 2.0.3
+
 #### 1.2 - March 29, 2013
 
 - Display order is preserved

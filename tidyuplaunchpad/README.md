@@ -18,7 +18,11 @@ Mountain Lion's Launchpad is pretty good but it's still hard to get something ou
 - [Back To The Mac Blog- OS X 런치패드에서 사용자가 원치않는 프로그램 아이콘을 손쉽고 간편하게 감출 수 있는 방법](http://macnews.tistory.com/1007)
 - [Icon : Launch Pad(NoSmokingBandit)](http://macthemes.net/forum/viewtopic.php?p=823123)
 
-### Version History 
+### Version History
+
+#### 1.3 - April 19, 2013
+
+- UUID parameter is now optional 
 
 #### 1.2 - March 30, 2013
 

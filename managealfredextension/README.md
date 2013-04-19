@@ -42,6 +42,10 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History 
 
+#### 2.7 - April 19, 2013
+
+- UUID is now optional for alfred 2.0.3
+
 #### 2.6 - April 11, 2013
 
 - Handle subdirectory during export

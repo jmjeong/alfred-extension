@@ -12,6 +12,10 @@ Display the recent articles from [Back to The Mac](http://macnews.tistory.com)
 
 ### Version History 
 
+#### 1.5 - April 19, 2013
+
+- alfred 2.0.3을 위해 UUID를 optional 처리
+
 #### 1.4 - April 1, 2013
 
 - 최대 읽어오는 갯수 9로 다시 조정(너무 길면 alfre에서 parsing이 안 되는 듯?)

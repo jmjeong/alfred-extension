@@ -7,12 +7,10 @@ import alfred
 import os
 import datetime
 from transdate import lunardate
-from uuid import uuid4
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
 
 def enum(names):
     "Create a simple enumeration having similarities to C."
@@ -68,43 +66,37 @@ def process(query):
         
     results = [alfred.Item(title= u"입력 양식 : [-]y/m/d [leap]",
                            subtitle="ex) date, date 2013/4/1, date -2013/3/1, date -2013/3/2 leap",
-                           attributes = {'uid':uuid4(),
-                                         'valid':"no"},
+                           attributes = {'valid':"no"},
                            icon=u"icon.png"
                            )]
     if mode_type == mode.today or mode_type == mode.convert_solar:
         results.append(alfred.Item(title=targetdate.strftime('양력 %Y년 %m월 %d일 %a'), 
                                    subtitle=(mode_type==mode.today) and u"오늘은..." or u"양력날짜는...",
-                                   attributes = {'uid':uuid4(),
-                                                 'valid':"no"},
+                                   attributes = {'valid':"no"},
                                    icon=u"solar.png"))
                                    
         isleap = targetdate.lunarleap and '(윤달)' or ''
         results.append(alfred.Item(title=targetdate.strftime('음력 %LY년 %Lm월 %Ld일') + isleap, 
                                    subtitle=u"음력날짜는...",
-                                   attributes = {'uid':uuid4(),
-                                                 'valid':"no"},
+                                   attributes = {'valid':"no"},
                                    icon=u"lunar.png"
                                    ))
     elif mode_type == mode.convert_lunar:
         isleap = targetdate.lunarleap and '(윤달)' or ''
         results.append(alfred.Item(title=targetdate.strftime('음력 %LY년 %Lm월 %Ld일') + isleap, 
                                    subtitle=u"음력날짜는...",
-                                   attributes = {'uid':uuid4(),
-                                                 'valid':"no"},
+                                   attributes = {'valid':"no"},
                                    icon=u"lunar.png"
                                    ))
           
         results.append(alfred.Item(title=targetdate.strftime('양력 %Y년 %m월 %d일 %a'), 
                                    subtitle=u"양력날짜는...",
-                                   attributes = {'uid':uuid4(),
-                                                 'valid':"no"},
+                                   attributes = {'valid':"no"},
                                    icon=u"solar.png"))
     elif mode_type == mode.error:
         results.append(alfred.Item(title=error_str,
                                    subtitle=u"오류 메시지",
-                                   attributes = {'uid':uuid4(),
-                                                 'valid':"no"},
+                                   attributes = {'valid':"no"},
                                    icon=u"icon.png"))
                                   
     print alfred.xml(results)

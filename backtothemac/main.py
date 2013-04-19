@@ -8,12 +8,11 @@ import re
 import urllib
 import alfred
 import os
-import uuid
-# import subprocess
+import subprocess
 
 import sys
 reload(sys)
-
+sys.setdefaultencoding('utf-8')
 
 imageregex = re.compile(r"img.*src=\"(.*?)\"")
 MAX_RESULTS = 9
@@ -37,6 +36,6 @@ for (idx,e) in enumerate(itertools.islice(d.entries,MAX_RESULTS)):
     except:
         imageurl = u"icon.png"
         
-    results.append(alfred.Item(title=e.title,subtitle=e.published,attributes={'uid':uuid.uuid4(), 'arg':e.link},icon=imageurl))
+    results.append(alfred.Item(title=e.title,subtitle=e.published,attributes={'arg':e.link},icon=imageurl))
 
 alfred.write(alfred.xml(results, maxresults=MAX_RESULTS))

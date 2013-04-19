@@ -7,7 +7,6 @@ import re
 import urllib
 import os
 import alfred
-import uuid
 
 import sys
 reload(sys)
@@ -37,6 +36,6 @@ for i in xrange(MAX_RESULT):
 
     results.append(alfred.Item(title=u"미생 :" + title,
                                subtitle = u"다음 만화속 세상",
-                               attributes={'uid':uuid.uuid4(), 'arg':url+suburl},
+                               attributes={'arg':url+suburl},
                                icon = filepath))
 alfred.write(alfred.xml(results))

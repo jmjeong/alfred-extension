@@ -18,6 +18,10 @@ This extension use [iCalBuddy](http://hasseg.org/icalBuddy/) by Ali Rantakari in
 
 ### Version History 
 
+#### 1.3 - April 19, 2013
+
+- treat UUID optional for alfred 2.0.3
+
 #### 1.2 - March 28, 2013
 
 - Initial release

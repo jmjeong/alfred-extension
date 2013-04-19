@@ -13,21 +13,23 @@ import zipfile
 import re
 import json
 import shutil
+import fnmatch
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-ignore_patterns = [
-    r".*([\/]|[\\])_.*",   #All files that start with an underscore
-    r".*([\/]|[\\])#.*",   #Emacs temporary files
-    r".*~$]",              #Emacs temporary files
-    r".*pyc",              #Python compiled file
-    r".*alfredworkflow",   #alfred workflow
-    r"screenshot.png",     #extension screenshot
-    r"README.md",          #README.md file
-    r".DS_Store",          #DS_STORE
-    ]
+ignore_patterns = (
+    '*.pyc',
+    '*.alfredworkflow',
+    'screenshot.png',
+    'README.md',
+    '.DS_Store',
+    'export.json',
+    '*~',
+    '#*',
+    '_*'
+    )
 
 default_export_setting = """
 {
@@ -40,8 +42,6 @@ default_export_setting = """
 }    
 """
 
-compiled_ignore_patterns = []
-
 def get_title(info_file):
     try:
         plist = plistlib.readPlist(info_file)
@@ -51,29 +51,43 @@ def get_title(info_file):
     return title
 
 def should_ignore_pattern(name):
-    for p in compiled_ignore_patterns:
-        if p.match(name):
+    for pattern in ignore_patterns:
+        if fnmatch.fnmatch(name, pattern):
             return True
     return False
 
+def get_files(dirname):
+    files = []
+    for f in os.listdir(dirname):
+        if should_ignore_pattern(f):
+            continue
+        if os.path.isfile(os.path.join(dirname,f)):
+            files.append(os.path.join(dirname,f))
+        elif os.path.isdir(os.path.join(dirname,f)):
+            files.extend(get_files(os.path.join(dirname,f)))
+    return files
+
 def do_archive(dirname, filename):
-    files = [f for f in os.listdir(dirname)
-             if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_pattern(f)]
+    files = get_files(dirname)
 
     with zipfile.ZipFile(filename, 'w') as z:
         for f in files:
-            z.write(os.path.join(dirname,f), f)
+            relfile = f.replace(dirname+"/", '')
+            z.write(f, relfile)
     z.close()
 
 def do_src_archive(dirname, targetdir):
     if dirname == targetdir:
         return
     
-    files = [os.path.join(dirname,f) for f in os.listdir(dirname)
-             if os.path.isfile(os.path.join(dirname, f)) and not should_ignore_pattern(f)]
-    
+    files = get_files(dirname)
     for f in files:
-        shutil.copy(f, targetdir)
+        relfile = f.replace(dirname+"/", '')
+        if os.path.dirname(relfile):
+            alfred._create(os.path.join(targetdir, os.path.dirname(relfile)))
+            
+        shutil.copy(f, os.path.join(targetdir, os.path.dirname(relfile)))
+    
 
 def load_json(filename):
     try:
@@ -101,13 +115,6 @@ def read_json_var(export_info):
         
     return (workflow_export_dir, will_workflow_export, source_export_dir, will_source_export)
 
-def compile_ignore_pattern():
-    for p in ignore_patterns:
-        if type(p) in (str,unicode):
-            compiled_ignore_patterns.append(re.compile(p,re.IGNORECASE))
-        else:
-            compiled_ignore_patterns.append(p)
-
 def main(argv):
     if len(argv) >= 2:
         srcdir = os.path.abspath(sys.argv[1])
@@ -126,9 +133,8 @@ def main(argv):
             do_src_archive(srcdir, source_export_dir)
             
         print "Export : %s" % workflow_export_dir
-    except:
+    except ValueError:
         print "Export fail"
         
 if __name__ == '__main__':
-    compile_ignore_pattern()
     main(sys.argv)

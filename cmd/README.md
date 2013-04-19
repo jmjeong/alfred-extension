@@ -12,6 +12,10 @@ Yet another command utility
 
 ### Version History 
 
+#### 1.2 - April 19, 2013
+
+- UUID is now optional
+
 #### 1.1 - March 30, 2013
 
 - Upload to github
