@@ -12,6 +12,10 @@ Yet another command utility
 
 ### Version History 
 
+#### 1.3 - June 14, 2013
+
+- Add 'download pdf file in safari instead of viewing'
+
 #### 1.2 - April 19, 2013
 
 - UUID is now optional
