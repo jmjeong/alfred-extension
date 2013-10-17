@@ -18,7 +18,7 @@ def enum(names):
         names.replace(',', ' ').split()))))()
 
 def process(query):
-    mode = enum('today,convert_luar,convert_solar,error')
+    mode = enum('today,convert_lunar,convert_solar,error')
     
     query = query.strip()
     if query == "":
@@ -34,7 +34,7 @@ def process(query):
 
         if '-' in param[0]:
             lunar = True
-            mode_type = mode.convert_luar
+            mode_type = mode.convert_lunar
             
         else:
             lunar = False
@@ -53,7 +53,7 @@ def process(query):
                 month = date[0]
                 day = date[1]
 
-            if year < 100: year += 2000
+            if year < 100 : year += 1900
 
             if lunar:
                 targetdate = lunardate(year,month,day,leap)

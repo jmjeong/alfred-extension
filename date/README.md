@@ -16,6 +16,11 @@
 
 ### Version History 
 
+#### 1.2 - October 17, 2013
+
+- 음력변환에 오류 수정 (오타로 인한)
+- 년도에 100 이하의 숫자가 들어오면 1900년대로 간주하여 계산
+
 #### 1.1 - April 19, 2013
 
 - Alfred 2.0.3 release 대응 : UUID를 optional 처리 
