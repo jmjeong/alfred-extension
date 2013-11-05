@@ -12,6 +12,10 @@ Yet another command utility
 
 ### Version History 
 
+#### 1.4 - Nov 6, 2013
+
+- Add 'Hide Desktop Icons'
+
 #### 1.3 - June 14, 2013
 
 - Add 'download pdf file in safari instead of viewing'

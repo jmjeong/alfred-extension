@@ -1,5 +1,5 @@
 {
-    "version": 1.3,
+    "version": 1.4,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/cmd/agenda.alfredworkflow", 
-    "description": "Add 'pdf download in safari'"
+    "description": "Add 'Hide Desktop Icons'"
 }
