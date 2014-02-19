@@ -46,6 +46,13 @@ Yet another command utility
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/date/screenshot.png)
 
+## alfred-pinboard ([Link](https://github.com/jmjeong/alfred-extension/tree/master/pinboard),[Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow))
+
+[pinboard](https://pinboard.in) Search Tools
+
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/screenshot.jpg)
+
+
 ## ipaddr ([Link](https://github.com/jmjeong/alfred-extension/tree/master/ipaddr),[Download](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow))
 
 Display the external IP address
