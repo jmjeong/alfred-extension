@@ -17,7 +17,7 @@ def intro():
     alfred.write(alfred.xml(result))
 
 def tags(pins,query):
-    if not "→" in query:
+    if not "→" in query:                      # tag search
         query = query.lower()
         tag_list = {}
         for p in pins:
@@ -35,13 +35,14 @@ def tags(pins,query):
                 resultData.append(alfred.Item(title="tag:"+i+"("+str(tag_list[i])+")→", subtitle='', attributes={'arg':i, 'autocomplete':i+"→"}, icon='icon.png'))
         alfred.write(alfred.xml(resultData,maxresults=None))
     else:
-        query=query.rstrip("→")
+        (query_tag, query_title)=query.split("→") 
         results=[]
         for p in pins:
+            title = p['description'].replace(' ', '')
             tags = p['tags'].split(' ')
             url = p['href']
             for t in tags:
-                if query in t:
+                if (query_tag in t) and ((not query_title) or (query_title.lower() in title.lower())):
                     results.append({'title':p['description'],'url':url})
                     break
         resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
