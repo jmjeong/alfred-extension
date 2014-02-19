@@ -45,10 +45,7 @@ class Item(object):
             value = getattr(self, attribute)
             if value is None:
                 continue
-            try:
-                (value, attributes) = value
-            except:
-                attributes = {}
+            attributes = {}            
             SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
         return item
 

@@ -45,14 +45,8 @@ class Item(object):
             value = getattr(self, attribute)
             if value is None:
                 continue
-            try:
-                (value, attributes) = value
-            except:
-                attributes = {}
-            try:
-                SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
-            except:
-                pass
+            attributes = {}            
+            SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
         return item
 
 def args(characters=None):
