@@ -9,10 +9,10 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 - (mandatory) install cron job
 	- */10 * * * * (curl 'https://api.pinboard.in/v1/posts/all?format=json&auth_token=username:TOKEN' > ~/.bookmarks.json) > /dev/null 2>&1
 	- get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
-- (optional) pbauth username:TOKEN <- set access token 
+- (optional) pbauth username:TOKEN <- set access token (not yet)
 	- Only need if you want to delete the bookmark or to change its status to read
 	
-- ([Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow))
+- [Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
 
 
 # Command
