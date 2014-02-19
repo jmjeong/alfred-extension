@@ -3,6 +3,7 @@
 Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and various search command.
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/screenshot.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/search.jpg)
 
 # Installation 
 
