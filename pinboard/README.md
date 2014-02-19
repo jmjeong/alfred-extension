@@ -2,6 +2,8 @@
 
 Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and various search command.
 
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/screenshot.jpg)
+
 # Installation 
 
 - (mandatory) install cron job
@@ -9,6 +11,9 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 	- get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
 - (optional) pbauth username:TOKEN <- set access token 
 	- Only need if you want to delete the bookmark or to change its status to read
+	
+- ([Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow))
+
 
 # Command
 
