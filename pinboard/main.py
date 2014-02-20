@@ -75,29 +75,29 @@ results = []
 q = q.lower().replace(' ', '')
 
 for p in pins:
-    title = p['description'].replace(' ', '')
-    url = p['href']
-    extended = p['extended'].replace(' ', '')
-    tags = p['tags'].split(' ')
+    title = p['description'].replace(' ', '').lower()
+    url = p['href'].lower()
+    extended = p['extended'].replace(' ', '').lower()
+    tags = p['tags'].lower()
     toread = p['toread']
 
     if q=="":
         if category=='toread':
             if toread=='yes':            
-                results.append({'title':p['description'],'url':url})
+                results.append({'title':p['description'],'url':p['href']})
         else: 
-            results.append({'title':p['description'],'url':url})
+            results.append({'title':p['description'],'url':p['href']})
     else:
-        if category=='title' and q in title.lower():
-            results.append({'title':p['description'],'url':url})
-        elif category=='link' and q in url.lower():
-            results.append({'title':p['description'],'url':url})
-        elif category=='description' and q in extended.lower():
-            results.append({'title':p['description'],'url':url})
-        elif category=='toread' and q in title.lower() and toread=='yes':
-            results.append({'title':p['description'],'url':url})
-        elif category=='all' and (q in title.lower() or q in url.lower()):
-            results.append({'title':p['description'],'url':url})
+        if category=='title' and q in title:
+            results.append({'title':p['description'],'url':p['href']})
+        elif category=='link' and q in url:
+            results.append({'title':p['description'],'url':p['href']})
+        elif category=='description' and q in extended:
+            results.append({'title':p['description'],'url':p['href']})
+        elif category=='toread' and q in title and toread=='yes':
+            results.append({'title':p['description'],'url':p['href']})
+        elif category=='all' and (q in title or q in url or q in tags):
+            results.append({'title':p['description'],'url':p['href']})
 
 resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
 pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q
