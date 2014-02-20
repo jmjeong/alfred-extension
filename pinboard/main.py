@@ -46,7 +46,7 @@ def tags(pins,query):
                     results.append({'title':p['description'],'url':url})
                     break
         resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
-        pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%query_title
+        pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%query_title.replace(' ','+')
         resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%query_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
     sys.exit(0)
@@ -72,7 +72,8 @@ if category=='tags':
     sys.exit(0)
     
 results = []
-q = q.lower().replace(' ', '')
+q = q.lower()
+qs = q.replace(' ', '')
 
 for p in pins:
     title = p['description'].replace(' ', '').lower()
@@ -81,25 +82,25 @@ for p in pins:
     tags = p['tags'].lower()
     toread = p['toread']
 
-    if q=="":
+    if qs=="":
         if category=='toread':
             if toread=='yes':            
                 results.append({'title':p['description'],'url':p['href']})
         else: 
             results.append({'title':p['description'],'url':p['href']})
     else:
-        if category=='title' and q in title:
+        if category=='title' and qs in title:
             results.append({'title':p['description'],'url':p['href']})
-        elif category=='link' and q in url:
+        elif category=='link' and qs in url:
             results.append({'title':p['description'],'url':p['href']})
-        elif category=='description' and q in extended:
+        elif category=='description' and qs in extended:
             results.append({'title':p['description'],'url':p['href']})
-        elif category=='toread' and q in title and toread=='yes':
+        elif category=='toread' and qs in title and toread=='yes':
             results.append({'title':p['description'],'url':p['href']})
-        elif category=='all' and (q in title or q in url or q in tags):
+        elif category=='all' and (qs in title or qs in url or qs in tags):
             results.append({'title':p['description'],'url':p['href']})
 
 resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
-pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q
+pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+')
 resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%q, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
 alfred.write(alfred.xml(resultData,maxresults=None))
