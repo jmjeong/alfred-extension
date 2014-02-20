@@ -70,7 +70,7 @@ if category=='tags':
     sys.exit(0)
     
 results = []
-q = q.lower()
+q = q.lower().replace(' ', '')
 
 for p in pins:
     title = p['description'].replace(' ', '')
