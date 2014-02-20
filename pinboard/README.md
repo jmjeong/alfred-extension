@@ -13,7 +13,7 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 - (optional) pbauth username:TOKEN <- set access token (not yet)
 	- Only need if you want to delete the bookmark or to change its status to read
 	
-- [Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
+- [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
 
 # Command
 
