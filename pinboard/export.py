@@ -25,7 +25,7 @@ ignore_patterns = (
     'screenshot.png',
     'README.md',
     '.DS_Store',
-    'export.json',
+    'config.json',
     '*~',
     '#*',
     '_*'

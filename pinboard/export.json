@@ -1,0 +1,8 @@
+{
+    "workflow-export" :
+	    {"directory" : "~/git/alfred-extension/pinboard",
+		 "enable": true},
+    "source-export":
+		{"directory" : "~/git/alfred-extension/pinboard",
+		 "enable": true}
+}
