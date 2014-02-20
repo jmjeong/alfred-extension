@@ -112,6 +112,17 @@
 				<string>Copy URL to Clipboard</string>
 			</dict>
 		</array>
+		<key>E57DFDC2-F558-4986-B468-678ADB2B046E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EC819CA0-3B78-40A9-8A49-DC53D2DBE744</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>EC819CA0-3B78-40A9-8A49-DC53D2DBE744</key>
 		<array>
 			<dict>
@@ -222,6 +233,31 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>8</integer>
+				<key>hotmod</key>
+				<integer>1441792</integer>
+				<key>hotstring</key>
+				<string>C</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>E57DFDC2-F558-4986-B468-678ADB2B046E</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -423,6 +459,11 @@ pbtag - search tag in pinboard</string>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>E57DFDC2-F558-4986-B468-678ADB2B046E</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
 		</dict>
 		<key>EC819CA0-3B78-40A9-8A49-DC53D2DBE744</key>
 		<dict>
