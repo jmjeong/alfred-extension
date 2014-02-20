@@ -18,7 +18,7 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 
 # Command
 
-- pba query : search query from all field
+- pba query : search query from description and link
 - pbt query : search query from description(title)
 - pbl query : search query from link
 - pbd query : search query from extended field

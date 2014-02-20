@@ -95,7 +95,7 @@ for p in pins:
             results.append({'title':p['description'],'url':url})
         elif category=='toread' and q in title.lower() and toread=='yes':
             results.append({'title':p['description'],'url':url})
-        elif category=='all' and (q in title.lower() or q in url.lower() or q in extended.lower()):
+        elif category=='all' and (q in title.lower() or q in url.lower()):
             results.append({'title':p['description'],'url':url})
 
 resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
