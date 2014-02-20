@@ -15,7 +15,6 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 	
 - [Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
 
-
 # Command
 
 - pba query : search query from description and link
@@ -23,9 +22,9 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 - pbl query : search query from link
 - pbd query : search query from extended field
 - pbu query : search query from description(title) in unread list
-- pbtag query : search tag list. You can autocomplete it by pressing ‘tab’
+- pbtag query : search tag list. You can autocomplete it by pressing 'tab'
 
-- ctl-shift-cmd-p : launch pba query
+- ctl-shift-cmd-p : launch pbt query
 - ctl-shift-cmd-c : launch pbtag query
 
 # Action
