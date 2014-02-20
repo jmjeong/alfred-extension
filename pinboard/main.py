@@ -98,5 +98,5 @@ for p in pins:
             results.append({'title':p['description'],'url':url})
 
 resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
-resultData.append(alfred.Item(title='Goto pinboard.in Site', subtitle='http://pinboard.in', attributes={'arg':'http://pinboard.in'}, icon="icon.png"))
+resultData.append(alfred.Item(title='Goto pinboard.in Site', subtitle='https://pinboard.in', attributes={'arg':'https://pinboard.in'}, icon="icon.png"))
 alfred.write(alfred.xml(resultData,maxresults=None))
