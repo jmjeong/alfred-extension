@@ -29,7 +29,7 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 
 - Open the selected url in the browser by enter
 - Hold *cmd* while selecting a bookmark to copy it’s url to clipboard
-- Hold *ctl* while selecting to delete a bookmark from your pinboard. (not yet)
+- Hold *alt* while selecting to delete a bookmark from your pinboard. (not yet)
 - Hold *shift* while selecting to change a bookmark to read. (not yet)
 
 # Change Log 
