@@ -17,14 +17,14 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 
 # Command
 
-- pba *query* : search *query* from description and link and tags
-- pbt *query* : search *query* from description(title)
-- pbl *query* : search *query* from link
-- pbd *query* : search *query* from extended field
-- pbu *query* : search *query* from description(title) in unread list
-- pbtag *query* : search tag list. You can autocomplete it by pressing 'tab'
-- pbreload : loads latest bookmarks from pinboard.in
-- pbauth *username:token* : Set pinboard authentication token
+- **pba** *query* : search *query* from description and link and tags
+- **pbt** *query* : search *query* from description(title)
+- **pbl** *query* : search *query* from link
+- **pbd** *query* : search *query* from extended field
+- **pbu** *query* : search *query* from description(title) in unread list
+- **pbtag** *query* : search tag list. You can autocomplete it by pressing 'tab'
+- **pbreload** : loads latest bookmarks from pinboard.in
+- **pbauth** *username:token* : Set pinboard authentication token
 - ctl-shift-cmd-p : launch **pba** (reset when importing)
 - ctl-shift-cmd-c : launch **pbtag** (reset when importing)
 
