@@ -13,12 +13,12 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 def intro():
-    result = [alfred.Item(title='Lookup Documentation', subtitle='setup incomplete.', attributes={'arg':'http://jmjeong.com'}, icon="icon.png")]
+    result = [alfred.Item(title='Setup incomplete', subtitle='look up documentation. press enter.', attributes={'arg':'http://j.mp/1c4E6Q2'}, icon="icon.png")]
     alfred.write(alfred.xml(result))
 
-def tags(pins,query):
-    if not "→" in query:                      # tag search
-        query = query.lower()
+def tags(pins,q):
+    if not "→" in q:                      # tag search
+        q = q.lower()
         tag_list = {}
         for p in pins:
             tags = p['tags'].encode('utf-8').split(' ')
@@ -31,23 +31,24 @@ def tags(pins,query):
         resultData = []
         tag_list_key = sorted(tag_list.keys(),key=str.lower)
         for i in tag_list_key:
-            if not query or query in i.lower():
+            if not q or q in i.lower():
                 resultData.append(alfred.Item(title="tag:"+i+"("+str(tag_list[i])+")→", subtitle='', attributes={'arg':i, 'autocomplete':i+"→"}, icon='icon.png'))
         alfred.write(alfred.xml(resultData,maxresults=None))
     else:
-        (query_tag, query_title)=query.split("→") 
+        (q_tag, q_title)=q.split("→")
+        qs = q_title.lower()
         results=[]
         for p in pins:
-            title = p['description'].replace(' ', '')
+            title = p['description'].replace(' ', '').lower()
             tags = p['tags'].split(' ')
             url = p['href']
             for t in tags:
-                if (query_tag in t) and ((not query_title) or (query_title.lower() in title.lower())):
+                if (q_tag in t) and (not qs or qs in title or qs in p['tags']):
                     results.append({'title':p['description'],'url':url})
                     break
-        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
-        pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%query_title.replace(' ','+')
-        resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%query_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
+        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20')}, icon="item.png") for f in results]
+        pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+')
+        resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%q_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
     sys.exit(0)
 
@@ -100,7 +101,7 @@ for p in pins:
         elif category=='all' and (qs in title or qs in url or qs in tags):
             results.append({'title':p['description'],'url':p['href']})
 
-resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url']}, icon="item.png") for f in results]
+resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20')}, icon="item.png") for f in results]
 pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+')
 resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%q, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
 alfred.write(alfred.xml(resultData,maxresults=None))
