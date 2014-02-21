@@ -23,8 +23,8 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 - pbd *query* : search *query* from extended field
 - pbu *query* : search *query* from description(title) in unread list
 - pbtag *query* : search tag list. You can autocomplete it by pressing 'tab'
-- ctl-shift-cmd-p : launch **pba** 
-- ctl-shift-cmd-c : launch **pbtag**
+- ctl-shift-cmd-p : launch **pba** (reset when importing)
+- ctl-shift-cmd-c : launch **pbtag** (reset when importing)
 
 # Action
 

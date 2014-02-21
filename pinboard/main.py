@@ -47,8 +47,9 @@ def tags(pins,q):
                     results.append({'title':p['description'],'url':url})
                     break
         resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20')}, icon="item.png") for f in results]
-        pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+')
-        resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%q_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
+        pinboard_url = q_title and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+') or 'https://pinboard.in/'
+        pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
+        resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
     sys.exit(0)
 
@@ -102,6 +103,7 @@ for p in pins:
             results.append({'title':p['description'],'url':p['href']})
 
 resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20')}, icon="item.png") for f in results]
-pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+')
-resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%q, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
+pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
+pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto pinboard site'
+resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
 alfred.write(alfred.xml(resultData,maxresults=None))
