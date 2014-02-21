@@ -16,11 +16,13 @@ def intro():
     result = [alfred.Item(title='Setup incomplete', subtitle='look up documentation. press enter.', attributes={'arg':'http://j.mp/1c4E6Q2'}, icon="icon.png")]
     alfred.write(alfred.xml(result))
 
-def tags(pins,q):
+def tags(pins,deleted_url,q):
     if not "→" in q:                      # tag search
         q = q.lower()
         tag_list = {}
         for p in pins:
+            url = p['href']
+            if url in deleted_url: continue
             tags = p['tags'].encode('utf-8').split(' ')
             for t in tags:
                 if not t: continue
@@ -39,25 +41,39 @@ def tags(pins,q):
         qs = q_title.lower()
         results=[]
         for p in pins:
+            url = p['href']
+            if url in deleted_url: continue
             title = p['description'].replace(' ', '').lower()
             tags = p['tags'].split(' ')
-            url = p['href']
             for t in tags:
                 if (q_tag in t) and (not qs or qs in title or qs in p['tags']):
                     results.append({'title':p['description'],'url':url})
                     break
         resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20')}, icon="item.png") for f in results]
-        pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+')
-        resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%q_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
+        pinboard_url = q_title and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+') or 'https://pinboard.in/'
+        pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
+        resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
     sys.exit(0)
 
+def auth(q):
+    if not q:
+        alfred.write(alfred.xml([alfred.Item(title='Set Pinboard Authentication Token', subtitle='you can get it from https://pinboard.in/settings/', attributes={'valid':'no'}, icon="icon.png")]))
+    else:
+        alfred.write(alfred.xml([alfred.Item(title='Set Pinboard Authentication Token', subtitle='username:XXXXXXXXXXXXXXXXXXX', attributes={'arg':q}, icon="icon.png")]))        
+
+# start routine
 try:
-    file = os.environ['HOME']+'/.bookmarks.json'
-    pins = json.loads(open(file, 'r').read())
+    filename = os.environ['HOME']+'/.bookmarks.json'
+    pins = json.loads(open(filename, 'r').read())
 except:
     intro()
     sys.exit(0)
+
+try:
+    deleted_url=json.loads(open('deleted-url.json').read())
+except IOError:
+    deleted_url=[]
 
 # arg parsing
 category = sys.argv[1]
@@ -69,7 +85,10 @@ except:
 
 # tag processing
 if category=='tags':
-    tags(pins,q)
+    tags(pins,deleted_url,q)
+    sys.exit(0)
+elif category=='auth':
+    auth(q)
     sys.exit(0)
     
 results = []
@@ -82,6 +101,8 @@ for p in pins:
     extended = p['extended'].replace(' ', '').lower()
     tags = p['tags'].lower()
     toread = p['toread']
+    
+    if url in deleted_url: continue
 
     if qs=="":
         if category=='toread':
@@ -102,6 +123,7 @@ for p in pins:
             results.append({'title':p['description'],'url':p['href']})
 
 resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20')}, icon="item.png") for f in results]
-pinboard_url = 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+')
-resultData.append(alfred.Item(title='Search "%s" in pinboard.in'%q, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
+pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
+pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto pinboard site'
+resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
 alfred.write(alfred.xml(resultData,maxresults=None))

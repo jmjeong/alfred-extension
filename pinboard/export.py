@@ -26,6 +26,7 @@ ignore_patterns = (
     'README.md',
     '.DS_Store',
     'config.json',
+    'deleted-url.json',
     '*~',
     '#*',
     '_*'
