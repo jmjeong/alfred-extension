@@ -39,6 +39,10 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 
 - v0.9 : pre-release
 
+# License 
+
+MIT License
+
 # Credits
 
 Inspired by the following tips 
