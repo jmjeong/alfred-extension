@@ -4,6 +4,7 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and v
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbhelp.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbtag.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbtag-search.jpg)
 
 # Installation 
