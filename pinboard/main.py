@@ -53,9 +53,10 @@ def tags(pins,q):
         alfred.write(alfred.xml(resultData,maxresults=None))
     sys.exit(0)
 
+# start routine
 try:
-    file = os.environ['HOME']+'/.bookmarks.json'
-    pins = json.loads(open(file, 'r').read())
+    filename = os.environ['HOME']+'/.bookmarks.json'
+    pins = json.loads(open(filename, 'r').read())
 except:
     intro()
     sys.exit(0)

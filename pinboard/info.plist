@@ -6,6 +6,28 @@
 	<string>com.jmjeong.alfredv2.pinboard</string>
 	<key>connections</key>
 	<dict>
+		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>439B88DA-6B0C-4446-9E55-567F44264474</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>298A31E4-279B-46E1-82E5-325735FD9F5C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>ED7BCF81-11D0-4C88-8946-CEE332D61F07</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>38B9490F-6226-4DB1-BC2B-AC0413FDCB2C</key>
 		<array>
 			<dict>
@@ -23,6 +45,17 @@
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string>Copy URL to Clipboard</string>
+			</dict>
+		</array>
+		<key>3C31E0C0-B168-4C49-B98D-045E7B1612BF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
 			</dict>
 		</array>
 		<key>4F0BFF6F-4C08-4E56-AE58-4EE4502D3BB3</key>
@@ -142,6 +175,17 @@
 				<string>Copy URL to clipboard</string>
 			</dict>
 		</array>
+		<key>ED7BCF81-11D0-4C88-8946-CEE332D61F07</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>365A09AC-0F21-48C5-B270-756CBC445169</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Jaemok Jeong</string>
@@ -153,35 +197,6 @@
 	<string>pinboard</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>36</integer>
-				<key>keyword</key>
-				<string>pba</string>
-				<key>runningsubtext</key>
-				<string>loading...</string>
-				<key>script</key>
-				<string>python main.py all "{query}"</string>
-				<key>subtext</key>
-				<string>search all fields of bookmarks in pinboard</string>
-				<key>title</key>
-				<string>pba</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>94BD3D4A-52E4-4693-BEAF-4AC0D1C2843B</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -215,6 +230,35 @@
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>keyword</key>
+				<string>pba</string>
+				<key>runningsubtext</key>
+				<string>loading...</string>
+				<key>script</key>
+				<string>python main.py all "{query}"</string>
+				<key>subtext</key>
+				<string>search all fields of bookmarks in pinboard</string>
+				<key>title</key>
+				<string>pba query</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>94BD3D4A-52E4-4693-BEAF-4AC0D1C2843B</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
 				<string>pbt</string>
 				<key>runningsubtext</key>
 				<string>loading...</string>
@@ -223,7 +267,7 @@
 				<key>subtext</key>
 				<string>search description of bookmarks in pinboard</string>
 				<key>title</key>
-				<string>pbt</string>
+				<string>pbt query</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -309,7 +353,7 @@
 				<key>subtext</key>
 				<string>search link of bookmarks in pinboard</string>
 				<key>title</key>
-				<string>pbl</string>
+				<string>pbl query</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -338,7 +382,7 @@
 				<key>subtext</key>
 				<string>search extended field of bookmarks in pinboard</string>
 				<key>title</key>
-				<string>pbd</string>
+				<string>pbd query</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -367,7 +411,7 @@
 				<key>subtext</key>
 				<string>display tags list in pinboard</string>
 				<key>title</key>
-				<string>pbtag</string>
+				<string>pbtag tag query</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -396,7 +440,7 @@
 				<key>subtext</key>
 				<string>search title of toread bookmarks in pinboard</string>
 				<key>title</key>
-				<string>pbu</string>
+				<string>pbu query</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -406,6 +450,141 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>7253661E-0121-4830-9BD1-6B2DEAE20847</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>import json
+import os
+
+fname = os.path.join(os.path.abspath('.'),'config.json')
+
+q = "{query}"
+(user,token)=q.split(':')
+f = open(fname,'w+')
+json.dump({'username':user, 'token':token},f)
+f.close()</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>ED7BCF81-11D0-4C88-8946-CEE332D61F07</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>Authentication Token Saved</string>
+				<key>title</key>
+				<string>Pinboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>365A09AC-0F21-48C5-B270-756CBC445169</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>pbauth</string>
+				<key>subtext</key>
+				<string>username:XXXXXXXXXXXXXXXXXXX</string>
+				<key>text</key>
+				<string>Set Pinboard Authentication Token</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>298A31E4-279B-46E1-82E5-325735FD9F5C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Pinboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>439B88DA-6B0C-4446-9E55-567F44264474</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python reload.py</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>pbreload</string>
+				<key>subtext</key>
+				<string>loads latest bookmarks from pinboard.in</string>
+				<key>text</key>
+				<string>Reload Pinboard data</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>3C31E0C0-B168-4C49-B98D-045E7B1612BF</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -420,20 +599,45 @@ pad - search extended in pinboard
 pbtag - search tag in pinboard</string>
 	<key>uidata</key>
 	<dict>
+		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
+		<dict>
+			<key>ypos</key>
+			<real>910</real>
+		</dict>
+		<key>298A31E4-279B-46E1-82E5-325735FD9F5C</key>
+		<dict>
+			<key>ypos</key>
+			<real>770</real>
+		</dict>
 		<key>2BB4D90E-6F2A-46AC-B495-422137F94C88</key>
 		<dict>
 			<key>ypos</key>
 			<real>190</real>
+		</dict>
+		<key>365A09AC-0F21-48C5-B270-756CBC445169</key>
+		<dict>
+			<key>ypos</key>
+			<real>770</real>
 		</dict>
 		<key>38B9490F-6226-4DB1-BC2B-AC0413FDCB2C</key>
 		<dict>
 			<key>ypos</key>
 			<real>260</real>
 		</dict>
+		<key>3C31E0C0-B168-4C49-B98D-045E7B1612BF</key>
+		<dict>
+			<key>ypos</key>
+			<real>920</real>
+		</dict>
 		<key>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</key>
 		<dict>
 			<key>ypos</key>
 			<real>200</real>
+		</dict>
+		<key>439B88DA-6B0C-4446-9E55-567F44264474</key>
+		<dict>
+			<key>ypos</key>
+			<real>890</real>
 		</dict>
 		<key>4F0BFF6F-4C08-4E56-AE58-4EE4502D3BB3</key>
 		<dict>
@@ -469,6 +673,11 @@ pbtag - search tag in pinboard</string>
 		<dict>
 			<key>ypos</key>
 			<real>520</real>
+		</dict>
+		<key>ED7BCF81-11D0-4C88-8946-CEE332D61F07</key>
+		<dict>
+			<key>ypos</key>
+			<real>770</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
