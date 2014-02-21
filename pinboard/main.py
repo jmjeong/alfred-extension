@@ -56,12 +56,6 @@ def tags(pins,deleted_url,q):
         alfred.write(alfred.xml(resultData,maxresults=None))
     sys.exit(0)
 
-def auth(q):
-    if not q:
-        alfred.write(alfred.xml([alfred.Item(title='Set Pinboard Authentication Token', subtitle='you can get it from https://pinboard.in/settings/', attributes={'valid':'no'}, icon="icon.png")]))
-    else:
-        alfred.write(alfred.xml([alfred.Item(title='Set Pinboard Authentication Token', subtitle='username:XXXXXXXXXXXXXXXXXXX', attributes={'arg':q}, icon="icon.png")]))        
-
 # start routine
 try:
     filename = os.environ['HOME']+'/.bookmarks.json'
@@ -86,9 +80,6 @@ except:
 # tag processing
 if category=='tags':
     tags(pins,deleted_url,q)
-    sys.exit(0)
-elif category=='auth':
-    auth(q)
     sys.exit(0)
     
 results = []
