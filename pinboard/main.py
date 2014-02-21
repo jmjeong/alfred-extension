@@ -16,6 +16,19 @@ def intro():
     result = [alfred.Item(title='Setup incomplete', subtitle='look up documentation. press enter.', attributes={'arg':'http://j.mp/1c4E6Q2'}, icon="icon.png")]
     alfred.write(alfred.xml(result))
 
+def help():
+    result = []
+    result.append(alfred.Item(title='pbauth username:token', subtitle='set pinboard authentication token', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='pbreload', subtitle='load latest bookmarks from pinboard.in', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='pba query', subtitle='search all fields of bookmarks', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='pbt query', subtitle='search description of bookmarks', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='pbd query', subtitle='search extended field of bookmarks', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='pbtag tag query', subtitle='display tags list', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='pbu query', subtitle='search title of toread bookmarks', attributes={'valid':'no'}, icon="icon.png"))
+    result.append(alfred.Item(title='To selected bookmark', subtitle='enter:goto site, cmd:copy url, alt:delete bookmark, tab:expand', attributes={'valid':'no'}, icon="icon.png"))
+    alfred.write(alfred.xml(result))
+
 def tags(pins,deleted_url,q):
     if not "→" in q:                      # tag search
         q = q.lower()
@@ -80,6 +93,9 @@ except:
 # tag processing
 if category=='tags':
     tags(pins,deleted_url,q)
+    sys.exit(0)
+elif category=='help':
+    help()
     sys.exit(0)
     
 results = []

@@ -603,6 +603,27 @@ f.close()</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>pbauth</string>
+				<key>subtext</key>
+				<string>username:XXXXXXXXXXXXXXXXXXX</string>
+				<key>text</key>
+				<string>Set Pinboard Authentication Token</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>298A31E4-279B-46E1-82E5-325735FD9F5C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -622,27 +643,6 @@ f.close()</string>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>365A09AC-0F21-48C5-B270-756CBC445169</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>pbauth</string>
-				<key>subtext</key>
-				<string>username:XXXXXXXXXXXXXXXXXXX</string>
-				<key>text</key>
-				<string>Set Pinboard Authentication Token</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>298A31E4-279B-46E1-82E5-325735FD9F5C</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -709,6 +709,33 @@ f.close()</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
+				<string>pbhelp</string>
+				<key>script</key>
+				<string>python main.py help</string>
+				<key>subtext</key>
+				<string>display pinboard help</string>
+				<key>title</key>
+				<string>Help</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>006AC0DE-F518-445C-B7E6-5FF51242A8CE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>pb - search all field(description,link,extended,tag) in pinboard
@@ -720,6 +747,11 @@ pad - search extended in pinboard
 pbtag - search tag in pinboard</string>
 	<key>uidata</key>
 	<dict>
+		<key>006AC0DE-F518-445C-B7E6-5FF51242A8CE</key>
+		<dict>
+			<key>ypos</key>
+			<real>1040</real>
+		</dict>
 		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
 		<dict>
 			<key>ypos</key>
