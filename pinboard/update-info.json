@@ -1,5 +1,5 @@
 {
-    "version": 1.0,
-    "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "Initial release"
+    "version": 1.1,
+    "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow", 
+    "description": "add [Send to pocket]"
 }

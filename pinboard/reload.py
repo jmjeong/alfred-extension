@@ -9,15 +9,17 @@
 import os
 import json
 import urllib
+import main
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+config = main.config_data()
+
 try:
-    config=json.loads(open('config.json').read())
-    user=config['username']
-    token=config['token']
+    user=config['pinboard_username']
+    token=config['pinboard_token']
 except:
     print "Setup not complete\npbauth username:token"
     exit(0)
