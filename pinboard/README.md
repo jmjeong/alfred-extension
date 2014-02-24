@@ -16,13 +16,16 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Installation 
 
-- (mandatory) install cron job
-  - */10 * * * * (curl 'https://api.pinboard.in/v1/posts/all?format=json&auth_token=username:TOKEN' > ~/.bookmarks.json) > /dev/null 2>&1
-  - get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
-- (optional) pbauth username:TOKEN <- set access token
-  - Only need if you want to delete the bookmark or reload bookmark
+- pbauth username:TOKEN <- set access token
+  - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
+- pbreload - loads latest bookmarks from pinboard.in
+
 - (optional) pbauthpocket 
   - Only need if you want to send URL to pocket
+- (optional) install cron job  : for faster search without pbreload
+  - */10 * * * * (curl 'https://api.pinboard.in/v1/posts/all?format=json&auth_token=username:TOKEN' > ~/.bookmarks.json) > /dev/null 2>&1
+  - get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
+  
 	
 - [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
 
@@ -49,6 +52,8 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Change Log 
 
+- v1.2 (2014-02-24)
+  - Remove the dependency of cron job 
 - v1.1 (2014-02-23)
   - add send-to-pocket in shift
   - limit search result to 16

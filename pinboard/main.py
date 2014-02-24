@@ -30,23 +30,20 @@ def config_data():
         config={}
     return config
 
-def intro():
-    result = [alfred.Item(title='Setup incomplete', subtitle='look up documentation. press enter.', attributes={'arg':'http://j.mp/1c4E6Q2','uid':alfred.uid(0)}, icon="icon.png")]
-    alfred.write(alfred.xml(result))
 
 def help():
     result = []
-    result.append(alfred.Item(title='pbauth username:token', subtitle='set pinboard authentication token', attributes={'valid':'no','uid':alfred.uid(0)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbreload', subtitle='load latest bookmarks from pinboard.in', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
-    result.append(alfred.Item(title='pba query', subtitle='search all fields of bookmarks', attributes={'valid':'no','uid':alfred.uid(2)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbt query', subtitle='search description of bookmarks', attributes={'valid':'no','uid':alfred.uid(3)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(4)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbd query', subtitle='search extended field of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbtag tag query', subtitle='display tags list', attributes={'valid':'no','uid':alfred.uid(6)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbu query', subtitle='search title of toread bookmarks', attributes={'valid':'no','uid':alfred.uid(7)}, icon="icon.png"))
-    result.append(alfred.Item(title='To selected bookmark', subtitle='enter:goto site, cmd:copy url, alt:delete bookmark, tab:expand', attributes={'valid':'no','uid':alfred.uid(8)}, icon="icon.png"))
+    result.append(alfred.Item(title='Look up Documentation', subtitle='Goto project site', attributes={'arg':'http://j.mp/1c4E6Q2','uid':alfred.uid(0)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbauth username:token', subtitle='set pinboard authentication token', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbreload', subtitle='load latest bookmarks from pinboard.in', attributes={'valid':'no','uid':alfred.uid(2)}, icon="icon.png"))
+    result.append(alfred.Item(title='pba query', subtitle='search all fields of bookmarks', attributes={'valid':'no','uid':alfred.uid(3)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbt query', subtitle='search description of bookmarks', attributes={'valid':'no','uid':alfred.uid(4)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbd query', subtitle='search extended field of bookmarks', attributes={'valid':'no','uid':alfred.uid(6)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbtag tag query', subtitle='display tags list', attributes={'valid':'no','uid':alfred.uid(7)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbu query', subtitle='search title of toread bookmarks', attributes={'valid':'no','uid':alfred.uid(8)}, icon="icon.png"))
+    result.append(alfred.Item(title='To selected bookmark', subtitle='enter:goto site, cmd:copy url, alt:delete bookmark, tab:expand', attributes={'valid':'no','uid':alfred.uid(9)}, icon="icon.png"))
     alfred.write(alfred.xml(result))
-    sys.exit(0)
 
 def pbauth(q):
     try:
@@ -64,7 +61,6 @@ def pbauth(q):
         myFile.write(json.dumps(config))
 
     print "Authentication Token Saved"
-    sys.exit(0)
 
 def pbauthpocket(q):
     ret = pocket.getRequestCode()
@@ -77,12 +73,9 @@ def pbauthpocket(q):
     
     result = [alfred.Item(title='Login!', subtitle='Login with Pocket.com (you will be taken to pocket.com)', attributes={'arg':ret['code'],'uid':alfred.uid(0)}, icon="icon.png")]
     alfred.write(alfred.xml(result))
-    
-    sys.exit(0)
 
 def addpocket(q):
     pocket.addpocket(q)
-    sys.exit(0)
 
 def tags(pins,deleted_url,q):
     if not "→" in q:                      # tag search
@@ -123,7 +116,6 @@ def tags(pins,deleted_url,q):
         pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
         resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
-    sys.exit(0)
 
 def search(pins,deleted_url,q):
     results = []
@@ -170,7 +162,6 @@ def search(pins,deleted_url,q):
     logger.info(xml)
     alfred.write(xml)
     logger.info("write finished")
-    sys.exit(0)
 
 if __name__ == '__main__':
     
@@ -178,8 +169,7 @@ if __name__ == '__main__':
         filename = os.environ['HOME']+'/.bookmarks.json'
         pins = json.loads(open(filename, 'r').read())
     except:
-        intro()
-        sys.exit(0)
+        pins = {}
 
     try:
         deleted_url=json.loads(open('deleted-url.json').read())
@@ -197,14 +187,19 @@ if __name__ == '__main__':
     # tag processing
     if category=='tags':
         tags(pins,deleted_url,q)
+        sys.exit(0)
     elif category=='help':
         help()
+        sys.exit(0)
     elif category=='pbauth':
         pbauth(q)
+        sys.exit(0)
     elif category=='pbauthpocket':
         pbauthpocket(q)
+        sys.exit(0)
     elif category=='addpocket':
         addpocket(q)
+        sys.exit(0)
 
     # search query
     search(pins,deleted_url,q)
