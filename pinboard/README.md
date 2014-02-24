@@ -21,9 +21,9 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 - pbreload - loads latest bookmarks from pinboard.in
 
 - (optional) pbauthpocket 
-  - Only need if you want to send URL to pocket
+  - needed only if you want to send URL to pocket
 - (optional) install cron job  : for faster search without pbreload
-  - */10 * * * * (curl 'https://api.pinboard.in/v1/posts/all?format=json&auth_token=username:TOKEN' > ~/.bookmarks.json) > /dev/null 2>&1
+  - */15 * * * * (curl 'https://api.pinboard.in/v1/posts/all?format=json&auth_token=username:TOKEN' > ~/.bookmarks.json) > /dev/null 2>&1
   - get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
   
 	
