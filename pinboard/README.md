@@ -23,9 +23,9 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 - (optional) pbauthpocket 
   - needed only if you want to send URL to pocket
 - (optional) install cron job  : for faster search without pbreload
-  - */15 * * * * (curl 'https://api.pinboard.in/v1/posts/all?format=json&auth_token=username:TOKEN' > ~/.bookmarks.json) > /dev/null 2>&1
-  - get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
-  
+  - */15 * * * * pinboard-download.py  > ~/.bookmarks.json) > /dev/null 2>&1
+  - get it from [pinboard-download.py](https://gist.github.com/jmjeong/6986c9db0cc193f5b51d) 
+  - You need to set PINBOARD_TOKEN
 	
 - [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
 
