@@ -21,7 +21,7 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
-PIN_MAX_RESULT=16
+PIN_MAX_RESULT=18
 
 def config_data():
     try:
@@ -29,7 +29,6 @@ def config_data():
     except:
         config={}
     return config
-
 
 def help():
     result = []
@@ -117,7 +116,7 @@ def tags(pins,deleted_url,q):
         resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
 
-def search(pins,deleted_url,q):
+def search(pins,deleted_url,q,category):
     results = []
     q = q.lower()
     qs = q.replace(' ', '')
@@ -135,12 +134,12 @@ def search(pins,deleted_url,q):
         if qs=="":
             if category=='toread':
                 if toread=='yes':            
-                    results.append({'title':p['description'],'url':p['href']})
+                    results.append({'title':p['description'],'url':p['href'],'valid':'YES'})
             else:
-                results.append({'title':p['description'],'url':p['href']})
+                results.append({'title':p['description'],'url':p['href'],'valid':'YES'})
         else:
             if category=='title' and qs in title:
-                results.append({'title':p['description'],'url':p['href']})
+                results.append({'title':p['description'],'url':p['href'], 'valid':'YES'})
             elif category=='link' and qs in url:
                 results.append({'title':p['description'],'url':p['href']})
             elif category=='description' and qs in extended:
@@ -202,4 +201,4 @@ if __name__ == '__main__':
         sys.exit(0)
 
     # search query
-    search(pins,deleted_url,q)
+    search(pins,deleted_url,q,category)

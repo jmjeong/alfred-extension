@@ -52,6 +52,8 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Change Log 
 
+- v1.3 (2014-03-04)
+  - Fix a bug that items are not displayed sometimes
 - v1.2 (2014-02-24)
   - Remove the dependency of cron job 
 - v1.1 (2014-02-23)

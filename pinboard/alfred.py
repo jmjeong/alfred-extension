@@ -80,7 +80,7 @@ def xml(items, maxresults=_MAX_RESULTS_DEFAULT):
     root = Element('items')
     for item in itertools.islice(items, maxresults):
         root.append(item.xml())
-    return tostring(root, encoding='utf-8')
+    return '<?xml version="1.0"?>'+tostring(root, encoding='utf-8')
 
 def _create(path):
     if not os.path.isdir(path):
