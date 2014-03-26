@@ -26,7 +26,8 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
   - download it from [pinboard-download.py](https://gist.github.com/jmjeong/6986c9db0cc193f5b51d)
   - You need to set PINBOARD_TOKEN in `pinboard-download.py`
   - `chmod a+x pinboard-download.py`
-  - */15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1
+  - register script in crontab using `crontab -e`
+    - `*/15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1`
 	
 - [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
 
