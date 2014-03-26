@@ -21,7 +21,7 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
-PIN_MAX_RESULT=18
+PIN_MAX_RESULT=100
 
 def config_data():
     try:
@@ -151,7 +151,7 @@ def search(pins,deleted_url,q,category):
         if len(results)>PIN_MAX_RESULT: break
 
     logger.info(category)
-    resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20'),'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
+    resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=u"", attributes = {'arg':f['url'].replace(' ','%20'),'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
 
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto pinboard site'

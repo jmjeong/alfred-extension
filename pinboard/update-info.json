@@ -1,5 +1,5 @@
 {
-    "version": 1.3,
+    "version": 1.4,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow", 
-    "description": "Fix a bug that items are not displayed sometimes"
+    "description": "Set the number of search result to 100"
 }

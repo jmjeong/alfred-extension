@@ -54,6 +54,9 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Change Log 
 
+- v1.4 (2014-03-26)
+  - url part is not displayed to increase max of search result
+  - limit search result to 100
 - v1.3 (2014-03-04)
   - Fix a bug that items are not displayed sometimes
 - v1.2 (2014-02-24)
