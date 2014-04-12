@@ -54,6 +54,9 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Change Log 
 
+- v1.6 (2014-04-12)
+  - add encoding parameter to xml output
+  - add subtitle in output
 - v1.4 (2014-03-26)
   - url part is not displayed to increase max of search result
   - limit search result to 100

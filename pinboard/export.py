@@ -21,6 +21,7 @@ sys.setdefaultencoding('utf-8')
 
 ignore_patterns = (
     '*.pyc',
+    '*.jpg',
     '*.alfredworkflow',
     'screenshot.png',
     'README.md',

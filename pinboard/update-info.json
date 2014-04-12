@@ -1,5 +1,5 @@
 {
-    "version": 1.4,
+    "version": 1.5,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow", 
-    "description": "Set the number of search result to 100"
+    "description": "add encoding to xml"
 }
