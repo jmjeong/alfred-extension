@@ -40,6 +40,6 @@ try:
         json.dump(deleted_url,f)
         f.close()        
     else:
-        print ret['result_coode']
+        print ret['result_code']
 except:
     print "Error"

@@ -21,7 +21,7 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
-PIN_MAX_RESULT=100
+PIN_MAX_RESULT=80
 
 def config_data():
     try:
@@ -94,7 +94,7 @@ def tags(pins,deleted_url,q):
         tag_list_key = sorted(tag_list.keys(),key=str.lower)
         for (idx,i) in enumerate(tag_list_key):
             if not q or q in i.lower():
-                resultData.append(alfred.Item(title="tag:"+i+"("+str(tag_list[i])+")→", subtitle='', attributes={'arg':i, 'autocomplete':i+"→",'uid':alfred.uid(idx)}, icon='icon.png'))
+                resultData.append(alfred.Item(title="tag:"+i+"("+str(tag_list[i])+")→", subtitle='', attributes={'arg':i, 'autocomplete':i+"→",'uid':"p-%04d"%idx}, icon='icon.png'))
         alfred.write(alfred.xml(resultData,maxresults=None))
     else:
         (q_tag, q_title)=q.split("→")
@@ -110,7 +110,7 @@ def tags(pins,deleted_url,q):
                     results.append({'title':p['description'],'url':url})
                     break
             if len(results)>PIN_MAX_RESULT: break
-        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'),attributes={'arg':f['url'].replace(' ','%20'),'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
+        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'),attributes={'arg':f['url'].replace(' ','%20'),'uid':"p-%04d"%i},icon="item.png") for (i,f) in enumerate(results)]
         pinboard_url = q_title and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+') or 'https://pinboard.in/'
         pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
         resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
@@ -121,7 +121,7 @@ def search(pins,deleted_url,q,category):
     q = q.lower()
     qs = q.replace(' ', '')
     logger.info('query string = [%s]', qs)
-    
+
     for p in pins:
         title = p['description'].replace(' ', '').lower()
         url = p['href'].lower()
@@ -151,7 +151,7 @@ def search(pins,deleted_url,q,category):
         if len(results)>PIN_MAX_RESULT: break
 
     logger.info(category)
-    resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20'),'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
+    resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20'),'uid':"p-%04d"%idx}, icon="item.png") for (idx,f) in enumerate(results)]
 
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto pinboard site'
@@ -159,7 +159,7 @@ def search(pins,deleted_url,q,category):
 
     xml = alfred.xml(resultData,maxresults=None)
     logger.info(xml)
-    alfred.write(xml)
+    alfred.write(' '+xml)
     logger.info("write finished")
 
 if __name__ == '__main__':

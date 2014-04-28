@@ -54,7 +54,10 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Change Log 
 
-- v1.6 (2014-04-12)
+- v1.6 (2014-04-28)
+  - some tweak for xml output (item order)
+  - fix typo in delete routine 
+- v1.5 (2014-04-12)
   - add encoding parameter to xml output
   - add subtitle in output
 - v1.4 (2014-03-26)
