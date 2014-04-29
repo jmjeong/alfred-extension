@@ -9,6 +9,7 @@ import json
 import unicodedata
 import logging
 import pocket
+import cgi
 
 import sys
 reload(sys)
@@ -110,7 +111,7 @@ def tags(pins,deleted_url,q):
                     results.append({'title':p['description'],'url':url})
                     break
             if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
-        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'),attributes={'arg':f['url'].replace(' ','%20'),'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
+        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'),attributes={'arg':cgi.escape(f['url']),'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
         pinboard_url = q_title and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+') or 'https://pinboard.in/'
         pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
         resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
@@ -138,20 +139,20 @@ def search(pins,deleted_url,q,category):
             else:
                 results.append({'title':p['description'],'url':p['href'],'valid':'YES'})
         else:
-            if category=='title' and qs in title:
+            if category=='title' and any(qsi and qsi in title for qsi in qs.split('|')):
                 results.append({'title':p['description'],'url':p['href'], 'valid':'YES'})
-            elif category=='link' and qs in url:
+            elif category=='link' and any(qsi and qsi in url for qsi in qs.split('|')):
                 results.append({'title':p['description'],'url':p['href']})
-            elif category=='description' and qs in extended:
+            elif category=='description' and any(qsi in extended for qsi in qs.split('|')):
                 results.append({'title':p['description'],'url':p['href']})
-            elif category=='toread' and qs in title and toread=='yes':
+            elif category=='toread' and any(qsi and qsi in title and toread=='yes' for qsi in qs.split('|')):
                 results.append({'title':p['description'],'url':p['href']})
-            elif category=='all' and (qs in title or qs in url or qs in tags):
+            elif category=='all' and any(qsi and (qsi in title or qsi in url or qsi in tags) for qsi in qs.split('|')):
                 results.append({'title':p['description'],'url':p['href']})
         if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
 
     logger.info(category)
-    resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':f['url'].replace(' ','%20'),'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
+    resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':cgi.escape(f['url']),'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
 
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto pinboard site'

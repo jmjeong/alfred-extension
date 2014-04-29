@@ -44,6 +44,7 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 - **pbauthpocket** : Pocket authentication (optional)
 - ctl-shift-cmd-p : launch **pba** (reset when importing)
 - ctl-shift-cmd-c : launch **pbtag** (reset when importing)
+- support or(|) operator in *query* (ex. pba pinboard|alfred)
 
 # Action
 
@@ -54,6 +55,9 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Change Log 
 
+- v1.8 (2014-04-29)
+  - escape url character for compatibility 
+  - support or(|) operator in search
 - v1.7 (2014-04-29)
   - retain item order of the result
   - don't limit the number of output
