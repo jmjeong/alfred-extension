@@ -54,6 +54,10 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Change Log 
 
+- v1.7 (2014-04-29)
+  - retain item order of the result
+  - don't limit the number of output
+  - change the encoding of output to 'NFD'
 - v1.6 (2014-04-28)
   - some tweak for xml output (item order)
   - fix typo in delete routine 
