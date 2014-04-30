@@ -9,7 +9,7 @@ import json
 import unicodedata
 import logging
 import pocket
-import cgi
+# import cgi
 
 import sys
 reload(sys)
@@ -111,7 +111,7 @@ def tags(pins,deleted_url,q):
                     results.append({'title':p['description'],'url':url})
                     break
             if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
-        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'),attributes={'arg':cgi.escape(f['url']),'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
+        resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'],attributes={'arg':f['url'],'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
         pinboard_url = q_title and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+') or 'https://pinboard.in/'
         pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
         resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
@@ -130,7 +130,7 @@ def search(pins,deleted_url,q,category):
         tags = p['tags'].lower()
         toread = p['toread']
 
-        if url in deleted_url: continue
+        if url in map(lambda x:x.lower(), deleted_url): continue
 
         if qs=="":
             if category=='toread':
@@ -152,7 +152,7 @@ def search(pins,deleted_url,q,category):
         if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
 
     logger.info(category)
-    resultData = [alfred.Item(title=f['title'].encode('utf-8'), subtitle=f['url'].encode('utf-8'), attributes = {'arg':cgi.escape(f['url']),'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
+    resultData = [alfred.Item(title=f['title'], subtitle=f['url'], attributes = {'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
 
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto pinboard site'
