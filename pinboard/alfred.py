@@ -4,6 +4,7 @@ import os
 import plistlib
 import unicodedata
 import sys
+import uuid
 
 from xml.etree.ElementTree import Element, SubElement, tostring
 
@@ -37,7 +38,7 @@ class Item(object):
         self.icon = icon
 
     def __str__(self):
-        return tostring(self.xml(), encoding='utf-8')
+        return  unicodedata.normalize('NFD', tostring(self.xml(), encoding='utf-8'))
 
     def xml(self):
         item = Element(u'item', self.unicode(self.attributes))
@@ -45,10 +46,7 @@ class Item(object):
             value = getattr(self, attribute)
             if value is None:
                 continue
-            if len(value) == 2 and isinstance(value[1], dict):
-                (value, attributes) = value
-            else:
-                attributes = {}
+            attributes = {}            
             SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
         return item
 
@@ -59,10 +57,10 @@ def config():
     return _create('config')
 
 def decode(s):
-    return unicodedata.normalize('NFD', s.decode('utf-8'))
+    return unicodedata.normalize('NFC', s.decode('utf-8'))
 
 def uid(uid):
-    return u'-'.join(map(unicode, (bundleid, uid)))
+    return u'-'.join(map(unicode, (uuid.uuid4(), uid)))
 
 def unescape(query, characters=None):
     for character in (UNESCAPE_CHARACTERS if (characters is None) else characters):
@@ -83,7 +81,7 @@ def xml(items, maxresults=_MAX_RESULTS_DEFAULT):
     root = Element('items')
     for item in itertools.islice(items, maxresults):
         root.append(item.xml())
-    return tostring(root, encoding='utf-8')
+    return '<?xml version="1.0" encoding="utf-8"?>'+tostring(root, encoding='utf-8')
 
 def _create(path):
     if not os.path.isdir(path):

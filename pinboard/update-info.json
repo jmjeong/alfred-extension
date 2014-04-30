@@ -1,5 +1,5 @@
 {
-    "version": 1.7,
+    "version": 1.8,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow", 
-    "description": "retain display order, don't limit the number of output"
+    "description": "escape url character, support or(|) operator in search"
 }
