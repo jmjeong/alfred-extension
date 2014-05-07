@@ -27,7 +27,7 @@ def addpocket(q):
     try:
         token=config['pocket_access_code']
     except KeyError:
-        print "Please try to login first with pbauthpocket"
+        print "Please login first with pbauthpocket"
         sys.exit(0)
 
     req_data = {

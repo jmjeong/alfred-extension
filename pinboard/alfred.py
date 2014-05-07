@@ -38,7 +38,7 @@ class Item(object):
         self.icon = icon
 
     def __str__(self):
-        return  unicodedata.normalize('NFD', tostring(self.xml(), encoding='utf-8'))
+        return tostring(self.xml(), encoding='utf-8')
 
     def xml(self):
         item = Element(u'item', self.unicode(self.attributes))
@@ -46,7 +46,10 @@ class Item(object):
             value = getattr(self, attribute)
             if value is None:
                 continue
-            attributes = {}            
+            if len(value) == 2 and isinstance(value[1], dict):
+                (value, attributes) = value
+            else:
+                attributes = {}
             SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
         return item
 
@@ -57,7 +60,7 @@ def config():
     return _create('config')
 
 def decode(s):
-    return unicodedata.normalize('NFC', s.decode('utf-8'))
+    return unicodedata.normalize('NFD', s.decode('utf-8'))
 
 def uid(uid):
     return u'-'.join(map(unicode, (uuid.uuid4(), uid)))
@@ -81,7 +84,7 @@ def xml(items, maxresults=_MAX_RESULTS_DEFAULT):
     root = Element('items')
     for item in itertools.islice(items, maxresults):
         root.append(item.xml())
-    return '<?xml version="1.0" encoding="utf-8"?>'+tostring(root, encoding='utf-8')
+    return tostring(root, encoding='utf-8')
 
 def _create(path):
     if not os.path.isdir(path):

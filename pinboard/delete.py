@@ -10,6 +10,7 @@ import os
 import json
 import urllib,urllib2
 import main
+import alfred
 
 import sys
 reload(sys)
@@ -25,7 +26,7 @@ except:
     sys.exit(0)
 
 try:
-    deleted_url=json.loads(open('deleted-url.json').read())
+    deleted_url=json.loads(open(os.path.join(alfred.work(False),'deleted-url.json')).read())
 except IOError:
     deleted_url=[]
     
@@ -36,7 +37,7 @@ try:
     if ret['result_code']=='done':
         print "Bookmark deleted"
         deleted_url.append(sys.argv[1])
-        f = open('deleted-url.json','w+')
+        f = open(os.path.join(alfred.work(False),'deleted-url.json'),'w+')
         json.dump(deleted_url,f)
         f.close()        
     else:

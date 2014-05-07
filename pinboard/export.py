@@ -28,6 +28,7 @@ ignore_patterns = (
     '.DS_Store',
     'config.json',
     'deleted-url.json',
+    '.git',
     '*~',
     '#*',
     '_*'

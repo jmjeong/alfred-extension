@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.jmjeong.alfredv2.pinboard</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
@@ -40,19 +42,19 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Copy URL to Clipboard</string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
 				<string>Send to pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to Clipboard</string>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -116,6 +118,14 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Send to pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
@@ -124,11 +134,38 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>F45C105D-02CA-4EAE-B5AD-0EE25E277794</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Delete bookmark</string>
+			</dict>
+		</array>
+		<key>5FF3E990-6F47-4687-86DB-EB887A7D496F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BB4D90E-6F2A-46AC-B495-422137F94C88</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
 				<string>Send to pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to Clipboard</string>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -151,19 +188,19 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Copy URL to clipboard</string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
 				<string>Send to pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to clipboard</string>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -186,19 +223,19 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Copy URL to clipboard</string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
 				<string>Send to pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to clipboard</string>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -232,14 +269,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Copy URL to Clipboard</string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
 				<key>modifiers</key>
 				<integer>131072</integer>
@@ -248,11 +277,30 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to Clipboard</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>F45C105D-02CA-4EAE-B5AD-0EE25E277794</string>
 				<key>modifiers</key>
 				<integer>524288</integer>
 				<key>modifiersubtext</key>
 				<string>Delete bookmark</string>
+			</dict>
+		</array>
+		<key>B87E965B-818D-4AEA-8AF0-85DC50E80E06</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5FF3E990-6F47-4687-86DB-EB887A7D496F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
 			</dict>
 		</array>
 		<key>E57DFDC2-F558-4986-B468-678ADB2B046E</key>
@@ -278,19 +326,19 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Copy URL to clipboard</string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
 				<string>Send to pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to clipboard</string>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -359,13 +407,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>8ACBF18B-B965-4A98-872A-86C62FDD125A</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -421,6 +471,62 @@
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>keyword</key>
+				<string>pbnote</string>
+				<key>runningsubtext</key>
+				<string>loading...</string>
+				<key>script</key>
+				<string>python main.py note "{query}"</string>
+				<key>subtext</key>
+				<string>search title and description in pinboard notes</string>
+				<key>title</key>
+				<string>pbnote query</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5FF3E990-6F47-4687-86DB-EB887A7D496F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>45</integer>
+				<key>hotmod</key>
+				<integer>1441792</integer>
+				<key>hotstring</key>
+				<string>N</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>B87E965B-818D-4AEA-8AF0-85DC50E80E06</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
 				<string>pbt</string>
 				<key>runningsubtext</key>
 				<string>loading...</string>
@@ -445,40 +551,17 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>hotkey</key>
-				<integer>8</integer>
-				<key>hotmod</key>
-				<integer>1441792</integer>
-				<key>hotstring</key>
-				<string>C</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python main.py addpocket "{query}"</string>
+				<key>type</key>
 				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>E57DFDC2-F558-4986-B468-678ADB2B046E</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+			<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -514,19 +597,44 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>36</integer>
-				<key>script</key>
-				<string>python main.py addpocket "{query}"</string>
-				<key>type</key>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>8</integer>
+				<key>hotmod</key>
+				<integer>1441792</integer>
+				<key>hotstring</key>
+				<string>C</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
 				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
+			<string>E57DFDC2-F558-4986-B468-678ADB2B046E</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -554,31 +662,6 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>4F0BFF6F-4C08-4E56-AE58-4EE4502D3BB3</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Pinboard</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>677A73FC-25EC-4333-9028-49311BA55358</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -625,6 +708,31 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>F45C105D-02CA-4EAE-B5AD-0EE25E277794</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Pinboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>677A73FC-25EC-4333-9028-49311BA55358</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -759,6 +867,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python reload.py</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -778,23 +903,6 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>439B88DA-6B0C-4446-9E55-567F44264474</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>36</integer>
-				<key>script</key>
-				<string>python reload.py</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -890,104 +998,103 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>pb - search all field(description,link,extended,tag) in pinboard
-
-pbt - search description in pinboard
-pbl - search link in pinboard
-pad - search extended in pinboard
-
-pbtag - search tag in pinboard</string>
+	<string>https://github.com/jmjeong/alfred-extension/tree/master/pinboard</string>
 	<key>uidata</key>
 	<dict>
 		<key>006AC0DE-F518-445C-B7E6-5FF51242A8CE</key>
 		<dict>
 			<key>ypos</key>
-			<real>1030</real>
+			<real>1190</real>
 		</dict>
 		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
 		<dict>
 			<key>ypos</key>
-			<real>910</real>
+			<real>1080</real>
 		</dict>
 		<key>126CDCB4-DAE7-4047-8A81-440AB0B62357</key>
 		<dict>
 			<key>ypos</key>
-			<real>1160</real>
+			<real>1210</real>
 		</dict>
 		<key>256BE699-DF60-4A3F-808F-1C40B8D2BFB9</key>
 		<dict>
 			<key>ypos</key>
-			<real>650</real>
+			<real>770</real>
 		</dict>
 		<key>298A31E4-279B-46E1-82E5-325735FD9F5C</key>
 		<dict>
 			<key>ypos</key>
-			<real>770</real>
+			<real>930</real>
 		</dict>
 		<key>2BB4D90E-6F2A-46AC-B495-422137F94C88</key>
 		<dict>
 			<key>ypos</key>
-			<real>40</real>
+			<real>60</real>
 		</dict>
 		<key>365A09AC-0F21-48C5-B270-756CBC445169</key>
 		<dict>
 			<key>ypos</key>
-			<real>770</real>
+			<real>930</real>
 		</dict>
 		<key>38B9490F-6226-4DB1-BC2B-AC0413FDCB2C</key>
 		<dict>
 			<key>ypos</key>
-			<real>260</real>
+			<real>330</real>
 		</dict>
 		<key>3C31E0C0-B168-4C49-B98D-045E7B1612BF</key>
 		<dict>
 			<key>ypos</key>
-			<real>890</real>
+			<real>1080</real>
 		</dict>
 		<key>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</key>
 		<dict>
 			<key>ypos</key>
-			<real>200</real>
+			<real>340</real>
 		</dict>
 		<key>439B88DA-6B0C-4446-9E55-567F44264474</key>
 		<dict>
 			<key>ypos</key>
-			<real>890</real>
+			<real>1080</real>
 		</dict>
 		<key>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</key>
 		<dict>
 			<key>ypos</key>
-			<real>310</real>
+			<real>270</real>
 		</dict>
 		<key>4E9D2764-262A-4584-B043-13A54A02C0F2</key>
 		<dict>
 			<key>ypos</key>
-			<real>1160</real>
+			<real>1300</real>
 		</dict>
 		<key>4F0BFF6F-4C08-4E56-AE58-4EE4502D3BB3</key>
 		<dict>
 			<key>ypos</key>
-			<real>400</real>
+			<real>440</real>
 		</dict>
 		<key>5E84F1EA-1898-4B28-B2EB-B686C4C78175</key>
 		<dict>
 			<key>ypos</key>
-			<real>1290</real>
+			<real>1320</real>
+		</dict>
+		<key>5FF3E990-6F47-4687-86DB-EB887A7D496F</key>
+		<dict>
+			<key>ypos</key>
+			<real>110</real>
 		</dict>
 		<key>677A73FC-25EC-4333-9028-49311BA55358</key>
 		<dict>
 			<key>ypos</key>
-			<real>510</real>
+			<real>650</real>
 		</dict>
 		<key>7253661E-0121-4830-9BD1-6B2DEAE20847</key>
 		<dict>
 			<key>ypos</key>
-			<real>640</real>
+			<real>770</real>
 		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>220</real>
 		</dict>
 		<key>8ACBF18B-B965-4A98-872A-86C62FDD125A</key>
 		<dict>
@@ -999,20 +1106,25 @@ pbtag - search tag in pinboard</string>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>B87E965B-818D-4AEA-8AF0-85DC50E80E06</key>
+		<dict>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
 		<key>E57DFDC2-F558-4986-B468-678ADB2B046E</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>400</real>
 		</dict>
 		<key>EC819CA0-3B78-40A9-8A49-DC53D2DBE744</key>
 		<dict>
 			<key>ypos</key>
-			<real>520</real>
+			<real>550</real>
 		</dict>
 		<key>ED7BCF81-11D0-4C88-8946-CEE332D61F07</key>
 		<dict>
 			<key>ypos</key>
-			<real>770</real>
+			<real>930</real>
 		</dict>
 		<key>F45C105D-02CA-4EAE-B5AD-0EE25E277794</key>
 		<dict>

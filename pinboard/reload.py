@@ -10,6 +10,7 @@ import os
 import json
 import urllib
 import main
+import alfred
 
 import sys
 reload(sys)
@@ -32,7 +33,7 @@ try:
     f.write(data)
     f.close()
     try:
-        os.remove('deleted-url.json')
+        os.remove(os.path.join(alfred.work(False),'deleted-url.json'))
     except OSError:
         pass
     print "Reload completed"

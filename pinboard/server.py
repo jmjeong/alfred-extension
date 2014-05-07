@@ -11,9 +11,10 @@ import sys
 import json
 import pocket
 import main
+import alfred
 
 logger=main.logger
-print logger
+logger.setLevel(logging.INFO)
 
 # Server port
 PORT = 8273
@@ -36,7 +37,7 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             resp_data = pocket.makeRequest(req_data, pocket.POCKET_API_URL + 'authorize/')
             logger.info('Token received! :'+ resp_data["access_token"])
             config['pocket_access_code']=resp_data["access_token"]
-            with open('config.json', 'w') as myFile:
+            with open(os.path.join(alfred.work(False), 'config.json'), 'w+') as myFile:
                 myFile.write(json.dumps(config))
             logger.info("Logged in as "+ resp_data["username"])
         except Exception:
