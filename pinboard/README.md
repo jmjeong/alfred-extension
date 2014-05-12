@@ -33,7 +33,6 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
     - register script in crontab using `crontab -e`
           `*/15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1`
 	
-
 # Command
 
 - **pba** *query* : search *query* from description and link and tags
@@ -42,7 +41,11 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 - **pbl** *query* : search *query* from link
 - **pbs** *query* : search *query* from starred bookmarks
 - **pbtag** *query* : search tag list. You can autocomplete it by pressing 'tab'
+
+- **pbhis** : show search history
+
 - **pbreload** : loads latest bookmarks from pinboard.in
+
 - **pbauth** *username:token* : Set pinboard authentication token (optional)
 - **pbauthpocket** : Pocket authentication (optional)
 
@@ -54,6 +57,7 @@ You need to set it manually because of alfred restriction
 - ctl-shift-cmd-c : launch **pbtag** 
 - ctl-shift-cmd-n : launch **pbnote**
 - ctl-shift-cmd-s : launch **pbs**
+- ctl-shift-cmd-h : launch **pbhis**
 
 # Action
 
