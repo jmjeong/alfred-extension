@@ -6,6 +6,17 @@
 	<string>com.jmjeong.alfredv2.pinboard</string>
 	<key>connections</key>
 	<dict>
+		<key>08215E1C-B5C6-4F14-92F5-674B7FF43A02</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6BD2C956-1905-487A-B5ED-2EFF2AEF5191</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
 		<array>
 			<dict>
@@ -115,6 +126,17 @@
 				<string>Delete bookmark</string>
 			</dict>
 		</array>
+		<key>6BD2C956-1905-487A-B5ED-2EFF2AEF5191</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5D4D6EB7-69BE-447E-9038-C2FDE15E4737</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>7253661E-0121-4830-9BD1-6B2DEAE20847</key>
 		<array>
 			<dict>
@@ -156,6 +178,17 @@
 				<integer>262144</integer>
 				<key>modifiersubtext</key>
 				<string>Mark/UnMark bookmark</string>
+			</dict>
+		</array>
+		<key>7B1E7637-2D77-4DB3-8D01-D0458D5F43F3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>94BD3D4A-52E4-4693-BEAF-4AC0D1C2843B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
 			</dict>
 		</array>
 		<key>7DA8868F-61BE-4D6E-B148-CA66C5073E16</key>
@@ -706,6 +739,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>triggerid</key>
+				<string>pba</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>7B1E7637-2D77-4DB3-8D01-D0458D5F43F3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
@@ -1036,6 +1082,77 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
+				<string>pbhis</string>
+				<key>script</key>
+				<string>python history.py</string>
+				<key>subtext</key>
+				<string>Display pinboard search history</string>
+				<key>title</key>
+				<string>Search History</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6BD2C956-1905-487A-B5ED-2EFF2AEF5191</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>4</integer>
+				<key>hotmod</key>
+				<integer>1441792</integer>
+				<key>hotstring</key>
+				<string>H</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>08215E1C-B5C6-4F14-92F5-674B7FF43A02</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  	tell application "Alfred 2" to run trigger "pba" in workflow 	"com.jmjeong.alfredv2.pinboard" with argument q
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>5D4D6EB7-69BE-447E-9038-C2FDE15E4737</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>https://github.com/jmjeong/alfred-extension/tree/master/pinboard</string>
@@ -1045,6 +1162,11 @@
 		<dict>
 			<key>ypos</key>
 			<real>980</real>
+		</dict>
+		<key>08215E1C-B5C6-4F14-92F5-674B7FF43A02</key>
+		<dict>
+			<key>ypos</key>
+			<real>1280</real>
 		</dict>
 		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
 		<dict>
@@ -1106,6 +1228,11 @@
 			<key>ypos</key>
 			<real>1100</real>
 		</dict>
+		<key>5D4D6EB7-69BE-447E-9038-C2FDE15E4737</key>
+		<dict>
+			<key>ypos</key>
+			<real>1280</real>
+		</dict>
 		<key>5E84F1EA-1898-4B28-B2EB-B686C4C78175</key>
 		<dict>
 			<key>ypos</key>
@@ -1121,7 +1248,17 @@
 			<key>ypos</key>
 			<real>320</real>
 		</dict>
+		<key>6BD2C956-1905-487A-B5ED-2EFF2AEF5191</key>
+		<dict>
+			<key>ypos</key>
+			<real>1280</real>
+		</dict>
 		<key>7253661E-0121-4830-9BD1-6B2DEAE20847</key>
+		<dict>
+			<key>ypos</key>
+			<real>350</real>
+		</dict>
+		<key>7B1E7637-2D77-4DB3-8D01-D0458D5F43F3</key>
 		<dict>
 			<key>ypos</key>
 			<real>350</real>

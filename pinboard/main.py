@@ -9,6 +9,7 @@ import json
 import unicodedata
 import logging
 import pocket
+import time
 
 import sys
 reload(sys)
@@ -21,7 +22,9 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
-PIN_MAX_RESULT=-1
+PIN_MAX_RESULT = -1
+UPDATE_THRESHOLD = 6
+STAR = u"\u2605"
 
 def config_data():
     try:
@@ -56,6 +59,29 @@ def starred_url_data():
         return json.loads(open(os.path.join(alfred.work(False),'starred-url.json')).read())
     except IOError:
         return []
+
+def history_data():
+    try:
+        return json.loads(open(os.path.join(alfred.work(False),'search-history.json')).read())
+    except IOError:
+        return []
+
+def update_history(q,nums):
+    if q=="": return
+    
+    history = history_data()
+    now = time.time()
+
+    for h in history:
+        if (h[0] in q or q in h[0]) and now-h[2] < UPDATE_THRESHOLD:
+            history.remove(h)
+        elif h[0] == q:
+            history.remove(h)
+    if nums>0:
+        history.append([q,nums,now])
+
+    with open(os.path.join(alfred.work(False), 'search-history.json'), 'w+') as myFile:
+        myFile.write(json.dumps(history))
 
 def help():
     result = []
@@ -138,9 +164,9 @@ def pbtag(pins,deleted_url,starred_url,q):
             for t in tags:
                 if not q_tag in t: continue
                 if not qs:
-                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':url})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':url})
                 elif all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
-                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':url})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':url})
                     break
             if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
         resultData = [alfred.Item(title=f['title'], subtitle=f['url'],attributes={'arg':f['url'],'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
@@ -186,7 +212,6 @@ def pbnote(notes,config,deleted_url,q):
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://notes.pinboard.in/'
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard Notes'
     resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
-
     alfred.write(alfred.xml(resultData,maxresults=None))
 
 def pbsearch(pins,deleted_url,starred_url,q,category):
@@ -206,21 +231,21 @@ def pbsearch(pins,deleted_url,starred_url,q,category):
         if not qs:
             if category=='toread':
                 if toread=='yes':            
-                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
             elif category=='star':
                 if p['href'] in starred_url:
-                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
             else:
-                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
         else:
             if category=='all' and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
             if category=='star' and p['href'] in starred_url and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
             elif category=='toread' and toread=='yes' and all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
             elif category=='link' and any(qsi and pred(qsi,[url]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
             # elif category=='title' and any(qsi and qsi in title for qsi in qs.split(' ')):
             #     results.append({'title':p['description'],'url':p['href']})
             # elif category=='description' and any(qsi in extended for qsi in qs.split(' ')):
@@ -233,8 +258,8 @@ def pbsearch(pins,deleted_url,starred_url,q,category):
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard'
     resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
-
     alfred.write(alfred.xml(resultData,maxresults=None))
+    update_history(q,len(results))
 
 if __name__ == '__main__':
     # arg parsing
