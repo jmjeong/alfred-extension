@@ -47,10 +47,15 @@ def notes_data():
 
 def deleted_url_data():
     try:
-        deleted_url = json.loads(open(os.path.join(alfred.work(False),'deleted-url.json')).read())
+        return json.loads(open(os.path.join(alfred.work(False),'deleted-url.json')).read())
     except IOError:
-        deleted_url = []
-    return deleted_url
+        return []
+
+def starred_url_data():
+    try:
+        return json.loads(open(os.path.join(alfred.work(False),'starred-url.json')).read())
+    except IOError:
+        return []
 
 def help():
     result = []
@@ -101,7 +106,7 @@ def pbauthpocket(q):
 def addpocket(q):
     pocket.addpocket(q)
 
-def pbtag(pins,deleted_url,q):
+def pbtag(pins,deleted_url,starred_url,q):
     if not "→" in q:                      # tag search
         q = q.lower()
         tag_list = {}
@@ -133,9 +138,9 @@ def pbtag(pins,deleted_url,q):
             for t in tags:
                 if not q_tag in t: continue
                 if not qs:
-                    results.append({'title':p['description'],'url':url})
+                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':url})
                 elif all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
-                    results.append({'title':p['description'],'url':url})
+                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':url})
                     break
             if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
         resultData = [alfred.Item(title=f['title'], subtitle=f['url'],attributes={'arg':f['url'],'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
@@ -184,7 +189,7 @@ def pbnote(notes,config,deleted_url,q):
 
     alfred.write(alfred.xml(resultData,maxresults=None))
 
-def pbsearch(pins,deleted_url,q,category):
+def pbsearch(pins,deleted_url,starred_url,q,category):
     results = []
     qs = q.lower()
     logger.info('query string = [%s]', qs)
@@ -201,16 +206,21 @@ def pbsearch(pins,deleted_url,q,category):
         if not qs:
             if category=='toread':
                 if toread=='yes':            
-                    results.title({'append':p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+            elif category=='star':
+                if p['href'] in starred_url:
+                    results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
             else:
-                results.append({'title':p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
         else:
             if category=='all' and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qs.split(' ')):
-                results.append({'title':p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
+            if category=='star' and p['href'] in starred_url and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qs.split(' ')):
+                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
             elif category=='toread' and toread=='yes' and all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
-                results.append({'title':p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
             elif category=='link' and any(qsi and pred(qsi,[url]) for qsi in qs.split(' ')):
-                results.append({'title':p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and "*" or "")+p['description'],'url':p['href']})
             # elif category=='title' and any(qsi and qsi in title for qsi in qs.split(' ')):
             #     results.append({'title':p['description'],'url':p['href']})
             # elif category=='description' and any(qsi in extended for qsi in qs.split(' ')):
@@ -252,7 +262,8 @@ if __name__ == '__main__':
     if category=='tags':
         pins = pins_data()
         deleted_url = deleted_url_data()
-        pbtag(pins,deleted_url,q)
+        starred_url = starred_url_data()
+        pbtag(pins,deleted_url,starred_url,q)
     elif category=='note':
         notes = notes_data()
         config = config_data()
@@ -261,4 +272,5 @@ if __name__ == '__main__':
     else:
         pins = pins_data()
         deleted_url = deleted_url_data()
-        pbsearch(pins,deleted_url,q,category)
+        starred_url = starred_url_data()
+        pbsearch(pins,deleted_url,starred_url,q,category)
