@@ -79,7 +79,7 @@ def update_history(category,q,nums):
             if not h[4]: history.remove(h)
         elif h[1] == q:
             if not h[4]: history.remove(h)
-        elif now-h[3] <= DELETE_OLDBOOKMARK_THRESHOLD:
+        elif now-h[3] > DELETE_OLDBOOKMARK_THRESHOLD:
             if not h[4]: history.remove(h)
             
     if category == "all":
