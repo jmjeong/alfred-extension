@@ -40,6 +40,7 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 - **pbnote** *query* : search *query* from pinboard notes
 - **pbu** *query* : search *query* from description(title) in unread list
 - **pbl** *query* : search *query* from link
+- **pbs** *query* : search *query* from starred bookmarks
 - **pbtag** *query* : search tag list. You can autocomplete it by pressing 'tab'
 - **pbreload** : loads latest bookmarks from pinboard.in
 - **pbauth** *username:token* : Set pinboard authentication token (optional)
@@ -51,7 +52,8 @@ You need to set it manually because of alfred restriction
 
 - ctl-shift-cmd-p : launch **pba** 
 - ctl-shift-cmd-c : launch **pbtag** 
-- ctl-shift-cmd-n : launch **pbnote** 
+- ctl-shift-cmd-n : launch **pbnote**
+- ctl-shift-cmd-s : launch **pbs**
 
 # Action
 
@@ -59,6 +61,7 @@ You need to set it manually because of alfred restriction
 - *tab* to expand in pbtag command
 - Hold *cmd* while selecting a bookmark to copy it’s url to clipboard
 - Hold *alt* while selecting to delete a bookmark from your pinboard
+- Hold *ctrl* while selecting a bookmark to mark or unmark it
 - Hold *shift* while selecting to send URL to pocket. You need to set auth_token using **pbauthpocket**
 
 # Change Log
@@ -67,6 +70,7 @@ You need to set it manually because of alfred restriction
   - move the location of config file from workflow directory to data directory. you need to run
     `pbauth` again
   - add pbnote query
+  - starred/unstarred bookmark `pbs`
   - remove pbt, pbl, pbe because they are not used frequently
   - change search condition
 	  - *' '* stands for **and** query `ex) python alfred`
