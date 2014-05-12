@@ -23,7 +23,7 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
 PIN_MAX_RESULT = -1
-UPDATE_THRESHOLD = 6
+UPDATE_THRESHOLD = 4
 STAR = u"\u2605"
 
 def config_data():
