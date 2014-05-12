@@ -23,7 +23,8 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
 PIN_MAX_RESULT = -1
-UPDATE_THRESHOLD = 4
+UPDATE_BOOKMARK_THRESHOLD = 4
+DELETE_OLDBOOKMARK_THRESHOLD = 60*60*24*14 # 14 days
 STAR = u"\u2605"
 
 def config_data():
@@ -74,10 +75,13 @@ def update_history(category,q,nums):
     now = int(time.time())
 
     for h in history:
-        if (h[1] in q or q in h[1]) and now-h[3] <= UPDATE_THRESHOLD:
+        if (h[1] in q or q in h[1]) and now-h[3] <= UPDATE_BOOKMARK_THRESHOLD:
             if not h[4]: history.remove(h)
         elif h[1] == q:
             if not h[4]: history.remove(h)
+        elif now-h[3] <= DELETE_OLDBOOKMARK_THRESHOLD:
+            if not h[4]: history.remove(h)
+            
     if category == "all":
         history.append(["pba",q,nums,now,False])
     elif category == "tags":
