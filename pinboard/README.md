@@ -9,10 +9,10 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 - search pinboard memo (`pbmemo`)
 
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbhelp.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/search.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbtag.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbtag-search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbhelp.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbtag.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbtag-search.jpg)
 
 # Installation 
 
@@ -24,13 +24,13 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 3. (optional) pbauthpocket 
     - needed only if you want to send URL to pocket
 4. (optional) install cron job  : for faster search without pbreload
-    - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard-download.py)
+    - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pinboard-download.py)
     - You need to set PINBOARD_TOKEN in `pinboard-download.py`
           `chmod a+x pinboard-download.py`
     - register script in crontab using `crontab -e`
           `*/15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1`
 	
-- [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
+- [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pinboard.alfredworkflow)
 
 # Command
 
