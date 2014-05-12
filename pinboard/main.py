@@ -25,10 +25,32 @@ PIN_MAX_RESULT=-1
 
 def config_data():
     try:
-        config=json.loads(open(os.path.join(alfred.work(False), 'config.json')).read())
+        config = json.loads(open(os.path.join(alfred.work(False), 'config.json')).read())
     except:
-        config={}
+        config = {}
     return config
+
+def pins_data():
+    try:
+        filename = os.environ['HOME']+'/.bookmarks.json'
+        pins = json.loads(open(filename, 'r').read())
+    except:
+        pins = {}
+    return pins
+
+def notes_data():
+    try:
+        filename = os.environ['HOME']+'/.bookmarks-note.json'
+        return json.loads(open(filename, 'r').read())
+    except:
+        return {}
+
+def deleted_url_data():
+    try:
+        deleted_url = json.loads(open(os.path.join(alfred.work(False),'deleted-url.json')).read())
+    except IOError:
+        deleted_url = []
+    return deleted_url
 
 def help():
     result = []
@@ -38,24 +60,26 @@ def help():
     result.append(alfred.Item(title='pba query', subtitle='search all fields of bookmarks', attributes={'valid':'no','uid':alfred.uid(3)}, icon="icon.png"))
     result.append(alfred.Item(title='pbtag', subtitle='display tags list', attributes={'valid':'no','uid':alfred.uid(7)}, icon="icon.png"))
     result.append(alfred.Item(title='pbnote query', subtitle='display note list', attributes={'valid':'no','uid':alfred.uid(10)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbt query', subtitle='search description of bookmarks', attributes={'valid':'no','uid':alfred.uid(4)}, icon="icon.png"))
     result.append(alfred.Item(title='pbu query', subtitle='search title of toread bookmarks', attributes={'valid':'no','uid':alfred.uid(8)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbd query', subtitle='search extended field of bookmarks', attributes={'valid':'no','uid':alfred.uid(6)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbauthpocket', subtitle='Login with Pocket!', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
+    
+    # result.append(alfred.Item(title='pbt query', subtitle='search description of bookmarks', attributes={'valid':'no','uid':alfred.uid(4)}, icon="icon.png"))
+    # result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
+    # result.append(alfred.Item(title='pbd query', subtitle='search extended field of bookmarks', attributes={'valid':'no','uid':alfred.uid(6)}, icon="icon.png"))
     result.append(alfred.Item(title='To selected bookmark', subtitle='enter:goto site, cmd:copy url, alt:delete bookmark, tab:expand', attributes={'valid':'no','uid':alfred.uid(9)}, icon="icon.png"))
     alfred.write(alfred.xml(result,maxresults=None))
 
 def pbauth(q):
     try:
-        (user,token)=q.split(':')
+        (user,token) = q.split(':')
     except:
         print 'Invalid Token'
         sys.exit(0)
 
     config = config_data()
         
-    config['pinboard_username']=user
-    config['pinboard_token']=token
+    config['pinboard_username'] = user
+    config['pinboard_token'] = token
 
     with open(os.path.join(alfred.work(False), 'config.json'), 'w+') as myFile:
         myFile.write(json.dumps(config))
@@ -65,8 +89,8 @@ def pbauth(q):
 def pbauthpocket(q):
     ret = pocket.getRequestCode()
     
-    config=config_data()
-    config['pocket_request_code']=ret['code']
+    config = config_data()
+    config['pocket_request_code'] = ret['code']
     
     with open(os.path.join(alfred.work(False), 'config.json'), 'w+') as myFile:
         myFile.write(json.dumps(config))
@@ -77,7 +101,7 @@ def pbauthpocket(q):
 def addpocket(q):
     pocket.addpocket(q)
 
-def tags(pins,deleted_url,q):
+def pbtag(pins,deleted_url,q):
     if not "→" in q:                      # tag search
         q = q.lower()
         tag_list = {}
@@ -100,35 +124,75 @@ def tags(pins,deleted_url,q):
     else:
         (q_tag, q_title)=q.split("→")
         qs = q_title.lower()
-        results=[]
+        results = []
         for p in pins:
             url = p['href']
             if url in map(lambda x:x.lower(), deleted_url): continue
-            title = p['description'].replace(' ', '').lower()
+            title = p['description'].lower()
             tags = p['tags'].split(' ')
             for t in tags:
-                if (q_tag in t) and not qs:
+                if not q_tag in t: continue
+                if not qs:
                     results.append({'title':p['description'],'url':url})
-                elif (q_tag in t) and not qs or any(qsi and qsi in title for qsi in qs.split('|')):
+                elif all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
                     results.append({'title':p['description'],'url':url})
                     break
             if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
         resultData = [alfred.Item(title=f['title'], subtitle=f['url'],attributes={'arg':f['url'],'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
+        resultData.insert(0,alfred.Item(title="Links: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
+        
         pinboard_url = q_title and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+') or 'https://pinboard.in/'
         pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
         resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
 
-def search(pins,deleted_url,q,category):
+def pred(q, string_list):
+    qs = q.lstrip('-')
+    if qs==q:       # query (or)
+        return any(qs in s for s in string_list)
+    else:           # -query (and)
+        return all(qs not in s for s in string_list)
+
+def pbnote(notes,config,deleted_url,q):
     results = []
-    q = q.lower()
-    qs = q.replace(' ', '')
+    qs = q.lower()
+    logger.info('query string = [%s]', qs)
+
+    for n in notes['notes']:
+        try:
+            url = "https://notes.pinboard.in/u:%s/%s"%(config['pinboard_username'],n['id'])
+        except KeyError:
+            url = "https://notes.pinboard.in/"
+        if url in map(lambda x:x.lower(), deleted_url): continue
+        
+        title = n['title'].lower()
+        text = n['text'].lower()
+        
+        if not qs:
+            results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
+        else:
+            if all(qsi and pred(qsi,[title,text]) for qsi in qs.split(' ')):
+                results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
+        if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
+
+    results = sorted(results,key=lambda s:s['time'],reverse=True)
+    resultData = [alfred.Item(title=f['title'], subtitle=f['subtitle'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
+    resultData.insert(0,alfred.Item(title="Notes: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
+    pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://notes.pinboard.in/'
+    pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard Notes'
+    resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
+
+    alfred.write(alfred.xml(resultData,maxresults=None))
+
+def pbsearch(pins,deleted_url,q,category):
+    results = []
+    qs = q.lower()
     logger.info('query string = [%s]', qs)
 
     for p in pins:
-        title = p['description'].replace(' ', '').lower()
+        title = p['description'].lower()
         url = p['href'].lower()
-        extended = p['extended'].replace(' ', '').lower()
+        extended = p['extended'].lower()
         tags = p['tags'].lower()
         toread = p['toread']
 
@@ -137,56 +201,32 @@ def search(pins,deleted_url,q,category):
         if not qs:
             if category=='toread':
                 if toread=='yes':            
-                    results.append({'title':p['description'],'url':p['href']})
-            elif category=='note':
-                if 'notes.pinboard.in' in url:
-                    results.append({'title':p['description'],'url':p['href']})
+                    results.title({'append':p['description'],'url':p['href']})
             else:
                 results.append({'title':p['description'],'url':p['href']})
         else:
-            if category=='title' and any(qsi and qsi in title for qsi in qs.split('|')):
+            if category=='all' and all(qsi and pred(qsi,[title,url,extended,tags]) for qsi in qs.split(' ')):
                 results.append({'title':p['description'],'url':p['href']})
-            elif category=='link' and any(qsi and qsi in url for qsi in qs.split('|')):
+            elif category=='toread' and toread=='yes' and all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
                 results.append({'title':p['description'],'url':p['href']})
-            elif category=='description' and any(qsi in extended for qsi in qs.split('|')):
-                results.append({'title':p['description'],'url':p['href']})
-            elif category=='toread' and any(qsi and qsi in title and toread=='yes' for qsi in qs.split('|')):
-                results.append({'title':p['description'],'url':p['href']})
-            elif category=='all' and any(qsi and (qsi in title or qsi in url or qsi in tags) for qsi in qs.split('|')):
-                results.append({'title':p['description'],'url':p['href']})
-            elif category=='note' and 'notes.pinboard.in' in url and any(qsi and (qsi in title or qsi in extended) for qsi in qs.split('|')):
-                results.append({'title':p['description'],'url':p['href']})
+            # elif category=='title' and any(qsi and qsi in title for qsi in qs.split(' ')):
+            #     results.append({'title':p['description'],'url':p['href']})
+            # elif category=='link' and any(qsi and qsi in url for qsi in qs.split(' ')):
+            #     results.append({'title':p['description'],'url':p['href']})
+            # elif category=='description' and any(qsi in extended for qsi in qs.split(' ')):
+            #     results.append({'title':p['description'],'url':p['href']})
         if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
 
     logger.info(category)
-    resultData = [alfred.Item(title=f['title'], subtitle=f['url'], attributes = {'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
-
-    if category=='note':
-        pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://notes.pinboard.in/'
-        pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard Notes'
-    else:
-        pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
-        pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard'
+    resultData = [alfred.Item(title=f['title'], subtitle=f['url'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
+    resultData.insert(0,alfred.Item(title="Links: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
+    pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
+    pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard'
     resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
 
-    xml = alfred.xml(resultData,maxresults=None)
-    logger.info(xml)
-    alfred.write(xml)
-    logger.info("write finished")
+    alfred.write(alfred.xml(resultData,maxresults=None))
 
 if __name__ == '__main__':
-    
-    try:
-        filename = os.environ['HOME']+'/.bookmarks.json'
-        pins = json.loads(open(filename, 'r').read())
-    except:
-        pins = {}
-
-    try:
-        deleted_url=json.loads(open(os.path.join(alfred.work(False),'deleted-url.json')).read())
-    except IOError:
-        deleted_url=[]
-
     # arg parsing
     category = sys.argv[1]
     try:
@@ -194,12 +234,8 @@ if __name__ == '__main__':
         q = unicodedata.normalize('NFC', q)
     except:
         q = ""
-
-    # tag processing
-    if category=='tags':
-        tags(pins,deleted_url,q)
-        sys.exit(0)
-    elif category=='help':
+    
+    if category=='help':
         help()
         sys.exit(0)
     elif category=='pbauth':
@@ -212,5 +248,17 @@ if __name__ == '__main__':
         addpocket(q)
         sys.exit(0)
 
-    # search query
-    search(pins,deleted_url,q,category)
+    # tag processing
+    if category=='tags':
+        pins = pins_data()
+        deleted_url = deleted_url_data()
+        pbtag(pins,deleted_url,q)
+    elif category=='note':
+        notes = notes_data()
+        config = config_data()
+        deleted_url = deleted_url_data()
+        pbnote(notes,config,deleted_url,q)
+    else:
+        pins = pins_data()
+        deleted_url = deleted_url_data()
+        pbsearch(pins,deleted_url,q,category)
