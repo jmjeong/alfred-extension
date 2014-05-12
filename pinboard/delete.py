@@ -19,16 +19,13 @@ sys.setdefaultencoding('utf-8')
 config = main.config_data()
 
 try:
-    user=config['pinboard_username']
-    token=config['pinboard_token']
+    user = config['pinboard_username']
+    token = config['pinboard_token']
 except:
     print "Setup not complete\npbauth username:token"
     sys.exit(0)
 
-try:
-    deleted_url=json.loads(open(os.path.join(alfred.work(False),'deleted-url.json')).read())
-except IOError:
-    deleted_url=[]
+deleted_url = main.deleted_url_data()
     
 try:
     url = 'https://api.pinboard.in/v1/posts/delete?format=json&auth_token=%s:%s&url=%s'%(user,token,urllib.quote(sys.argv[1]))
