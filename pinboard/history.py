@@ -85,7 +85,7 @@ if __name__ == '__main__':
         history.sort(cmp=compare_key,reverse=False)
         for h in history:
             if q=="" or q in h[1]:
-                results.append(alfred.Item(title=(h[4] and main.STAR+" " or "")+h[0]+" "+DELIMETER+" "+h[1]+" (%d)"%h[2],
+                results.append(alfred.Item(title=(h[4] and main.STAR or "")+h[0]+" "+DELIMETER+" "+h[1]+" (%d)"%h[2],
                                            # // subtitle=time.strftime('%Y.%m.%d %H:%M:%S', time.localtime(h[3])),
                                            subtitle = pretty_date(h[3]),
                                            attributes={'arg':h[0]+":"+h[1]}, icon="icon.png"))
