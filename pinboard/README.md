@@ -2,12 +2,12 @@
 
 Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and the following function.
 
-- search pinboard
-- search tag 
+- search pinboard (`pba`)
+- search tag (`pbtag`)
 - goto or delete the searched bookmark 
 - copy url of the searched bookmark
 
-- search pinboard memo
+- search pinboard memo (`pbmemo`)
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbhelp.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/search.jpg)
@@ -17,17 +17,18 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 # Installation 
 
 1. pbauth username:TOKEN <- set access token
-  - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
+    - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
 2. pbreload - loads latest bookmarks and memo from pinboard.in
+3. search with `pba`, `pbtag`, `pbmemo` command
 
 3. (optional) pbauthpocket 
-  - needed only if you want to send URL to pocket
+    - needed only if you want to send URL to pocket
 4. (optional) install cron job  : for faster search without pbreload
-  - download it from [pinboard-download.py](https://gist.github.com/jmjeong/6986c9db0cc193f5b51d)
-  - You need to set PINBOARD_TOKEN in `pinboard-download.py`
-  - `chmod a+x pinboard-download.py`
-  - register script in crontab using `crontab -e`
-    - `*/15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1`
+    - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard-download.py)
+    - You need to set PINBOARD_TOKEN in `pinboard-download.py`
+          `chmod a+x pinboard-download.py`
+    - register script in crontab using `crontab -e`
+          `*/15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1`
 	
 - [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pinboard.alfredworkflow)
 
