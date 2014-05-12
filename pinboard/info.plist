@@ -1086,13 +1086,13 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>keyword</key>
 				<string>pbhis</string>
 				<key>script</key>
-				<string>python history.py</string>
+				<string>python history.py "{query}"</string>
 				<key>subtext</key>
 				<string>Display pinboard search history</string>
 				<key>title</key>
