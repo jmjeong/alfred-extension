@@ -75,13 +75,13 @@ def update_history(category,q,nums):
 
     for h in history:
         if (h[1] in q or q in h[1]) and now-h[3] <= UPDATE_THRESHOLD:
-            history.remove(h)
+            if not h[4]: history.remove(h)
         elif h[1] == q:
-            history.remove(h)
+            if not h[4]: history.remove(h)
     if category == "all":
-        history.append(["pba",q,nums,now])
+        history.append(["pba",q,nums,now,False])
     elif category == "tags":
-        history.append(["pbtag",q,nums,now])
+        history.append(["pbtag",q,nums,now,False])
 
     with open(os.path.join(alfred.work(False), 'search-history.json'), 'w+') as myFile:
         myFile.write(json.dumps(history))

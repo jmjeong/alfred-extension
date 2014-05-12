@@ -63,7 +63,7 @@ def pretty_date(time=False):
 
 if __name__ == '__main__':
     try:
-        q = unicode(sys.argv[1].strip())
+        q = unicode(sys.argv[2].strip())
         q = unicodedata.normalize('NFC', q)
     except:
         q = ""
@@ -71,11 +71,27 @@ if __name__ == '__main__':
     history = main.history_data()
     history = sorted(history,key=lambda s:s[3],reverse=True)
 
-    results = []
-    for h in history:
-        if q=="" or q in h[0]:
-            results.append(alfred.Item(title=h[0]+" "+DELIMETER+" "+h[1]+" (%d)"%h[2], # // subtitle=time.strftime('%Y.%m.%d %H:%M:%S', time.localtime(h[3])),
-                                       subtitle = pretty_date(h[3]),
-                                       attributes={'arg':h[0]+":"+h[1]}, icon="icon.png"))
-
-    alfred.write(alfred.xml(results,maxresults=20))
+    if sys.argv[1] == "search":
+        results = []
+        for h in history:
+            if q=="" or q in h[0]:
+                results.append(alfred.Item(title=(h[4] and main.STAR+" " or "")+h[0]+" "+DELIMETER+" "+h[1]+" (%d)"%h[2],
+                                           # // subtitle=time.strftime('%Y.%m.%d %H:%M:%S', time.localtime(h[3])),
+                                           subtitle = pretty_date(h[3]),
+                                           attributes={'arg':h[0]+":"+h[1]}, icon="icon.png"))
+        alfred.write(alfred.xml(results,maxresults=20))
+    elif sys.argv[1] == "delete":
+        for h in history:
+            if q == h[0]+":"+h[1]:
+                history.remove(h)
+                break
+        with open(os.path.join(alfred.work(False), 'search-history.json'), 'w+') as myFile:
+            myFile.write(json.dumps(history))
+    elif sys.argv[1] == "star":
+        for h in history:
+            if q == h[0]+":"+h[1]:
+                h[4] = not h[4]
+                break
+        with open(os.path.join(alfred.work(False), 'search-history.json'), 'w+') as myFile:
+            myFile.write(json.dumps(history))
+            
