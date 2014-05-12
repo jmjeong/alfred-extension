@@ -60,11 +60,11 @@ def help():
     result.append(alfred.Item(title='pba query', subtitle='search all fields of bookmarks', attributes={'valid':'no','uid':alfred.uid(3)}, icon="icon.png"))
     result.append(alfred.Item(title='pbtag', subtitle='display tags list', attributes={'valid':'no','uid':alfred.uid(7)}, icon="icon.png"))
     result.append(alfred.Item(title='pbnote query', subtitle='display note list', attributes={'valid':'no','uid':alfred.uid(10)}, icon="icon.png"))
+    result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
     result.append(alfred.Item(title='pbu query', subtitle='search title of toread bookmarks', attributes={'valid':'no','uid':alfred.uid(8)}, icon="icon.png"))
     result.append(alfred.Item(title='pbauthpocket', subtitle='Login with Pocket!', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
     
     # result.append(alfred.Item(title='pbt query', subtitle='search description of bookmarks', attributes={'valid':'no','uid':alfred.uid(4)}, icon="icon.png"))
-    # result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
     # result.append(alfred.Item(title='pbd query', subtitle='search extended field of bookmarks', attributes={'valid':'no','uid':alfred.uid(6)}, icon="icon.png"))
     result.append(alfred.Item(title='To selected bookmark', subtitle='enter:goto site, cmd:copy url, alt:delete bookmark, tab:expand', attributes={'valid':'no','uid':alfred.uid(9)}, icon="icon.png"))
     alfred.write(alfred.xml(result,maxresults=None))
@@ -205,13 +205,13 @@ def pbsearch(pins,deleted_url,q,category):
             else:
                 results.append({'title':p['description'],'url':p['href']})
         else:
-            if category=='all' and all(qsi and pred(qsi,[title,url,extended,tags]) for qsi in qs.split(' ')):
+            if category=='all' and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qs.split(' ')):
                 results.append({'title':p['description'],'url':p['href']})
             elif category=='toread' and toread=='yes' and all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
                 results.append({'title':p['description'],'url':p['href']})
+            elif category=='link' and any(qsi and pred(qsi,[url]) for qsi in qs.split(' ')):
+                results.append({'title':p['description'],'url':p['href']})
             # elif category=='title' and any(qsi and qsi in title for qsi in qs.split(' ')):
-            #     results.append({'title':p['description'],'url':p['href']})
-            # elif category=='link' and any(qsi and qsi in url for qsi in qs.split(' ')):
             #     results.append({'title':p['description'],'url':p['href']})
             # elif category=='description' and any(qsi in extended for qsi in qs.split(' ')):
             #     results.append({'title':p['description'],'url':p['href']})

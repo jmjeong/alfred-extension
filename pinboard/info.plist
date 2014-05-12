@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.jmjeong.alfredv2.pinboard</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>1219E4B9-40E5-4E0D-9DA7-B3CF9CDA76B7</key>
@@ -177,6 +175,41 @@
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
 				<string>Send to pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F45C105D-02CA-4EAE-B5AD-0EE25E277794</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Delete bookmark</string>
+			</dict>
+		</array>
+		<key>B7E58D01-E6C6-40BC-88BD-16026B6DA48A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BB4D90E-6F2A-46AC-B495-422137F94C88</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>409E9780-F0F3-408B-8E4C-5BDCFB0E2029</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to Clipboard</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Add to Pocket</string>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -530,23 +563,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>36</integer>
-				<key>script</key>
-				<string>python delete.py "{query}"</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F45C105D-02CA-4EAE-B5AD-0EE25E277794</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -576,6 +592,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python delete.py "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F45C105D-02CA-4EAE-B5AD-0EE25E277794</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
@@ -585,6 +618,35 @@
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
 			<string>256BE699-DF60-4A3F-808F-1C40B8D2BFB9</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
+				<string>pbl</string>
+				<key>runningsubtext</key>
+				<string>loading...</string>
+				<key>script</key>
+				<string>python main.py link "{query}"</string>
+				<key>subtext</key>
+				<string>search link of bookmarks in pinboard</string>
+				<key>title</key>
+				<string>pbl query</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>B7E58D01-E6C6-40BC-88BD-16026B6DA48A</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -862,7 +924,7 @@
 		<key>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</key>
 		<dict>
 			<key>ypos</key>
-			<real>220</real>
+			<real>210</real>
 		</dict>
 		<key>4E9D2764-262A-4584-B043-13A54A02C0F2</key>
 		<dict>
@@ -887,7 +949,7 @@
 		<key>7253661E-0121-4830-9BD1-6B2DEAE20847</key>
 		<dict>
 			<key>ypos</key>
-			<real>470</real>
+			<real>380</real>
 		</dict>
 		<key>8ACBF18B-B965-4A98-872A-86C62FDD125A</key>
 		<dict>
@@ -899,6 +961,11 @@
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>B7E58D01-E6C6-40BC-88BD-16026B6DA48A</key>
+		<dict>
+			<key>ypos</key>
+			<real>500</real>
+		</dict>
 		<key>B87E965B-818D-4AEA-8AF0-85DC50E80E06</key>
 		<dict>
 			<key>ypos</key>
@@ -907,12 +974,12 @@
 		<key>E57DFDC2-F558-4986-B468-678ADB2B046E</key>
 		<dict>
 			<key>ypos</key>
-			<real>290</real>
+			<real>270</real>
 		</dict>
 		<key>EC819CA0-3B78-40A9-8A49-DC53D2DBE744</key>
 		<dict>
 			<key>ypos</key>
-			<real>290</real>
+			<real>270</real>
 		</dict>
 		<key>ED7BCF81-11D0-4C88-8946-CEE332D61F07</key>
 		<dict>

@@ -39,6 +39,7 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 - **pba** *query* : search *query* from description and link and tags
 - **pbnote** *query* : search *query* from pinboard notes
 - **pbu** *query* : search *query* from description(title) in unread list
+- **pbl** *query* : search *query* from link
 - **pbtag** *query* : search tag list. You can autocomplete it by pressing 'tab'
 - **pbreload** : loads latest bookmarks from pinboard.in
 - **pbauth** *username:token* : Set pinboard authentication token (optional)
