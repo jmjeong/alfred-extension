@@ -61,6 +61,16 @@ def pretty_date(time=False):
         return str(day_diff/30) + " months ago"
     return str(day_diff/365) + " years ago"
 
+def compare_key(x,y):
+    if x[4] and not y[4]:
+        return -1
+    elif not x[4] and y[4]:
+        return 1
+    elif x[3] < y[3]:
+        return 1
+    else:
+        return -1
+    
 if __name__ == '__main__':
     try:
         q = unicode(sys.argv[2].strip())
@@ -69,10 +79,10 @@ if __name__ == '__main__':
         q = ""
     
     history = main.history_data()
-    history = sorted(history,key=lambda s:s[3],reverse=True)
 
     if sys.argv[1] == "search":
         results = []
+        history.sort(cmp=compare_key,reverse=False)
         for h in history:
             if q=="" or q in h[0]:
                 results.append(alfred.Item(title=(h[4] and main.STAR+" " or "")+h[0]+" "+DELIMETER+" "+h[1]+" (%d)"%h[2],
