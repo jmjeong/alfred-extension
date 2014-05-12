@@ -16,21 +16,23 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Installation 
 
+0. Download and Install [alfred-pinboard Workflow](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pinboard.alfredworkflow)
+
 1. pbauth username:TOKEN <- set access token
     - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
 2. pbreload - loads latest bookmarks and memo from pinboard.in
 3. search with `pba`, `pbtag`, `pbmemo` command
 
-3. (optional) pbauthpocket 
+---
+
+- (optional) pbauthpocket 
     - needed only if you want to send URL to pocket
-4. (optional) install cron job  : for faster search without pbreload
+- (optional) install cron job  : for faster searching without pbreload
     - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pinboard-download.py)
-    - You need to set PINBOARD_TOKEN in `pinboard-download.py`
-          `chmod a+x pinboard-download.py`
+    - `chmod a+x pinboard-download.py`
     - register script in crontab using `crontab -e`
           `*/15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1`
 	
-- [Workflow Download](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pinboard.alfredworkflow)
 
 # Command
 
@@ -49,12 +51,6 @@ You need to set it manually because of alfred restriction
 - ctl-shift-cmd-p : launch **pba** 
 - ctl-shift-cmd-c : launch **pbtag** 
 - ctl-shift-cmd-n : launch **pbnote** 
-
-## Deprecated
-
-- **pbt** *query* : search *query* from description(title)
-- **pbl** *query* : search *query* from link
-- **pbd** *query* : search *query* from extended field
 
 # Action
 
