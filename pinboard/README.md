@@ -4,10 +4,10 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 - search pinboard
 - search tag 
-- search description 
-- delete searched bookmark 
-- copy url of bookmark
-- send to pocket
+- goto or delete the searched bookmark 
+- copy url of the searched bookmark
+
+- search pinboard memo
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbhelp.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/search.jpg)
@@ -16,13 +16,13 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 
 # Installation 
 
-- pbauth username:TOKEN <- set access token
+1. pbauth username:TOKEN <- set access token
   - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
-- pbreload - loads latest bookmarks from pinboard.in
+2. pbreload - loads latest bookmarks and memo from pinboard.in
 
-- (optional) pbauthpocket 
+3. (optional) pbauthpocket 
   - needed only if you want to send URL to pocket
-- (optional) install cron job  : for faster search without pbreload
+4. (optional) install cron job  : for faster search without pbreload
   - download it from [pinboard-download.py](https://gist.github.com/jmjeong/6986c9db0cc193f5b51d)
   - You need to set PINBOARD_TOKEN in `pinboard-download.py`
   - `chmod a+x pinboard-download.py`
@@ -34,26 +34,46 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 # Command
 
 - **pba** *query* : search *query* from description and link and tags
-- **pbt** *query* : search *query* from description(title)
-- **pbl** *query* : search *query* from link
-- **pbd** *query* : search *query* from extended field
+- **pbnote** *query* : search *query* from pinboard notes
 - **pbu** *query* : search *query* from description(title) in unread list
 - **pbtag** *query* : search tag list. You can autocomplete it by pressing 'tab'
 - **pbreload** : loads latest bookmarks from pinboard.in
 - **pbauth** *username:token* : Set pinboard authentication token (optional)
 - **pbauthpocket** : Pocket authentication (optional)
-- ctl-shift-cmd-p : launch **pba** (reset when importing)
-- ctl-shift-cmd-c : launch **pbtag** (reset when importing)
-- support or(|) operator in *query* (ex. pba pinboard|alfred)
+
+## Keys 
+
+You need to set it manually because of alfred restriction
+
+- ctl-shift-cmd-p : launch **pba** 
+- ctl-shift-cmd-c : launch **pbtag** 
+- ctl-shift-cmd-n : launch **pbnote** 
+
+## Deprecated
+
+- **pbt** *query* : search *query* from description(title)
+- **pbl** *query* : search *query* from link
+- **pbd** *query* : search *query* from extended field
 
 # Action
 
 - *enter* to open the selected url in the browser
+- *tab* to expand in pbtag command
 - Hold *cmd* while selecting a bookmark to copy it’s url to clipboard
 - Hold *alt* while selecting to delete a bookmark from your pinboard
 - Hold *shift* while selecting to send URL to pocket. You need to set auth_token using **pbauthpocket**
 
-# Change Log 
+# Change Log
+
+- v2.0
+  - move the location of config file from workflow directory to data directory. you need to run
+    `pbauth` again
+  - add pbnote query
+  - remove pbt, pbl, pbe because they are not used frequently
+  - change search condition
+	  - *' '* stands for **and** query `ex) python alfred`
+	  - Add a dash(`-`) before a word to exclude all results that include that word `ex) python -alfred`
+  - add the number of links in the first line		
 
 - v1.8 (2014-04-29)
   - escape url character for compatibility 
