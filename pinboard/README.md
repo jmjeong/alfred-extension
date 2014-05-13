@@ -1,12 +1,13 @@
 # Introduction 
 
-Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and the following function.
+Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and the following function.
 
 - search pinboard (`pba`)
 - search tag (`pbtag`)
 - goto or delete the searched bookmark 
 - copy url of the searched bookmark
 
+- show starred bookmark (`pbs`)
 - browse and search history (`pbhis`)
 
 - search pinboard memo (`pbmemo`)
@@ -15,6 +16,8 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/search.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbtag.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbtag-search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbs.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbhist.jpg)
 
 # Installation 
 
