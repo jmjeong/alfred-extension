@@ -23,8 +23,9 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
 PIN_MAX_RESULT = -1
-UPDATE_THRESHOLD = 4
-STAR = u"\u2605"
+UPDATE_BOOKMARK_THRESHOLD = 4
+DELETE_OLDBOOKMARK_THRESHOLD = 60*60*24*14 # 14 days
+STAR = u"\u2605 "
 
 def config_data():
     try:
@@ -66,19 +67,29 @@ def history_data():
     except IOError:
         return []
 
-def update_history(q,nums):
-    if q=="": return
+def update_history(category,q,nums):
+    if q=="" or nums==0: return
+    if category != "all" and category != 'tags': return
     
     history = history_data()
-    now = time.time()
+    now = int(time.time())
+    found = None
 
     for h in history:
-        if (h[0] in q or q in h[0]) and now-h[2] < UPDATE_THRESHOLD:
-            history.remove(h)
-        elif h[0] == q:
-            history.remove(h)
-    if nums>0:
-        history.append([q,nums,now])
+        if (h[1] in q or q in h[1]) and now-h[3] <= UPDATE_BOOKMARK_THRESHOLD:
+            if not h[4]: history.remove(h)
+        elif h[1] == q:
+            found = h
+        elif now-h[3] > DELETE_OLDBOOKMARK_THRESHOLD:
+            if not h[4]: history.remove(h)
+
+    if found:
+        found[2:3] = (nums,now)
+    else:
+        if category == "all":
+            history.append(["pba",q,nums,now,False])
+        elif category == "tags":
+            history.append(["pbtag",q,nums,now,False])
 
     with open(os.path.join(alfred.work(False), 'search-history.json'), 'w+') as myFile:
         myFile.write(json.dumps(history))
@@ -176,6 +187,7 @@ def pbtag(pins,deleted_url,starred_url,q):
         pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
         resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
         alfred.write(alfred.xml(resultData,maxresults=None))
+        update_history("tags",q,len(results))
 
 def pred(q, string_list):
     qs = q.lstrip('-')
@@ -206,7 +218,7 @@ def pbnote(notes,config,deleted_url,q):
                 results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
         if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
 
-    results = sorted(results,key=lambda s:s['time'],reverse=True)
+    results.sort(key=lambda s:s['time'],reverse=True)
     resultData = [alfred.Item(title=f['title'], subtitle=f['subtitle'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
     resultData.insert(0,alfred.Item(title="Notes: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://notes.pinboard.in/'
@@ -259,7 +271,7 @@ def pbsearch(pins,deleted_url,starred_url,q,category):
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard'
     resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
     alfred.write(alfred.xml(resultData,maxresults=None))
-    update_history(q,len(results))
+    update_history(category,q,len(results))
 
 if __name__ == '__main__':
     # arg parsing
