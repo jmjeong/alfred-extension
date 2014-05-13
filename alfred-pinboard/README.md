@@ -17,7 +17,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbtag.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbtag-search.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbs.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbhist.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbhis.jpg)
 
 # Installation 
 
