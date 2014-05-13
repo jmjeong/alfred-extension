@@ -12,16 +12,16 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 
 - search pinboard memo (`pbmemo`)
 
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbhelp.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/search.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbtag.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbtag-search.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbs.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbhist.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbhelp.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbtag.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbtag-search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbs.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbhist.jpg)
 
 # Installation 
 
-0. Download and Install [alfred-pinboard Workflow](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pinboard.alfredworkflow)
+0. Download and Install [alfred-pinboard Workflow](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pinboard.alfredworkflow)
 
 1. pbauth username:TOKEN <- set access token
     - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
@@ -33,7 +33,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - (optional) pbauthpocket 
     - needed only if you want to send URL to pocket
 - (optional) install cron job  : for faster searching without pbreload
-    - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pinboard-download.py)
+    - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pinboard-download.py)
     - `chmod a+x pinboard-download.py`
     - register script in crontab using `crontab -e`
           `*/15 * * * * /path/to/pinboard-download.py  > ~/.bookmarks.json > /dev/null 2>&1`
