@@ -7,6 +7,8 @@ Yet another alfred2-pinboard workflow. It provides INSTANT pinboard search and t
 - goto or delete the searched bookmark 
 - copy url of the searched bookmark
 
+- browse and search history (`pbhis`)
+
 - search pinboard memo (`pbmemo`)
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/pinboard/pbhelp.jpg)
@@ -79,7 +81,8 @@ You need to set it manually because of alfred restriction
   - change search condition
 	  - *' '* stands for **and** query `ex) python alfred`
 	  - Add a dash(`-`) before a word to exclude all results that include that word `ex) python -alfred`
-  - add the number of links in the first line		
+  - add the number of links in the first line
+  - browse *search history* `pbhis`
 
 - v1.8 (2014-04-29)
   - escape url character for compatibility 
