@@ -84,7 +84,7 @@ def update_history(category,q,nums):
             if not h[4]: history.remove(h)
 
     if found:
-        found[2:3] = (nums,now)
+        found[3] = (now)
     else:
         if category == "all":
             history.append(["pba",q,nums,now,False])
@@ -165,7 +165,7 @@ def pbtag(pins,deleted_url,starred_url,q):
         alfred.write(alfred.xml(resultData,maxresults=None))
     else:
         (q_tag, q_title)=q.split("→")
-        qs = q_title.lower()
+        qs = map(lambda a:a.strip(), q_title.lower().split('|'))
         results = []
         for p in pins:
             url = p['href']
@@ -174,11 +174,13 @@ def pbtag(pins,deleted_url,starred_url,q):
             tags = p['tags'].split(' ')
             for t in tags:
                 if not q_tag in t: continue
-                if not qs:
+                if not q_title:
                     results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':url})
-                elif all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':url})
-                    break
+                else:
+                    for qi in qs:
+                        if all(qsi and pred(qsi,[title]) for qsi in qi.split(' ')):
+                            results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':url})
+                            break
             if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
         resultData = [alfred.Item(title=f['title'], subtitle=f['url'],attributes={'arg':f['url'],'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
         resultData.insert(0,alfred.Item(title="Links: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
@@ -198,7 +200,7 @@ def pred(q, string_list):
 
 def pbnote(notes,config,deleted_url,q):
     results = []
-    qs = q.lower()
+    qs = map(lambda a:a.strip(), q.lower().split('|'))
     logger.info('query string = [%s]', qs)
 
     for n in notes['notes']:
@@ -211,13 +213,14 @@ def pbnote(notes,config,deleted_url,q):
         title = n['title'].lower()
         text = n['text'].lower()
         
-        if not qs:
+        if not q:
             results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
         else:
-            if all(qsi and pred(qsi,[title,text]) for qsi in qs.split(' ')):
-                results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
+            for qi in qs:
+                if all(qsi and pred(qsi,[title,text]) for qsi in qi.split(' ')):
+                    results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
+                    break
         if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
-
     results.sort(key=lambda s:s['time'],reverse=True)
     resultData = [alfred.Item(title=f['title'], subtitle=f['subtitle'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
     resultData.insert(0,alfred.Item(title="Notes: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
@@ -228,8 +231,8 @@ def pbnote(notes,config,deleted_url,q):
 
 def pbsearch(pins,deleted_url,starred_url,q,category):
     results = []
-    qs = q.lower()
-    logger.info('query string = [%s]', qs)
+    logger.info('query string = [%s]', q)
+    qs = map(lambda a:a.strip(), q.lower().split('|'))
 
     for p in pins:
         title = p['description'].lower()
@@ -237,10 +240,10 @@ def pbsearch(pins,deleted_url,starred_url,q,category):
         extended = p['extended'].lower()
         tags = p['tags'].lower()
         toread = p['toread']
-
+        
         if url in map(lambda x:x.lower(), deleted_url): continue
 
-        if not qs:
+        if not q:
             if category=='toread':
                 if toread=='yes':            
                     results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
@@ -250,20 +253,24 @@ def pbsearch(pins,deleted_url,starred_url,q,category):
             else:
                 results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
         else:
-            if category=='all' and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
-            if category=='star' and p['href'] in starred_url and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
-            elif category=='toread' and toread=='yes' and all(qsi and pred(qsi,[title]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
-            elif category=='link' and any(qsi and pred(qsi,[url]) for qsi in qs.split(' ')):
-                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
-            # elif category=='title' and any(qsi and qsi in title for qsi in qs.split(' ')):
-            #     results.append({'title':p['description'],'url':p['href']})
-            # elif category=='description' and any(qsi in extended for qsi in qs.split(' ')):
-            #     results.append({'title':p['description'],'url':p['href']})
+            for qi in qs:
+                if category=='all' and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qi.split(' ')):
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    break
+                if category=='star' and p['href'] in starred_url and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qi.split(' ')):
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    break
+                elif category=='toread' and toread=='yes' and all(qsi and pred(qsi,[title]) for qsi in qi.split(' ')):
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    break
+                elif category=='link' and any(qsi and pred(qsi,[url]) for qsi in qi.split(' ')):
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    break
+                # elif category=='title' and any(qsi and qsi in title for qsi in qi.split(' ')):
+                #     results.append({'title':p['description'],'url':p['href']})
+                # elif category=='description' and any(qsi in extended for qsi in qi.split(' ')):
+                #     results.append({'title':p['description'],'url':p['href']})
         if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
-
     logger.info(category)
     resultData = [alfred.Item(title=f['title'], subtitle=f['url'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
     resultData.insert(0,alfred.Item(title="Links: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
@@ -273,7 +280,7 @@ def pbsearch(pins,deleted_url,starred_url,q,category):
     alfred.write(alfred.xml(resultData,maxresults=None))
     update_history(category,q,len(results))
 
-if __name__ == '__main__':
+def main():
     # arg parsing
     category = sys.argv[1]
     try:
@@ -311,3 +318,9 @@ if __name__ == '__main__':
         deleted_url = deleted_url_data()
         starred_url = starred_url_data()
         pbsearch(pins,deleted_url,starred_url,q,category)
+    
+if __name__ == '__main__':
+    start = time.clock()
+    main()
+    end = time.clock()
+    logger.info("Elapsed time : %.5gs"%(end-start))
