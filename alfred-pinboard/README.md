@@ -54,6 +54,12 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - **pbauth** *username:token* : Set pinboard authentication token (optional)
 - **pbauthpocket** : Pocket authentication (optional)
 
+## Search Condition
+
+- ` ` stands for **and** query `ex) python alfred`
+- `|` stands for **or** query `ex) python|alfred`
+- **and** query is evaluated first, than **or** query is evaluated
+
 ## Keys 
 
 You need to set it manually because of alfred restriction
@@ -64,7 +70,7 @@ You need to set it manually because of alfred restriction
 - ctl-shift-cmd-s : launch **pbs**
 - ctl-shift-cmd-h : launch **pbhis**
 
-# Action
+## Action
 
 - *enter* to open the selected url in the browser
 - *tab* to expand in pbtag command
@@ -78,11 +84,12 @@ You need to set it manually because of alfred restriction
 - v2.0
   - move the location of config file from workflow directory to data directory. you need to run
     `pbauth` again
-  - add pbnote query
+  - add `pbnote` query
   - starred/unstarred bookmark `pbs`
   - remove pbt, pbl, pbe because they are not used frequently
   - change search condition
 	  - *' '* stands for **and** query `ex) python alfred`
+	  - *'|'* stands for **or** query `ex) python|alfred`
 	  - Add a dash(`-`) before a word to exclude all results that include that word `ex) python -alfred`
   - add the number of links in the first line
   - browse *search history* `pbhis`
