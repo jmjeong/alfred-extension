@@ -50,7 +50,7 @@ Yet another command utility
 
 [pinboard](https://pinboard.in) Search Tools
 
-![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/pinboard/pbhelp.jpg)
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhelp.jpg)
 
 
 ## ipaddr ([Link](https://github.com/jmjeong/alfred-extension/tree/master/ipaddr),[Download](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow))
