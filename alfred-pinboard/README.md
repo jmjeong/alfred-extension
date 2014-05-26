@@ -13,12 +13,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - send url to pocket
 - mark or unmark the favorite bookmark
 
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhelp.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/search.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag-search.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbs.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhis.jpg)
 
 # Installation 
 
@@ -79,7 +74,17 @@ You need to set it manually because of alfred restriction
 - Hold *cmd* while selecting a bookmark to copy it’s url to clipboard
 - Hold *alt* while selecting to delete a bookmark from your pinboard
 - Hold *ctrl* while selecting a bookmark to mark or unmark it
-- Hold *shift* while selecting to send URL to pocket. You need to set auth_token using **pbauthpocket**
+- Hold *shift* while selecting to send URL to pocket. You need to set auth_token using
+  **pbauthpocket**
+
+# Screenshot
+
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhelp.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag-search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbs.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhis.jpg)
 
 # Change Log
 
