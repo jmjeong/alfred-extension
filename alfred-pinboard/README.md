@@ -2,7 +2,7 @@
 
 Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and the following function.
 
-- search pinboard (`pba`) - supports various search condition such as `or(|)`, `and`, and `not(-)`
+- search pinboard (`pba`) - supports various search condition such as `or(|)`, `and( )`, and `not(-)`
 - search tag (`pbtag`)
 - search pinboard memo (`pbmemo`)
 - show starred bookmark (`pbs`)
@@ -13,16 +13,16 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - send url to pocket
 - mark or unmark the favorite bookmark
 
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbhelp.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/search.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbtag.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbtag-search.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbs.jpg)
-![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbhis.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhelp.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag-search.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbs.jpg)
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhis.jpg)
 
 # Installation 
 
-0. Download and Install [alfred-pinboard Workflow](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pinboard.alfredworkflow)
+0. Download and Install [alfred-pinboard Workflow](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pinboard.alfredworkflow)
 	- You need to set short-key manually
 1. pbauth username:TOKEN <- set access token
     - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
@@ -34,7 +34,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - (optional) pbauthpocket 
     - needed only if you want to send URL to pocket
 - (optional) install cron job  : for faster searching without pbreload
-    - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pinboard-download.py)
+    - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pinboard-download.py)
     - `chmod a+x pinboard-download.py`
     - register script in crontab using `crontab -e`
       `*/15 * * * * /path/to/pinboard-download.py > /dev/null 2>&1`
