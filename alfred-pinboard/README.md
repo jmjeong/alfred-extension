@@ -32,6 +32,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
     - download it from [pinboard-download.py](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pinboard-download.py)
     - `chmod a+x pinboard-download.py`
     - register script in crontab using `crontab -e`
+	
       `*/15 * * * * /path/to/pinboard-download.py > /dev/null 2>&1`
 	
 # Command
