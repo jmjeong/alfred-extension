@@ -2,15 +2,16 @@
 
 Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and the following function.
 
-- search pinboard (`pba`)
+- search pinboard (`pba`) - supports various search condition such as `or(|)`, `and`, and `not(-)`
 - search tag (`pbtag`)
-- goto or delete the searched bookmark 
-- copy url of the searched bookmark
-
+- search pinboard memo (`pbmemo`)
 - show starred bookmark (`pbs`)
 - browse and search history (`pbhis`)
 
-- search pinboard memo (`pbmemo`)
+- goto or delete the searched bookmark 
+- copy url of the searched bookmark
+- send url to pocket
+- mark or unmark the favorite bookmark
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pbhelp.jpg)
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/search.jpg)
@@ -22,7 +23,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 # Installation 
 
 0. Download and Install [alfred-pinboard Workflow](https://raw.github.com/jmjeong/alfred-extension/beta/alfred-pinboard/pinboard.alfredworkflow)
-
+	- You need to set short-key manually
 1. pbauth username:TOKEN <- set access token
     - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
 2. pbreload - loads latest bookmarks and memo from pinboard.in
@@ -56,6 +57,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 
 ## Search Condition
 
+- `-` before search word stands for **not** `ex) -program`
 - ` ` stands for **and** query `ex) python alfred`
 - `|` stands for **or** query `ex) python|alfred`
 - **and** query is evaluated first, than **or** query is evaluated
