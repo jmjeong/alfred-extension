@@ -106,7 +106,7 @@ You need to set it manually because of alfred restriction
 
 # Change Log
 
-- v2.0
+- v2.0 (2014-05-26)
   - move the location of config file from workflow directory to data directory. you need to run
     `pbauth` again
   - add `pbnote` query
