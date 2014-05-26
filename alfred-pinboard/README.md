@@ -79,11 +79,28 @@ You need to set it manually because of alfred restriction
 
 # Screenshot
 
+## Help
+
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhelp.jpg)
+
+## Search 
+
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/search.jpg)
+
+## Tag Browse
+
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag.jpg)
+
+## Tag Search
+
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag-search.jpg)
+
+## Starred Bookmark
+
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbs.jpg)
+
+## Search History
+
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhis.jpg)
 
 # Change Log
