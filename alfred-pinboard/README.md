@@ -37,7 +37,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 	
 # Command
 
-- **pba** *query* : search *query* from description and tags
+- **pba** *query* : search *query* from title, description and tags
 - **pbnote** *query* : search *query* from pinboard notes
 - **pbu** *query* : search *query* from description(title) in unread list
 - **pbl** *query* : search *query* from link
