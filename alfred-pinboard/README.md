@@ -113,16 +113,21 @@ You need to set it manually because of alfred restriction
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhis.jpg)
 
+## Sort option
+
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/sort-option.jpg)
+
 # Change Log
 
-- v2.1
-  - multiple tag search : specify tag group for searching (# )
+- v2.1 (2014-06-15)
+  - multiple tag search : specify tag group for searching (#)
   - display last modified time of local cached bookmarks
   - display host name only in main list
   - display tag information in main list too
   - update the number of entries in the history list after searching
   - display untagged bookmarks in tag list
-  - support sort option : ^
+  - support sort option : title ascending(`^a`), title descending(`^z`),
+	time ascending(`^d`), time descending(default)
 
 - v2.0 (2014-05-26)
   - move the location of config file from workflow directory to data directory. you need to run
