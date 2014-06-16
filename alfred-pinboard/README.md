@@ -119,7 +119,7 @@ You need to set it manually because of alfred restriction
 
 # Change Log
 
-- v2.1 (2014-06-15)
+- v2.11 (2014-06-15)
   - multiple tag search : specify tag group for searching (#)
   - display last modified time of local cached bookmarks
   - display host name only in main list

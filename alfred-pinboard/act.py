@@ -24,8 +24,7 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
 def go(arg):
-    launchArgs = "do shell script \"Open '%s'\" " % arg 
-    os.system("osascript -e '%s' > /dev/null" % launchArgs)
+    os.system("open '%s' > /dev/null" % arg)
 
 def star(arg):
     import main
