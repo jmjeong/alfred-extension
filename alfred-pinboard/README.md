@@ -118,8 +118,8 @@ You need to set it manually because of alfred restriction
 - v2.1
   - multiple tag search : specify tag group for searching (# )
   - display last modified time of local cached bookmarks
-  - display host name only in main list to display tag list
-  - display tag information in main list
+  - display host name only in main list
+  - display tag information in main list too
   - update the number of entries in the history list after searching
   - display untagged bookmarks in tag list
   - support sort option : ^
