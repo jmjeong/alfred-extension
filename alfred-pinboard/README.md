@@ -3,7 +3,8 @@
 Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and the following function.
 
 - search pinboard (`pba`) - supports various search condition such as `or(|)`, `and( )`, and `not(-)`
-- search tag (`pbtag`)
+- search tag : Type `pba #`
+- search untagged entries : Type `pba # :`
 - search pinboard memo (`pbmemo`)
 - show starred bookmark (`pbs`)
 - browse and search history (`pbhis`)
@@ -22,7 +23,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 1. pbauth username:TOKEN <- set access token
     - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
 2. pbreload - loads latest bookmarks and memo from pinboard.in
-3. search with `pba`, `pbtag`, `pbmemo` command
+3. search with `pba`, `pbmemo`, `pbl`, and `pbu` command
 
 ---
 
@@ -42,7 +43,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - **pbu** *query* : search *query* from description(title) in unread list
 - **pbl** *query* : search *query* from link
 - **pbs** *query* : search *query* from starred bookmarks
-- **pbtag** *query* : search tag list. You can autocomplete it by pressing 'tab'
+- **pba #** *query* : search tag list. You can autocomplete it by pressing `tab` or `enter`
 
 - **pbhis** : show search history
 
@@ -56,14 +57,19 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - `-` before search word stands for **not** `ex) -program`
 - ` ` stands for **and** query `ex) python alfred`
 - `|` stands for **or** query `ex) python|alfred`
-- **and** query is evaluated first, than **or** query is evaluated
+- **and** query is evaluated first, than **or** query is processed
+
+## special keys
+
+- `#` : select tag
+- `^` : sort option (^a title ascending, ^z title descending, ^d time ascending)
 
 ## Keys 
 
 You need to set it manually because of alfred restriction
 
 - ctl-shift-cmd-p : launch **pba** 
-- ctl-shift-cmd-c : launch **pbtag** 
+- ctl-shift-cmd-c : launch **pba #** 
 - ctl-shift-cmd-n : launch **pbnote**
 - ctl-shift-cmd-s : launch **pbs**
 - ctl-shift-cmd-h : launch **pbhis**
@@ -71,7 +77,6 @@ You need to set it manually because of alfred restriction
 ## Action
 
 - *enter* to open the selected url in the browser
-- *tab* to expand in pbtag command
 - Hold *cmd* while selecting a bookmark to copy it’s url to clipboard
 - Hold *alt* while selecting to delete a bookmark from your pinboard
 - Hold *ctrl* while selecting a bookmark to mark or unmark it
@@ -96,6 +101,10 @@ You need to set it manually because of alfred restriction
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbtag-search.jpg)
 
+## Multiple Tag Group Search
+
+![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/multi-tag-search.jpg)
+
 ## Starred Bookmark
 
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbs.jpg)
@@ -105,6 +114,15 @@ You need to set it manually because of alfred restriction
 ![screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhis.jpg)
 
 # Change Log
+
+- v2.1
+  - multiple tag search : specify tag group for searching (# )
+  - display last modified time of local cached bookmarks
+  - display host name only in main list to display tag list
+  - display tag information in main list
+  - update the number of entries in the history list after searching
+  - display untagged bookmarks in tag list
+  - support sort option : ^
 
 - v2.0 (2014-05-26)
   - move the location of config file from workflow directory to data directory. you need to run

@@ -10,6 +10,9 @@ import unicodedata
 import logging
 import pocket
 import time
+import urlparse
+import util
+import re
 
 import sys
 reload(sys)
@@ -20,11 +23,12 @@ hdlr = logging.FileHandler('/var/tmp/alfred.pinboard.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
-logger.setLevel(logging.ERROR)
+logger.setLevel(logging.INFO)
 
 PIN_MAX_RESULT = -1
 UPDATE_BOOKMARK_THRESHOLD = 4
 DELETE_OLDBOOKMARK_THRESHOLD = 60*60*24*14 # 14 days
+RELOAD_ASK_THRESHOLD = 60*60*12            # 12 hours
 STAR = u"\u2605 "
 
 def config_data():
@@ -76,15 +80,17 @@ def update_history(category,q,nums):
     found = None
 
     for h in history:
-        if (h[1] in q or q in h[1]) and now-h[3] <= UPDATE_BOOKMARK_THRESHOLD:
+        sh = h[1].replace(' ', '')
+        sq = q.replace(' ', '')
+        if (sh in sq or sq in sh) and now-h[3] <= UPDATE_BOOKMARK_THRESHOLD:
             if not h[4]: history.remove(h)
-        elif h[1] == q:
+        elif sh == sq:
             found = h
         elif now-h[3] > DELETE_OLDBOOKMARK_THRESHOLD:
             if not h[4]: history.remove(h)
 
     if found:
-        found[3] = (now)
+        found[2:4] = (nums,now)
     else:
         if category == "all":
             history.append(["pba",q,nums,now,False])
@@ -96,7 +102,7 @@ def update_history(category,q,nums):
 
 def help():
     result = []
-    result.append(alfred.Item(title='Look up Documentation', subtitle='Goto project site', attributes={'arg':'http://j.mp/1c4E6Q2','uid':alfred.uid(0)}, icon="icon.png"))
+    result.append(alfred.Item(title='Look up Documentation', subtitle='Goto project site', attributes={'arg':'https://github.com/jmjeong/alfred-extension/blob/master/alfred-pinboard/README.md','uid':alfred.uid(0)}, icon="icon.png"))
     result.append(alfred.Item(title='pbauth username:token', subtitle='set pinboard authentication token', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
     result.append(alfred.Item(title='pbreload', subtitle='load latest bookmarks from pinboard.in', attributes={'valid':'no','uid':alfred.uid(2)}, icon="icon.png"))
     result.append(alfred.Item(title='pba query', subtitle='search all fields of bookmarks', attributes={'valid':'no','uid':alfred.uid(3)}, icon="icon.png"))
@@ -105,9 +111,6 @@ def help():
     result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
     result.append(alfred.Item(title='pbu query', subtitle='search title of toread bookmarks', attributes={'valid':'no','uid':alfred.uid(8)}, icon="icon.png"))
     result.append(alfred.Item(title='pbauthpocket', subtitle='Login with Pocket!', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
-    
-    # result.append(alfred.Item(title='pbt query', subtitle='search description of bookmarks', attributes={'valid':'no','uid':alfred.uid(4)}, icon="icon.png"))
-    # result.append(alfred.Item(title='pbd query', subtitle='search extended field of bookmarks', attributes={'valid':'no','uid':alfred.uid(6)}, icon="icon.png"))
     result.append(alfred.Item(title='To selected bookmark', subtitle='enter:goto site, cmd:copy url, alt:delete bookmark, tab:expand', attributes={'valid':'no','uid':alfred.uid(9)}, icon="icon.png"))
     alfred.write(alfred.xml(result,maxresults=None))
 
@@ -140,62 +143,13 @@ def pbauthpocket(q):
     result = [alfred.Item(title='Login!', subtitle='Login with Pocket.com (you will be taken to pocket.com)', attributes={'arg':ret['code'],'uid':alfred.uid(0)}, icon="icon.png")]
     alfred.write(alfred.xml(result))
 
-def addpocket(q):
-    pocket.addpocket(q)
-
-def pbtag(pins,deleted_url,starred_url,q):
-    if not "→" in q:                      # tag search
-        q = q.lower()
-        tag_list = {}
-        for p in pins:
-            url = p['href']
-            if url in map(lambda x:x.lower(), deleted_url): continue
-            tags = p['tags'].encode('utf-8').split(' ')
-            for t in tags:
-                if not t: continue
-                if t in tag_list:
-                    tag_list[t] += 1
-                else:
-                    tag_list[t] = 1
-        resultData = []
-        tag_list_key = sorted(tag_list.keys(),key=str.lower)
-        for (idx,i) in enumerate(tag_list_key):
-            if not q or q in i.lower():
-                resultData.append(alfred.Item(title=i+"("+str(tag_list[i])+")→", subtitle='', attributes={'arg':i, 'autocomplete':i+"→",'uid':alfred.uid(idx)}, icon='icon.png'))
-        alfred.write(alfred.xml(resultData,maxresults=None))
-    else:
-        (q_tag, q_title)=q.split("→")
-        qs = map(lambda a:a.strip(), q_title.lower().split('|'))
-        results = []
-        for p in pins:
-            url = p['href']
-            if url in map(lambda x:x.lower(), deleted_url): continue
-            title = p['description'].lower()
-            tags = p['tags'].split(' ')
-            for t in tags:
-                if not q_tag in t: continue
-                if not q_title:
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':url})
-                else:
-                    for qi in qs:
-                        if all(qsi and pred(qsi,[title]) for qsi in qi.split(' ')):
-                            results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':url})
-                            break
-            if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
-        resultData = [alfred.Item(title=f['title'], subtitle=f['url'],attributes={'arg':f['url'],'uid':alfred.uid(i)},icon="item.png") for (i,f) in enumerate(results)]
-        resultData.insert(0,alfred.Item(title="Links: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
-        
-        pinboard_url = q_title and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q_title.replace(' ','+') or 'https://pinboard.in/'
-        pinboard_title = q_title and 'Search \'%s\' in pinboard.in'%q_title or 'Goto pinboard site'
-        resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
-        alfred.write(alfred.xml(resultData,maxresults=None))
-        update_history("tags",q,len(results))
-
 def pred(q, string_list):
     qs = q.lstrip('-')
-    if qs==q:       # query (or)
+    if qs=="":
+        return True
+    elif qs==q:       # query (or)
         return any(qs in s for s in string_list)
-    else:           # -query (and)
+    else:             # -query (and)
         return all(qs not in s for s in string_list)
 
 def pbnote(notes,config,deleted_url,q):
@@ -220,7 +174,7 @@ def pbnote(notes,config,deleted_url,q):
                 if all(qsi and pred(qsi,[title,text]) for qsi in qi.split(' ')):
                     results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
                     break
-        if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
+        if PIN_MAX_RESULT>0 and len(results)>=PIN_MAX_RESULT: break
     results.sort(key=lambda s:s['time'],reverse=True)
     resultData = [alfred.Item(title=f['title'], subtitle=f['subtitle'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
     resultData.insert(0,alfred.Item(title="Notes: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
@@ -229,85 +183,177 @@ def pbnote(notes,config,deleted_url,q):
     resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
     alfred.write(alfred.xml(resultData,maxresults=None))
 
-def pbsearch(pins,deleted_url,starred_url,q,category):
+
+def process_tag(pins,deleted_url,q,prefix):
+    tag_list = {}
+    
+    for p in pins:
+        url = p['href']
+        if url in map(lambda x:x.lower(), deleted_url): continue
+        tags = p['tags'].encode('utf-8').split(' ')
+        for t in tags:
+            if t in tag_list:
+                tag_list[t] += 1
+            else:
+                tag_list[t] = 1
+    resultData = []
+    tag_list_key = sorted(tag_list.keys(),key=str.lower)
+    for (idx,i) in enumerate(tag_list_key):
+        if not q or q in i.lower():
+            expand_str = prefix+(prefix and " " or "")+"#"+i+" : "
+            resultData.append(alfred.Item(title=(i and i or "untagged")+" ("+str(tag_list[i])+")", subtitle='',
+                                          attributes={'autocomplete':expand_str,
+                                                      'valid':'no',
+                                                      'uid':alfred.uid(idx)}, icon='tag.png'))
+    alfred.write(alfred.xml(resultData,maxresults=None))
+    return
+
+def total_num(pins,deleted_url,tags_list,category):
+    count = 0
+    for p in pins:
+        url = p['href'].lower()
+        if url in map(lambda x:x.lower(), deleted_url): continue
+        
+        tags = p['tags'].lower()
+        tag_set = set(tags.split(' '))
+        if tags_list and tag_set.isdisjoint(tags_list): continue
+
+        if category=='toread':
+            if toread=='yes':            
+                count += 1
+        elif category=='star':
+            if p['href'] in starred_url:
+                count += 1
+        else:
+            count += 1
+    return str(count)
+
+def process_search(pins,config,deleted_url,starred_url,tags_list,q,full_query,category,sort_option):
     results = []
-    logger.info('query string = [%s]', q)
     qs = map(lambda a:a.strip(), q.lower().split('|'))
 
     for p in pins:
-        title = p['description'].lower()
         url = p['href'].lower()
+        if url in map(lambda x:x.lower(), deleted_url): continue
+        
+        title = p['description'].lower()
         extended = p['extended'].lower()
         tags = p['tags'].lower()
         toread = p['toread']
-        
-        if url in map(lambda x:x.lower(), deleted_url): continue
 
+        tag_set = set(tags.split(' '))
+        if tags_list and tag_set.isdisjoint(tags_list): continue
+
+        tagstring = tags and "("+", ".join(map(lambda a:'#'+a, tags.split(' ')))+")" or "(none)"
         if not q:
             if category=='toread':
                 if toread=='yes':            
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href'],'tags':tagstring})
             elif category=='star':
                 if p['href'] in starred_url:
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href'],'tags':tagstring})
             else:
-                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href'],'tags':tagstring})
         else:
             for qi in qs:
                 if category=='all' and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qi.split(' ')):
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href'],'tags':tagstring})
                     break
                 if category=='star' and p['href'] in starred_url and all(qsi and pred(qsi,[title,extended,tags]) for qsi in qi.split(' ')):
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href'],'tags':tagstring})
                     break
                 elif category=='toread' and toread=='yes' and all(qsi and pred(qsi,[title]) for qsi in qi.split(' ')):
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href'],'tags':tagstring})
                     break
                 elif category=='link' and any(qsi and pred(qsi,[url]) for qsi in qi.split(' ')):
-                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href']})
+                    results.append({'title':(p['href'] in starred_url and STAR or "")+p['description'],'url':p['href'],'tags':tagstring})
                     break
-                # elif category=='title' and any(qsi and qsi in title for qsi in qi.split(' ')):
-                #     results.append({'title':p['description'],'url':p['href']})
-                # elif category=='description' and any(qsi in extended for qsi in qi.split(' ')):
-                #     results.append({'title':p['description'],'url':p['href']})
-        if PIN_MAX_RESULT>0 and len(results)>PIN_MAX_RESULT: break
+        if PIN_MAX_RESULT>0 and len(results)>=PIN_MAX_RESULT: break
     logger.info(category)
-    resultData = [alfred.Item(title=f['title'], subtitle=f['url'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
-    resultData.insert(0,alfred.Item(title="Links: %d items"%len(results), subtitle="", attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
+    if sort_option=='a' or sort_option=='ㅇ': results = sorted(results, key=lambda k:k['title'])
+    elif sort_option=='z' or sort_option=='ㅁ': results = sorted(results, key=lambda k:k['title'],reverse=True)
+    elif sort_option=='d' or sort_option=='ㅣ': results.reverse()
+    resultData = [alfred.Item(title=f['title'], subtitle=urlparse.urlparse(f['url'])[1]+"   "+f['tags'], attributes={'arg':f['url'],'uid':alfred.uid(idx)}, icon="item.png") for (idx,f) in enumerate(results)]
+    try:
+        last_updated = config['last_updated']
+    except:
+        last_updated = 0
+    subtitle = "Last updated: "+(last_updated and util.pretty_date(config['last_updated']) or "no info")
+    
+    diff = int(time.time())-last_updated
+    if diff > RELOAD_ASK_THRESHOLD:
+        resultData.insert(0,alfred.Item(title="Links: %d items - Reload pinboard data?"%len(results), subtitle=subtitle,
+                                        attributes={'arg':'reload','uid':alfred.uid('t')}, icon="icon.png"))
+    else:
+        resultData.insert(0,alfred.Item(title="Links: %d items"%len(results), subtitle=subtitle,
+                                        attributes={'valid':'no','uid':alfred.uid('t')}, icon="icon.png"))
     pinboard_url = q and 'https://pinboard.in/search/?query=%s&mine=Search+Mine'%q.replace(' ','+') or 'https://pinboard.in/'
     pinboard_title = q and 'Search \'%s\' in pinboard.in'%q or 'Goto Pinboard'
     resultData.append(alfred.Item(title=pinboard_title, subtitle=pinboard_url, attributes={'arg':pinboard_url}, icon="icon.png"))
     alfred.write(alfred.xml(resultData,maxresults=None))
-    update_history(category,q,len(results))
+    update_history(category,full_query,len(results))
+    return
+
+def process_sortoption(q):
+    result = []
+    result.append(alfred.Item(title='time ascending', subtitle='^d ',
+                              attributes={'valid':'no','autocomplete':q+(q and " " or "")+'^d ','uid':alfred.uid(1)}, icon="general-des.png"))
+    result.append(alfred.Item(title='title ascending', subtitle='^a ',
+                              attributes={'valid':'no','autocomplete':q+(q and " " or "")+'^a ','uid':alfred.uid(2)}, icon="alpha-asc.png"))
+    result.append(alfred.Item(title='title descending', subtitle='^z ',
+                              attributes={'valid':'no','autocomplete':q+(q and " " or "")+'^z ','uid':alfred.uid(3)}, icon="alpha-des.png"))
+    alfred.write(alfred.xml(result,maxresults=None))
+    
+def pbsearch(pins,config,deleted_url,starred_url,q,category):
+    logger.info('query string = [%s]', q)
+
+    sort_option = ""
+    full_query = q
+    sort_re = re.compile(r'\^(\w+)\b', flags=re.U)
+    if sort_re.findall(q):  # exists sort option?
+        sort_option = sort_re.findall(q)[-1]
+        q = sort_re.sub('', q)
+        
+    last_q = q.split(' ')[-1]
+    if last_q.startswith('^'):      # sort option
+        process_sortoption(" ".join(q.split(' ')[:-1]))
+    elif last_q.startswith('#'):      # tag expansion
+        process_tag(pins,deleted_url,last_q.lower()[1:]," ".join(q.split(' ')[:-1]))
+    elif ':' in q:
+        qq = q.split(':')
+        query = qq[-1]
+        tags = ':'.join(qq[:-1])
+        tag_list = [t[1:].lower() for t in tags.split(' ') if t.startswith('#')]
+        # logger.error('taglist = %s, query=[%s]', tag_list,query)
+        process_search(pins,config,deleted_url,starred_url,tag_list,query.strip(),full_query,category,sort_option)
+    elif '#' in q and ':' not in q:
+        expand_str = q.strip()+' : '
+        tag_list = [t[1:].lower() for t in q.split(' ') if t.startswith('#')]
+        resultData = [alfred.Item(title="Selected Category ("+total_num(pins,deleted_url,tag_list,category)+")",
+                                  subtitle="# or : or Enter",
+                                  attributes={'uid':alfred.uid(0),
+                                              'autocomplete':expand_str,
+                                              'valid':'no'},
+                                  icon="item.png")]
+        alfred.write(alfred.xml(resultData,maxresults=None))
+    else:
+        process_search(pins,config,deleted_url,starred_url,[],q.strip(),full_query,category,sort_option)
 
 def main():
     # arg parsing
     category = sys.argv[1]
     try:
-        q = unicode(sys.argv[2].strip())
+        q = unicode(sys.argv[2])
         q = unicodedata.normalize('NFC', q)
     except:
         q = ""
     
     if category=='help':
         help()
-        sys.exit(0)
     elif category=='pbauth':
         pbauth(q)
-        sys.exit(0)
     elif category=='pbauthpocket':
         pbauthpocket(q)
-        sys.exit(0)
-    elif category=='addpocket':
-        addpocket(q)
-        sys.exit(0)
-
-    # tag processing
-    if category=='tags':
-        pins = pins_data()
-        deleted_url = deleted_url_data()
-        starred_url = starred_url_data()
-        pbtag(pins,deleted_url,starred_url,q)
     elif category=='note':
         notes = notes_data()
         config = config_data()
@@ -315,9 +361,10 @@ def main():
         pbnote(notes,config,deleted_url,q)
     else:
         pins = pins_data()
+        config = config_data()
         deleted_url = deleted_url_data()
         starred_url = starred_url_data()
-        pbsearch(pins,deleted_url,starred_url,q,category)
+        pbsearch(pins,config,deleted_url,starred_url,q,category)
     
 if __name__ == '__main__':
     start = time.clock()
