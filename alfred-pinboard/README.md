@@ -123,8 +123,8 @@ You need to set it manually because of alfred restriction
 # Change Log
 
 - v2.2 (2014-06-20)
-  - Support Launch history
-  - Sort option : last accessed time
+  - Launch history command (`pblog`)
+  - Sort option : last accessed time (`^l`)
   - '!' is used to sort key too
   
 - v2.11 (2014-06-15)
