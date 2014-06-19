@@ -8,6 +8,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - search pinboard memo (`pbmemo`)
 - show starred bookmark (`pbs`)
 - browse and search history (`pbhis`)
+- browse launch history (`pblog`)
 
 - goto or delete the searched bookmark 
 - copy url of the searched bookmark
@@ -46,6 +47,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 - **pba #** *query* : search tag list. You can autocomplete it by pressing `tab` or `enter`
 
 - **pbhis** : show search history
+- **pblog** : show launch history
 
 - **pbreload** : loads latest bookmarks from pinboard.in
 
@@ -62,7 +64,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 ## special keys
 
 - `#` : select tag
-- `^` : sort option (^a title ascending, ^z title descending, ^d time ascending)
+- `^` : sort option (^a title ascending, ^z title descending, ^d time ascending, ^l last accessed time)
 
 ## Keys 
 
@@ -73,6 +75,7 @@ You need to set it manually because of alfred restriction
 - ctl-shift-cmd-n : launch **pbnote**
 - ctl-shift-cmd-s : launch **pbs**
 - ctl-shift-cmd-h : launch **pbhis**
+- ctl-shift-cmd-l : launch **pblog**
 
 ## Action
 
@@ -119,6 +122,11 @@ You need to set it manually because of alfred restriction
 
 # Change Log
 
+- v2.2 (2014-06-20)
+  - Support Launch history
+  - Sort option : last accessed time
+  - '!' is used to sort key too
+  
 - v2.11 (2014-06-15)
   - multiple tag search : specify tag group for searching (#)
   - display last modified time of local cached bookmarks

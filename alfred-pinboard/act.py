@@ -24,7 +24,18 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
 def go(arg):
+    import main
+    history = main.launch_history()
+    now = int(time.time())
     os.system("open '%s' > /dev/null" % arg)
+    if arg in history:
+        history[arg][0] += 1
+        history[arg][1] = now
+    else:
+        history[arg] = [1, now]
+    with open(os.path.join(alfred.work(False),'launch-history.json'),'w+') as f:
+        json.dump(history,f)
+        
 
 def star(arg):
     import main
@@ -53,6 +64,7 @@ def delete(arg):
         sys.exit(0)
 
     deleted_url = main.deleted_url_data()
+    history = main.launch_history()
     try:
         url = 'https://api.pinboard.in/v1/posts/delete?format=json&auth_token=%s:%s&url=%s'%(user,token,urllib.quote(arg))
         data = urllib2.urlopen(url).read()
@@ -60,13 +72,26 @@ def delete(arg):
         if ret['result_code']=='done':
             print "%s deleted"%urlparse.urlparse(arg)[1]
             deleted_url.append(arg)
-            f = open(os.path.join(alfred.work(False),'deleted-url.json'),'w+')
-            json.dump(deleted_url,f)
-            f.close()        
+            with open(os.path.join(alfred.work(False),'deleted-url.json'),'w+') as f:
+                json.dump(deleted_url,f)
+
+            if arg in history:
+                del history[arg]
+                with open(os.path.join(alfred.work(False),'launch-history.json'),'w+') as f:
+                    json.dump(history,f)
         else:
             print ret['result_code']
     except:
         print "Error"
+
+def delete_history(arg):
+    import main
+
+    history = main.launch_history()
+    if arg in history:
+        del history[arg]
+        with open(os.path.join(alfred.work(False),'launch-history.json'),'w+') as f:
+            json.dump(history,f)
 
 def addpocket(arg):
     import pocket
@@ -84,6 +109,8 @@ def main(args):
         go(args[2:])
     elif args.startswith('star'):
         star(args[4:])
+    elif args.startswith('deletehistory'):
+        delete_history(args[13:])
     elif args.startswith('delete'):
         delete(args[6:])
     elif args.startswith('addpocket'):

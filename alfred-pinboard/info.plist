@@ -41,6 +41,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>20CD3B05-D962-4E44-875C-ED3CFEAA020B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8952BBFD-0D02-4E1E-93F1-47E46F93DBCB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>298A31E4-279B-46E1-82E5-325735FD9F5C</key>
 		<array>
 			<dict>
@@ -272,6 +283,41 @@
 				<integer>262144</integer>
 				<key>modifiersubtext</key>
 				<string>Mark/UnMark bookmark</string>
+			</dict>
+		</array>
+		<key>8952BBFD-0D02-4E1E-93F1-47E46F93DBCB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>40C9F3EF-11D9-4D8E-B1F7-448619CBD72F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>46B2BCCA-C90E-4F4F-90FE-321A26C8AB14</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Add to Pocket</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>3A4E1155-F119-48D3-8D6E-676515B0B6A3</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Mark/UnMark bookmark</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D99574A6-6DC3-4052-A0CF-4F70A1831606</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Delete launch history</string>
 			</dict>
 		</array>
 		<key>8ACBF18B-B965-4A98-872A-86C62FDD125A</key>
@@ -790,6 +836,79 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>37</integer>
+				<key>hotmod</key>
+				<integer>1441792</integer>
+				<key>hotstring</key>
+				<string>L</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>20CD3B05-D962-4E44-875C-ED3CFEAA020B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
+				<string>pblog</string>
+				<key>runningsubtext</key>
+				<string>loading...</string>
+				<key>script</key>
+				<string>python main.py log "{query}"</string>
+				<key>subtext</key>
+				<string>search all fields of bookmarks from the last launched history</string>
+				<key>title</key>
+				<string>pblog query</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>8952BBFD-0D02-4E1E-93F1-47E46F93DBCB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python act.py "deletehistory{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D99574A6-6DC3-4052-A0CF-4F70A1831606</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1220,6 +1339,11 @@ end alfred_script</string>
 			<key>ypos</key>
 			<real>1040</real>
 		</dict>
+		<key>20CD3B05-D962-4E44-875C-ED3CFEAA020B</key>
+		<dict>
+			<key>ypos</key>
+			<real>440</real>
+		</dict>
 		<key>298A31E4-279B-46E1-82E5-325735FD9F5C</key>
 		<dict>
 			<key>ypos</key>
@@ -1305,6 +1429,11 @@ end alfred_script</string>
 			<key>ypos</key>
 			<real>580</real>
 		</dict>
+		<key>8952BBFD-0D02-4E1E-93F1-47E46F93DBCB</key>
+		<dict>
+			<key>ypos</key>
+			<real>460</real>
+		</dict>
 		<key>8ACBF18B-B965-4A98-872A-86C62FDD125A</key>
 		<dict>
 			<key>ypos</key>
@@ -1344,6 +1473,11 @@ end alfred_script</string>
 		<dict>
 			<key>ypos</key>
 			<real>780</real>
+		</dict>
+		<key>D99574A6-6DC3-4052-A0CF-4F70A1831606</key>
+		<dict>
+			<key>ypos</key>
+			<real>470</real>
 		</dict>
 		<key>DF64F712-ABD7-4794-AE2B-0BA30088B299</key>
 		<dict>
