@@ -122,7 +122,7 @@ You need to set it manually because of alfred restriction
 
 # Change Log
 
-- v2.21 (2014-06-20)
+- v2.22 (2014-06-20)
   - Launch history command (`pblog`)
   - Sort option : last accessed time (`^l`)
   - '!' is used to sort key too

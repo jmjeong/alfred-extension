@@ -76,7 +76,7 @@ if __name__ == '__main__':
         myFile.write(json.dumps(notes_server))
 
     config['last_updated'] = int(time.time())
-    with open(os.path.join(os.path.join(alfred.work(False), 'config.json'), 'w+') as myFile:
+    with open(os.path.join(alfred.work(False), 'config.json'), 'w+') as myFile:
         myFile.write(json.dumps(config))
 
     print "Reload completed"
