@@ -23,11 +23,11 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.ERROR)
 
-def go(arg):
+
+def update_history(arg):
     import main
     history = main.launch_history()
     now = int(time.time())
-    os.system("open '%s' > /dev/null" % arg)
     if arg in history:
         history[arg][0] += 1
         history[arg][1] = now
@@ -35,7 +35,14 @@ def go(arg):
         history[arg] = [1, now]
     with open(os.path.join(alfred.work(False),'launch-history.json'),'w+') as f:
         json.dump(history,f)
-        
+
+def copy(arg):
+    print arg
+    update_history(arg)
+    
+def go(arg):
+    os.system("open '%s' > /dev/null" % arg)
+    update_history(arg)
 
 def star(arg):
     import main
@@ -107,6 +114,8 @@ def main(args):
         pbreload()
     elif args.startswith('go'):
         go(args[2:])
+    elif args.startswith('copy'):
+        copy(args[4:])
     elif args.startswith('star'):
         star(args[4:])
     elif args.startswith('deletehistory'):

@@ -250,7 +250,10 @@ def process_search(pins,config,deleted_url,starred_url,launch_hist_url,tags_list
         
         title = p['description'].lower()
         extended = p['extended'].lower()
-        tags = p['tags'].lower()
+        try:
+            tags = p['tags'].lower()
+        except:
+            tags = ""
         toread = p['toread']
 
         tag_set = set(tags.split(' '))
