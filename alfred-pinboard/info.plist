@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.jmjeong.alfredv2.pinboard</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>006AC0DE-F518-445C-B7E6-5FF51242A8CE</key>

@@ -169,9 +169,15 @@ def pbnote(notes,config,deleted_url,q):
         except KeyError:
             url = "https://notes.pinboard.in/"
         if url in map(lambda x:x.lower(), deleted_url): continue
-        
-        title = n['title'].lower()
-        text = n['text'].lower()
+
+        try:
+            title = n['title'].lower()
+        except:
+            title = ""
+        try:
+            text = n['text'].lower()
+        except:
+            text = ""
         
         if not q:
             results.append({'title':n['title'],'url':url,'subtitle':text,'time':n['created_at']})
@@ -196,7 +202,10 @@ def process_tag(pins,deleted_url,q,prefix):
     for p in pins:
         url = p['href']
         if url in map(lambda x:x.lower(), deleted_url): continue
-        tags = p['tags'].encode('utf-8').split(' ')
+        try:
+            tags = p['tags'].encode('utf-8').split(' ')
+        except:
+            tags = []
         for t in tags:
             if t in tag_list:
                 tag_list[t] += 1
@@ -219,8 +228,11 @@ def total_num(pins,deleted_url,tags_list,category):
     for p in pins:
         url = p['href'].lower()
         if url in map(lambda x:x.lower(), deleted_url): continue
-        
-        tags = p['tags'].lower()
+
+        try:
+            tags = p['tags'].lower()
+        except:
+            tags = ""
         tag_set = set(tags.split(' '))
         if tags_list and tag_set.isdisjoint(tags_list): continue
 
@@ -250,6 +262,7 @@ def process_search(pins,config,deleted_url,starred_url,launch_hist_url,tags_list
         
         title = p['description'].lower()
         extended = p['extended'].lower()
+        
         try:
             tags = p['tags'].lower()
         except:

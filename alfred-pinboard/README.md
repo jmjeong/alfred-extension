@@ -122,9 +122,9 @@ You need to set it manually because of alfred restriction
 
 # Change Log
 
-- v2.23 (2014-07-14)
+- v2.24 (2014-07-14)
   - pbload records `copy` command
-  - guard code for missing tag
+  - guard code for invalid bookmark data
 - v2.22 (2014-06-20)
   - Launch history command (`pblog`)
   - Sort option : last accessed time (`^l`)
