@@ -28,7 +28,7 @@ logger.setLevel(logging.INFO)
 PIN_MAX_RESULT = -1
 UPDATE_BOOKMARK_THRESHOLD = 4
 DELETE_OLDBOOKMARK_THRESHOLD = 60*60*24*14 # 14 days
-RELOAD_ASK_THRESHOLD = 60*60*12            # 12 hours
+RELOAD_ASK_THRESHOLD = 60*60*1             # 1 hours
 STAR = u"\u2605 "
 
 def config_data():
