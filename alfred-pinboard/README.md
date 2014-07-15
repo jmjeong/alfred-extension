@@ -126,7 +126,7 @@ You need to set it manually because of alfred restriction
   - change Reload threshold time to 1 hour from 12 hours
   - Arrange alfred layout
 - v2.24 (2014-07-14)
-  - pbload records `copy` command
+  - pblog records `copy` command
   - guard code for invalid bookmark data
 - v2.22 (2014-06-20)
   - Launch history command (`pblog`)
