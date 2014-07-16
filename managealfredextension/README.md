@@ -1,6 +1,6 @@
 ## Manage Alfred Extension ([Download](https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow))
 
-Search and manage the installed extension
+Browse and manage the installed extension
 
 ![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/screenshot.png)
 
@@ -38,9 +38,14 @@ The file format is as follows:
 *'source-export'* specifies the directory where extension source is copied.  
 
 If there is no '*export.json*' file or there is an error in '*export.json*' file, 
-*~/Downloads* directory is used for workflow export. 
+*~/Downloads* directory is used for workflow export.
 
-### Version History 
+
+### Version History
+
+#### 2.8 - July 16, 2014
+
+- Handles the title and author having space
 
 #### 2.7 - April 19, 2013
 

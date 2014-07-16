@@ -1,5 +1,5 @@
 {
-    "version": 2.7,
+    "version": 2.8,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/managealfredextension/ManageAlfredExtension.alfredworkflow", 
-    "description": "UUID is now optional for alfred 2.0.3"
+    "description": "v2.8"
 }

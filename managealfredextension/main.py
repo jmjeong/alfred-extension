@@ -55,7 +55,7 @@ def process(query):
         except KeyError:
             keyword = ""
 
-        if not query in title.lower() + createdby.lower() + keyword.lower():
+        if not query in title.lower().replace(" ","") + createdby.lower().replace(" ","") + keyword.lower():
             continue
 
         try:
@@ -80,14 +80,13 @@ def process(query):
 
     resultsData = [alfred.Item(title=f['title'], subtitle=' by ' + (f['createdby'] or "[noinfo]") + f['keyword'],
                            attributes = {'arg':os.path.join(dirname,f['directory'])},
-                           icon=os.path.join(dirname, f['directory'], u"icon.png")) for f in results]    
+                           icon=os.path.join(dirname, f['directory'], u"icon.png")) for f in results]
 
     alfred.write(alfred.xml(resultsData,maxresults=None))
 
-
 if __name__ == '__main__':
     try:
-        query = "".join(sys.argv[1:])
+        query = ("".join(sys.argv[1:])).replace(" ","")
     except:
         query = u""
 

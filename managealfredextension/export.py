@@ -34,11 +34,11 @@ ignore_patterns = (
 default_export_setting = """
 {
     "workflow-export" :
-	    {"directory" : "~/Downloads",
+	    {"directory" : "~/git/alfred-extension/managealfredextension",
 		 "enable": true},
     "source-export":
-		{"directory" : "~/Downloads/src",
-		 "enable": false}
+		{"directory" : "~/git/alfred-extension/managealfredextension",
+		 "enable": true}
 }    
 """
 

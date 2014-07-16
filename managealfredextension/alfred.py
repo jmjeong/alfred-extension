@@ -4,6 +4,7 @@ import os
 import plistlib
 import unicodedata
 import sys
+import uuid
 
 from xml.etree.ElementTree import Element, SubElement, tostring
 
@@ -45,7 +46,10 @@ class Item(object):
             value = getattr(self, attribute)
             if value is None:
                 continue
-            attributes = {}            
+            if len(value) == 2 and isinstance(value[1], dict):
+                (value, attributes) = value
+            else:
+                attributes = {}
             SubElement(item, attribute, self.unicode(attributes)).text = unicode(value)
         return item
 
@@ -56,10 +60,10 @@ def config():
     return _create('config')
 
 def decode(s):
-    return unicodedata.normalize('NFC', s.decode('utf-8'))
+    return unicodedata.normalize('NFD', s.decode('utf-8'))
 
 def uid(uid):
-    return u'-'.join(map(unicode, (bundleid, uid)))
+    return u'-'.join(map(unicode, (uuid.uuid4(), uid)))
 
 def unescape(query, characters=None):
     for character in (UNESCAPE_CHARACTERS if (characters is None) else characters):

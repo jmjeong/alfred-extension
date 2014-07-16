@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.jmjeong.alfredv2.ealfred</string>
+	<string>com.jmjeong.alfredv2.mae</string>
+	<key>category</key>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>72C0E636-C427-4039-A22B-257320B6540F</key>
@@ -85,7 +87,7 @@
 	<key>createdby</key>
 	<string>Jaemok Jeong</string>
 	<key>description</key>
-	<string>List and view details about installed Alfred extensions</string>
+	<string>Browse and manage the installed Alfred extensions</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -104,6 +106,72 @@
 			<string>alfred.workflow.action.terminalcommand</string>
 			<key>uid</key>
 			<string>93A6640D-95AD-45E1-B050-984E1507661D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>keyword</key>
+				<string>alf</string>
+				<key>runningsubtext</key>
+				<string>loading...</string>
+				<key>script</key>
+				<string>python main.py "{query}"</string>
+				<key>subtext</key>
+				<string>List and view details about installed Alfred extensions</string>
+				<key>title</key>
+				<string>Manage Alfred Extension</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.action.revealfile</string>
+			<key>uid</key>
+			<string>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>python launch.py "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>72C0E636-C427-4039-A22B-257320B6540F</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -119,54 +187,8 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>B5338C09-9349-4854-8115-B77CE546946A</string>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.action.revealfile</string>
-			<key>uid</key>
-			<string>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>36</integer>
-				<key>keyword</key>
-				<string>alf</string>
-				<key>runningsubtext</key>
-				<string>loading...</string>
-				<key>script</key>
-				<string>python main.py {query}</string>
-				<key>subtext</key>
-				<string>List and view details about installed Alfred extensions</string>
-				<key>title</key>
-				<string>Manage Alfred Extension</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>36</integer>
-				<key>script</key>
-				<string>python toggle.py "{query}"</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -190,6 +212,8 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>33F588E7-C7A1-429E-9EC0-3B9434B9042C</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -197,14 +221,16 @@
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
-				<string>python launch.py "{query}"</string>
+				<string>python toggle.py "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>72C0E636-C427-4039-A22B-257320B6540F</string>
+			<string>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -228,18 +254,12 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict/>
-			<key>type</key>
-			<string>alfred.workflow.action.browseinalfred</string>
-			<key>uid</key>
-			<string>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string> alf                :: display the installed extensions
+	<string>alf                :: display the installed extensions
  alf search-term    :: search extension by title, author name, and keyword
 
  enter              :: Browse the installed folder in Alfred
@@ -254,17 +274,17 @@
 		<key>33F588E7-C7A1-429E-9EC0-3B9434B9042C</key>
 		<dict>
 			<key>ypos</key>
-			<real>570</real>
+			<real>450</real>
 		</dict>
 		<key>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</key>
 		<dict>
 			<key>ypos</key>
-			<real>780</real>
+			<real>560</real>
 		</dict>
 		<key>72C0E636-C427-4039-A22B-257320B6540F</key>
 		<dict>
 			<key>ypos</key>
-			<real>410</real>
+			<real>340</real>
 		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
@@ -279,22 +299,22 @@
 		<key>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</key>
 		<dict>
 			<key>ypos</key>
-			<real>140</real>
+			<real>120</real>
 		</dict>
 		<key>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</key>
 		<dict>
 			<key>ypos</key>
-			<real>260</real>
+			<real>230</real>
 		</dict>
 		<key>B5338C09-9349-4854-8115-B77CE546946A</key>
 		<dict>
 			<key>ypos</key>
-			<real>530</real>
+			<real>450</real>
 		</dict>
 		<key>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</key>
 		<dict>
 			<key>ypos</key>
-			<real>770</real>
+			<real>560</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
