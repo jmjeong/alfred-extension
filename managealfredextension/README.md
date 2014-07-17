@@ -45,7 +45,7 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 #### 2.9 - July 17, 2014
 
-- Ignore camelcase during search
+- case insensitive search
 
 #### 2.8 - July 16, 2014
 
