@@ -43,9 +43,13 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History
 
+#### 2.9 - July 17, 2014
+
+- Ignore camelcase during search
+
 #### 2.8 - July 16, 2014
 
-- Handles the title and author having space
+- Handles the title and author having space properly
 
 #### 2.7 - April 19, 2013
 

@@ -86,7 +86,7 @@ def process(query):
 
 if __name__ == '__main__':
     try:
-        query = ("".join(sys.argv[1:])).replace(" ","")
+        query = ("".join(sys.argv[1:])).replace(" ","").lower()
     except:
         query = u""
 
