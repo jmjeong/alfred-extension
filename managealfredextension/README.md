@@ -88,6 +88,3 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 #### 1.x - March 28, 2013
 
 - Initial version
-
- 
-
