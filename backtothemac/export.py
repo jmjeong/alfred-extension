@@ -30,6 +30,8 @@ ignore_patterns = (
     'deleted-url.json',
     '.git',
     '.gitignore',
+    'update-info.json',
+    'update.json',
     '*~',
     '#*',
     '_*'
