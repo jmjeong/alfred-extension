@@ -18,5 +18,4 @@ def main(arg):
         os.system("open '%s' > /dev/null" % arg)
     
 if __name__ == '__main__':
-    main('reload')
-    # main(sys.argv[1])
+    main(sys.argv[1])
