@@ -3,6 +3,7 @@
 Display the recent articles from [Back to The Mac](http://macnews.tistory.com)
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/screenshot.jpg)
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/search.jpg)
 
 ###  Usage
 
@@ -12,9 +13,13 @@ Display the recent articles from [Back to The Mac](http://macnews.tistory.com)
 
 ### Version History
 
+#### 2.1 - July 21, 2014
+
+- 검색 기능 추가
+
 #### 2.0 - July 21, 2014
 
-- 속도를 위해 읽어온 기사는 캐시 처리, 2시간이 지나면 새로운 기사를 읽어올건지 묻는 창 추가
+- 속도를 위해 읽어온 기사는 캐시 처리, 1시간이 지나면 새로운 기사를 읽어올건지 묻는 창 추가
 
 #### 1.5 - April 19, 2013
 

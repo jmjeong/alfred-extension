@@ -12,6 +12,7 @@ import subprocess
 import json
 import util
 import time
+import unicodedata
 
 import sys
 reload(sys)
@@ -33,6 +34,12 @@ def rss_data():
         return []
 
 def main():
+    try:
+        q = unicode(sys.argv[1])
+        q = unicodedata.normalize('NFC', q).lower().replace(' ','')
+    except:
+        q = ""
+        
     rss = rss_data()
     config = config_data()
     try:
@@ -42,7 +49,8 @@ def main():
 
     results = []
     for e in itertools.islice(rss,max_results):
-        results.append(alfred.Item(title=e['title'],subtitle=e['published'],attributes={'arg':e['link']},icon=e['image']))
+        if not q or q in e['title'].lower().replace(' ',''):
+            results.append(alfred.Item(title=e['title'],subtitle=e['published'],attributes={'arg':e['link']},icon=e['image']))
 
     try:
         last_updated = config['last_updated']

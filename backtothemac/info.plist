@@ -87,15 +87,15 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
-				<integer>63</integer>
+				<integer>36</integer>
 				<key>keyword</key>
 				<string>btm</string>
 				<key>runningsubtext</key>
 				<string>loading...</string>
 				<key>script</key>
-				<string>python main.py</string>
+				<string>python main.py "{query}"</string>
 				<key>subtext</key>
 				<string>Back to The Mac RSS Reader</string>
 				<key>title</key>
