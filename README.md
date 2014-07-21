@@ -25,7 +25,7 @@ Comic Viewer - 미생웹툰 (Korean Webtoon)
 
 Display the recent articles from [Back to The Mac](http://macnews.tistory.com)
 
-![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/screenshot.png)
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/screenshot.jpg)
 
 ## Tidy up LaunchPad in Mountain Lion([Link](https://github.com/jmjeong/alfred-extension/tree/master/tidyuplaunchpad), [Download](https://raw.github.com/jmjeong/alfred-extension/master/tidyuplaunchpad/TidyupLaunchPad.alfredworkflow))
 

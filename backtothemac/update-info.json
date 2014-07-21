@@ -1,5 +1,5 @@
 {
-    "version": 1.5,
+    "version": 2.0,
     "download_uri": "https://raw.github.com/jmjeong/alfred-extension/master/backtothemac/BackToTheMac.alfredworkflow", 
-    "description": "alfred 2.0.3의 UUID patch 대응"
+    "description": "v2.0"
 }
