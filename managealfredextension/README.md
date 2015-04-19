@@ -43,6 +43,10 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History
 
+#### 2.10 - Apr 19, 2015
+
+- escape path in 'open terminal' command 
+
 #### 2.9 - July 17, 2014
 
 - case insensitive search
