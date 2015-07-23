@@ -17,7 +17,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 logger = logging.getLogger('com.jmjeong.alfredv2.pinboard')
-hdlr = logging.FileHandler('/var/tmp/alfred.pinboard.log')
+hdlr = logging.FileHandler('/tmp/alfred.pinboard.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)

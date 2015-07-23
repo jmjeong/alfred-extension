@@ -38,7 +38,7 @@ ignore_patterns = (
 default_export_setting = """
 {
     "workflow-export" :
-	    {"directory" : "~/Downloads",
+	    {"directory" : "~/git/alfred-extension/alfred-pinboard",
 		 "enable": true},
     "source-export":
 		{"directory" : "~/Downloads/src",
