@@ -1,11 +1,11 @@
 # Introduction 
 
-Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and the following function.
+Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and the following functions.
 
 - search pinboard (`pba`) - supports various search condition such as `or(|)`, `and( )`, and `not(-)`
 - search tag : Type `pba #`
 - search untagged entries : Type `pba # :`
-- search pinboard memo (`pbmemo`)
+- search pinboard memo (`pbnote`)
 - show starred bookmark (`pbs`)
 - browse and search history (`pbhis`)
 - browse launch history (`pblog`)
@@ -24,7 +24,7 @@ Yet another alfred-pinboard workflow. It provides INSTANT pinboard search and th
 1. pbauth username:TOKEN <- set access token
     - Get it from [https://pinboard.in/settings/password](https://pinboard.in/settings/password)
 2. pbreload - loads latest bookmarks and memo from pinboard.in
-3. search with `pba`, `pbmemo`, `pbl`, and `pbu` command
+3. search with `pba`, `pbnote`, `pbl`, and `pbu` command
 
 ---
 
