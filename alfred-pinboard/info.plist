@@ -1078,7 +1078,7 @@
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
-				<string>tell application "Alfred 2" to run trigger "reload" in workflow "com.jmjeong.alfredv2.pinboard" with argument "test"
+				<string>tell application "Alfred 3" to run trigger "reload" in workflow "com.jmjeong.alfredv2.pinboard" with argument "test"
 return "Reloading... Please wait."</string>
 				<key>type</key>
 				<integer>6</integer>
@@ -1147,7 +1147,7 @@ return "Reloading... Please wait."</string>
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-  	tell application "Alfred 2" to run trigger "pba" in workflow 	"com.jmjeong.alfredv2.pinboard" with argument q
+  	tell application "Alfred 3" to run trigger "pba" in workflow 	"com.jmjeong.alfredv2.pinboard" with argument q
 end alfred_script</string>
 				<key>cachescript</key>
 				<false/>

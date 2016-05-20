@@ -16,7 +16,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-ALFRED_WORKDIR = "~/Library/Application Support/Alfred 2/Workflow Data/com.jmjeong.alfredv2.pinboard/"
+ALFRED_WORKDIR = "~/Library/Application Support/Alfred 3/Workflow Data/com.jmjeong.alfredv2.pinboard/"
 PINBOARD_TOKEN='xxxx:xxxxxx'                                            # get it from https://pinboard.in/settings/password
 
 def note_list_cache():

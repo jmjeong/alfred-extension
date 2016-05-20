@@ -122,6 +122,8 @@ You need to set it manually because of alfred restriction
 
 # Change Log
 
+- v2.3 (2016-050-20)
+  - Update Settings for Alfred v3
 - v2.27 (2015-07-23)
   - Move tmp logging folder to /tmp, because /var/tmp is not writable for some user
 

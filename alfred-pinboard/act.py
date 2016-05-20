@@ -106,7 +106,7 @@ def addpocket(arg):
 
 def pbreload():
     print "Reloading... Please wait."    
-    launchArgs = 'tell application "Alfred 2" to run trigger "reload" in workflow "com.jmjeong.alfredv2.pinboard" with argument ""'
+    launchArgs = 'tell application "Alfred 3" to run trigger "reload" in workflow "com.jmjeong.alfredv2.pinboard" with argument ""'
     os.system("osascript -e '%s' > /dev/null" % launchArgs)
     
 def main(args):
