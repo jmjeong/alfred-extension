@@ -43,6 +43,11 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History
 
+#### 2.11 - May 22, 2016
+
+- Update for Alfred 3
+- Change default terminal app into iTerm 2
+
 #### 2.10 - Apr 19, 2015
 
 - escape path in 'open terminal' command 

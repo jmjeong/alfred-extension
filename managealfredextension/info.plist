@@ -14,11 +14,13 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>93A6640D-95AD-45E1-B050-984E1507661D</string>
+				<string>A8AB96C4-F827-4B8F-8043-EBB686D2D0D1</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
-				<string>Open terminal at Folder</string>
+				<string>Open workflow path in iTerm 2</string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -27,6 +29,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -35,6 +39,8 @@
 				<integer>262144</integer>
 				<key>modifiersubtext</key>
 				<string>Reveal Folder in Finder</string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -43,6 +49,8 @@
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
 				<string>Launch extension with the first keyword</string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -50,7 +58,9 @@
 				<key>modifiers</key>
 				<integer>524288</integer>
 				<key>modifiersubtext</key>
-				<string>Export extension (~/Downloads, you can customize by export.json)</string>
+				<string>Export extension - Default: ~/Downloads, customize this value in export.json</string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -59,6 +69,8 @@
 				<integer>8388608</integer>
 				<key>modifiersubtext</key>
 				<string>Enable/Disable extension</string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>B5338C09-9349-4854-8115-B77CE546946A</key>
@@ -70,6 +82,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</key>
@@ -81,6 +95,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -97,31 +113,64 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>open -a Terminal {query}</string>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  tell application "iTerm"
+    activate
+
+    try
+      set sesh to current session of current terminal
+    on error
+      set term to (make new terminal)
+      tell term
+        launch session "Default"
+        set sesh to current session
+      end tell
+    end try
+
+    tell sesh
+      write text "cd " &amp; q &amp; ";clear;"
+    end tell
+  end tell
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.terminalcommand</string>
+			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
-			<string>93A6640D-95AD-45E1-B050-984E1507661D</string>
+			<string>A8AB96C4-F827-4B8F-8043-EBB686D2D0D1</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>keyword</key>
 				<string>alf</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>runningsubtext</key>
 				<string>loading...</string>
 				<key>script</key>
 				<string>python main.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>List and view details about installed Alfred extensions</string>
 				<key>title</key>
@@ -136,17 +185,20 @@
 			<key>uid</key>
 			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
-			<dict/>
+			<dict>
+				<key>path</key>
+				<string></string>
+			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.browseinalfred</string>
 			<key>uid</key>
 			<string>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -154,15 +206,21 @@
 			<key>uid</key>
 			<string>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
 				<string>python launch.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -171,15 +229,21 @@
 			<key>uid</key>
 			<string>72C0E636-C427-4039-A22B-257320B6540F</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
 				<string>python export.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -188,7 +252,7 @@
 			<key>uid</key>
 			<string>B5338C09-9349-4854-8115-B77CE546946A</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -197,11 +261,7 @@
 				<false/>
 				<key>onlyshowifquerypopulated</key>
 				<false/>
-				<key>output</key>
-				<integer>0</integer>
 				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
 				<false/>
 				<key>text</key>
 				<string>{query}</string>
@@ -213,15 +273,21 @@
 			<key>uid</key>
 			<string>33F588E7-C7A1-429E-9EC0-3B9434B9042C</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
 				<integer>36</integer>
 				<key>script</key>
 				<string>python toggle.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -230,7 +296,7 @@
 			<key>uid</key>
 			<string>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -239,11 +305,7 @@
 				<false/>
 				<key>onlyshowifquerypopulated</key>
 				<false/>
-				<key>output</key>
-				<integer>0</integer>
 				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
 				<false/>
 				<key>text</key>
 				<string>{query}</string>
@@ -255,68 +317,91 @@
 			<key>uid</key>
 			<string>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>alf                :: display the installed extensions
- alf search-term    :: search extension by title, author name, and keyword
+	<string>Browse and manage the installed extension
 
- enter              :: Browse the installed folder in Alfred
- ctrl               :: Reveal the installed folder in Finder
- shift              :: Execute extension with the first keyword
- cmd                :: Open terminal in the installed folder
- shift              :: Export the extension for distribution 
-                       (Default: ~/Downloads, you can customize it with export.json file)
- fn                 :: Enable or Disable an extension</string>
+alf - display the installed extensions
+alf &lt;search-term&gt; - search extension by title, author name, and keyword
+
+&lt;command&gt;
+- enter : Browse the installed folder in Alfred
+- ctrl  : Reveal the installed folder in Finder
+- shift : Execute extension with the first keyword
+- cmd   : Open iTerm 2 in the installed folder
+- shift : Export the extension for distribution 
+  Default: ~/Downloads, customize it with export.json file
+- fn    : Enable or Disable an extension</string>
 	<key>uidata</key>
 	<dict>
 		<key>33F588E7-C7A1-429E-9EC0-3B9434B9042C</key>
 		<dict>
+			<key>xpos</key>
+			<integer>700</integer>
 			<key>ypos</key>
-			<real>450</real>
+			<integer>450</integer>
 		</dict>
 		<key>54DACDC3-F262-4FF4-8CC9-0414E84CF7D8</key>
 		<dict>
+			<key>xpos</key>
+			<integer>700</integer>
 			<key>ypos</key>
-			<real>560</real>
+			<integer>570</integer>
 		</dict>
 		<key>72C0E636-C427-4039-A22B-257320B6540F</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>340</real>
 		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
+			<key>xpos</key>
+			<integer>130</integer>
 			<key>ypos</key>
-			<real>60</real>
-		</dict>
-		<key>93A6640D-95AD-45E1-B050-984E1507661D</key>
-		<dict>
-			<key>ypos</key>
-			<real>10</real>
+			<integer>100</integer>
 		</dict>
 		<key>9A6BFF3E-5A60-48B7-904B-957CC812ACD8</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>120</real>
 		</dict>
+		<key>A8AB96C4-F827-4B8F-8043-EBB686D2D0D1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>10</integer>
+		</dict>
 		<key>B3581A8D-8C84-4E0D-9DAA-21348D4DA88F</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>230</real>
 		</dict>
 		<key>B5338C09-9349-4854-8115-B77CE546946A</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
-			<real>450</real>
+			<integer>450</integer>
 		</dict>
 		<key>F72A0346-1F5D-4D2A-BEC1-5FAB10D82C98</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>560</real>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string>2.11</string>
 	<key>webaddress</key>
 	<string>http://jmjeong.com</string>
 </dict>
