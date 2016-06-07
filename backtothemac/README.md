@@ -14,9 +14,10 @@ Display the recent articles from [Back to The Mac](http://macnews.tistory.com)
 ### Version History
 
 
-#### 2.2 - June 7, 2015
+#### 2.2 - June 7, 2016
 
-- Alfred 3 호환 
+- Alfred 3 호환
+- Icon 변경
 
 #### 2.1 - July 21, 2014
 
