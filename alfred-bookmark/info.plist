@@ -241,23 +241,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>4E95BDA6-E7C0-4DDD-BB3C-163513A8824C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -275,6 +258,23 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>790A0497-0F83-4930-8E39-29B73B49F094</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>4E95BDA6-E7C0-4DDD-BB3C-163513A8824C</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -612,7 +612,9 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Bookmark Utility 
+
+https://github.com/jmjeong/alfred-extension/tree/master/alfred-bookmark</string>
 	<key>uidata</key>
 	<dict>
 		<key>02BB77C3-F16F-47F6-9939-E2FD26920174</key>
@@ -721,6 +723,8 @@
 			<integer>300</integer>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string></string>
 	<key>webaddress</key>
 	<string>http://jmjeong.com</string>
 </dict>
