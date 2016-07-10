@@ -115,23 +115,8 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-  tell application "iTerm"
-    activate
 
-    try
-      set sesh to current session of current terminal
-    on error
-      set term to (make new terminal)
-      tell term
-        launch session "Default"
-        set sesh to current session
-      end tell
-    end try
-
-    tell sesh
-      write text "cd " &amp; q &amp; ";clear;"
-    end tell
-  end tell
+tell application "iTerm"	activate		tell (create window with default profile)		write current session text "cd " &amp; q &amp; ";clear;"	end tellend tell
 
 end alfred_script</string>
 				<key>cachescript</key>
