@@ -33,7 +33,7 @@ pinboard.in 계정 연동 후에는 pinboard.in에서 수정한 내용을 `pbrel
 
 ### 인스톨 
 
-Workflow를 인스톨하고 난 후, 초기화된 키 설정을 다시 합니다. 
+Workflow를 인스톨하고 난 후, 초기화된 키 설정을 다시 합니다. 저는 다음과 같은 키 설정으로 사용합니다.
 
 - Cmd-Shift-Ctrl-P : Workflow launch (검색 조건은 설정에 따릅니다)
 - Cmd-Shift-Ctrl-K : 모든 북마크를 검색에 포함(private, mark 설정 무시)
