@@ -88,11 +88,6 @@ def authinfo(c):
     else: return r['value']
     
 def opendb():
-    # print PINBOARD_SQLITE3
-    # try:
-    #     os.mkdir(os.environ["alfred_workflow_data"])
-    # except OSError:
-    #     pass
     conn = sqlite3.connect(os.path.expanduser(PINBOARD_SQLITE3))
     conn.row_factory = sqlite3.Row
 
