@@ -2,7 +2,7 @@
 
 Browser의 북마크를 alfred로 관리하고 검색하는 workflow입니다.
 
-![](https://youtu.be/ImXADq0mBRM)
+[![youtube](http://img.youtube.com/vi/ImXADq0mBRM/0.jpg)](http://www.youtube.com/watch?v=ImXADq0mBRM)
 
 단축키를 이용하여 URL을 북마킹, 태그 부여, 검색, 실행할 수 있습니다. 
 
