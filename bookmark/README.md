@@ -8,7 +8,7 @@ Browser의 북마크를 alfred로 관리하고 검색하는 workflow입니다.
 
 pinboard.in 검색하고 관리하는
 [alfred-pinboard](https://github.com/jmjeong/alfred-extension/tree/master/alfred-pinboard)를 만들어
-사용하다, 버전업을 하면서 pinboard.in 계정이 없더라도 사용할 수 있도록 확장했습니다. 
+사용하다가, 버전업을 하면서 pinboard.in 계정이 없더라도 사용할 수 있도록 확장했습니다. 
 
 pinboard.in 계정 연동 후에는 pinboard.in에서 수정한 내용을 `pbreload` 명령을 통해 읽어올 수 있습니다. 
 
@@ -60,7 +60,7 @@ Workflow를 인스톨하고 난 후, 초기화된 키 설정을 다시 합니다
 
 ### 명령어 
 
-- bm (ctrl-shift-cmd-p) - 메인 검색. 설정에 지정된 값을 기반으로 검색합니다. 
+- bm (ctrl-shift-cmd-p) - 메인 검색. 설정의 검색 조건을 기반으로 검색합니다. 
 
 - bm으로 구동된 후 명령어
 	- ! (ctrl-shift-cmd-k) - private 지정된 북마크 도 검색에 포함 
@@ -68,7 +68,7 @@ Workflow를 인스톨하고 난 후, 초기화된 키 설정을 다시 합니다
 	- \+ (ctrl-shift-cmd-;) - 웹 브라우저가 활성화 되었을 경우에만 동작합니다. 북마크 추가 단축키.
 	- \# - 태그 검색. tab이나 enter 누르면 해당 태그에 속한 북마크만 검색
 
-alfred-bookmark의 각 북마크에는 다음과 같은 명령을 내릴 수 있습니다. 
+alfred-bookmark의 각 북마크에 다음과 같은 명령을 내릴 수 있습니다. 
 
 - Enter : 북마크를 구동합니다
 - Ctrl : mark 설정을 on/off 바꿉니다
@@ -76,5 +76,5 @@ alfred-bookmark의 각 북마크에는 다음과 같은 명령을 내릴 수 있
 - Alt : 북마크를 지웁니다
 - Cmd : URL을 복사합니다
 
-Mark, Private 설정은 tag 검색 메뉴에서 소속된 모든 북마크에 적용 가능합니다. 예를 들어 #mac tag에 포함된 북마크 모두를 private로
-변경이 가능합니다. 
+Mark, Private 설정은 tag 검색 메뉴에서 소속된 모든 북마크에 적용 가능합니다.
+예를 들어 #mac tag에 포함된 북마크 모두를 private로 변경가능합니다. 
