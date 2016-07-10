@@ -9,7 +9,6 @@ import os
 import urllib
 import sys
 import json
-import json
 import urlparse
 import util
 import datetime
@@ -92,14 +91,6 @@ def load_tags_data(token):
         print e
         sys.exit(0)
 
-def pins_data():
-    try:
-        filename = os.environ['HOME']+'/.bookmarks.json'
-        pins = json.loads(open(filename, 'r').read())
-    except:
-        pins = {}
-    return pins
-    
 if __name__ == '__main__':
 
     conn = util.opendb()
@@ -115,11 +106,11 @@ if __name__ == '__main__':
     server_time = pinboard_update_time(pinboard_token)
     sql_time = util.sql_update_time(c)
 
+    now = datetime.datetime.utcnow()
+    
     if (sql_time < server_time):
-        pins = load_pinboard_data(pinboard_token)
-        # pins = pins_data()
-        now = datetime.datetime.utcnow()
         
+        pins = load_pinboard_data(pinboard_token)
         populate_data(c,pins,now)
         
         tags = load_tags_data(pinboard_token)

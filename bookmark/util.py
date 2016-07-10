@@ -7,8 +7,7 @@
 
 import sqlite3
 import os
-
-PINBOARD_SQLITE3 = os.path.join(os.environ["alfred_workflow_data"],"pinboard.db")
+import json
 
 filter_option=["off","on","all"]
 
@@ -86,9 +85,21 @@ def authinfo(c):
     r = c.execute('select value from setting where name="auth"').fetchone()
     if r==None: return ''
     else: return r['value']
+
+def get_dbname():
+    workflow_dir = os.environ["alfred_workflow_data"]
+    pinboard_db_name = "pinboard.db"
+
+    try:
+        filename = os.path.join(workflow_dir,'config.json')
+        config = json.loads(open(filename, 'r').read())
+        return os.path.join(config["DBPATH"], pinboard_db_name)
+    except:
+        return os.path.join(workflow_dir, pinboard_db_name)        
     
 def opendb():
-    conn = sqlite3.connect(os.path.expanduser(PINBOARD_SQLITE3))
+    dbname = get_dbname();
+    conn = sqlite3.connect(os.path.expanduser(dbname))
     conn.row_factory = sqlite3.Row
 
     return conn

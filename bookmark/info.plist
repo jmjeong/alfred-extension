@@ -135,6 +135,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>AAFB7595-BB3F-4B30-95C3-D0FC5D013D63</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AA084A05-C25C-45B5-AADA-7B4D7EDB7F59</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>AF126F84-0720-421E-96D1-A4B3E69FBC44</key>
 		<array>
 			<dict>
@@ -569,6 +582,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>triggerid</key>
+				<string>reload</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>AAFB7595-BB3F-4B30-95C3-D0FC5D013D63</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -657,7 +683,7 @@ https://github.com/jmjeong/alfred-extension/tree/master/alfred-bookmark</string>
 			<key>xpos</key>
 			<integer>750</integer>
 			<key>ypos</key>
-			<integer>630</integer>
+			<integer>640</integer>
 		</dict>
 		<key>790A0497-0F83-4930-8E39-29B73B49F094</key>
 		<dict>
@@ -690,9 +716,16 @@ https://github.com/jmjeong/alfred-extension/tree/master/alfred-bookmark</string>
 		<key>AA084A05-C25C-45B5-AADA-7B4D7EDB7F59</key>
 		<dict>
 			<key>xpos</key>
-			<integer>550</integer>
+			<integer>490</integer>
 			<key>ypos</key>
-			<integer>630</integer>
+			<integer>640</integer>
+		</dict>
+		<key>AAFB7595-BB3F-4B30-95C3-D0FC5D013D63</key>
+		<dict>
+			<key>xpos</key>
+			<integer>270</integer>
+			<key>ypos</key>
+			<integer>640</integer>
 		</dict>
 		<key>AF126F84-0720-421E-96D1-A4B3E69FBC44</key>
 		<dict>

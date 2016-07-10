@@ -22,21 +22,21 @@ def update_history(arg,c):
 
 def private(arg,c):
     c.execute("update pinboard set private=not private,accessed=datetime('now') where href=?",(arg,))
-    relaunch("")
+    relaunch("launch","")
 
 def mark(arg,c):
     c.execute("update pinboard set mark=not mark,accessed=datetime('now') where href=?",(arg,))
-    relaunch("")
+    relaunch("launch","")
 
 def delete_from_db(arg,c):
     r=c.execute("select tags from pinboard where href=?",(arg,)).fetchone()
     if r!=None and r['tags']:
         dec_or_delete_fromdb(c,r['tags'].split(','))
     c.execute("delete from pinboard where href=?",(arg,))
-    relaunch("")
+    relaunch("launch","")
 
-def relaunch(arg):
-    launchArgs = 'tell application "Alfred 3" to run trigger "launch" in workflow "com.jmjeong.bookmark" with argument "%s"'%arg
+def relaunch(cmd,arg):
+    launchArgs = 'tell application "Alfred 3" to run trigger "%s" in workflow "com.jmjeong.bookmark" with argument "%s"'%(cmd,arg)
     applescript.AppleScript(launchArgs).run()
 
 def update_sql_option(c,name,value):
@@ -50,7 +50,7 @@ def update_option(arg,c):
 
     if name!='auth':
         update_sql_option(c,name,value)
-        relaunch("_")
+        relaunch("launch","_")
         return
 
     url = 'https://api.pinboard.in/v1/user/api_token/?auth_token=%s&format=json'%(value)
@@ -67,7 +67,7 @@ def update_option(arg,c):
         delete_sql_auth(c)
         print "Invalid username:token"
         
-    relaunch("_")
+    relaunch("launch","_")
     
 def change_tag_status(arg,c):
     (tag,set)=arg.split('_')
@@ -77,7 +77,7 @@ def change_tag_status(arg,c):
     where_phase=' where tags like "%%%s%%"'%(tag)
 
     c.execute(sql+where_phase,(value,))
-    relaunch("")
+    relaunch("launch","")
     
 def copy(arg,c):
     update_history(arg,c)
@@ -229,9 +229,11 @@ def main(cmd,args):
     conn = util.opendb()
     c = conn.cursor()
     util.create_schema(c)
-    
+
     if args.startswith('#'):
         change_tag_status(args[1:],c)
+    elif args.startswith('_pbreload'):
+        relaunch("reload","");
     elif args.startswith('_'):
         update_option(args[1:], c)
     elif args.startswith('+'):

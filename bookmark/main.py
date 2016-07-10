@@ -61,21 +61,6 @@ def pretty_date(time=False):
         return str(day_diff/30) + " months ago"
     return str(day_diff/365) + " years ago"
 
-def help():
-    result = []
-    result.append(alfred.Item(title='Look up Documentation', subtitle='Goto project site', attributes={'arg':'https://github.com/jmjeong/alfred-extension/blob/master/alfred-pinboard/README.md','uid':alfred.uid(0)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbauth username:token', subtitle='set pinboard authentication token', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbreload', subtitle='load latest bookmarks from pinboard.in', attributes={'valid':'no','uid':alfred.uid(2)}, icon="icon.png"))
-    result.append(alfred.Item(title='pba query', subtitle='search all fields of bookmarks', attributes={'valid':'no','uid':alfred.uid(3)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbtag', subtitle='display tags list', attributes={'valid':'no','uid':alfred.uid(7)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbnote query', subtitle='display note list', attributes={'valid':'no','uid':alfred.uid(10)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbl query', subtitle='search link of bookmarks', attributes={'valid':'no','uid':alfred.uid(5)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbu query', subtitle='search title of toread bookmarks', attributes={'valid':'no','uid':alfred.uid(8)}, icon="icon.png"))
-    result.append(alfred.Item(title='pbauthpocket', subtitle='Login with Pocket!', attributes={'valid':'no','uid':alfred.uid(1)}, icon="icon.png"))
-    result.append(alfred.Item(title='To selected bookmark', subtitle='enter:goto site, cmd:copy url, alt:delete bookmark, tab:expand', attributes={'valid':'no','uid':alfred.uid(9)}, icon="icon.png"))
-    alfred.write(alfred.xml(result,maxresults=None))
-
-
 def query_build(q,tag_list,option,order_by):
     query = "select description,href,host,tags,launch_count,mark,private,shared,toread from pinboard "
 
@@ -296,6 +281,7 @@ def process_option(c,q):
             result.append({"title": ">> Download pinboard data",
                            "subtitle": 'enter to reload pinboard',
                            "valid": True,
+                           "arg": "_pbreload",
                            "autocomplete":"_pbreload ",
                            "mods": mods
             })
