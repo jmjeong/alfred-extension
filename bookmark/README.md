@@ -1,6 +1,8 @@
 # 북마크
 
-Browser의 북마크를 alfred로 관리하고 검색하는 workflow입니다. 
+Browser의 북마크를 alfred로 관리하고 검색하는 workflow입니다.
+
+![](https://youtu.be/ImXADq0mBRM)
 
 단축키를 이용하여 URL을 북마킹, 태그 부여, 검색, 실행할 수 있습니다. 
 
@@ -31,15 +33,12 @@ pinboard.in 계정 연동 후에는 pinboard.in에서 수정한 내용을 `pbrel
 
 ### 인스톨 
 
-Workflow를 인스톨하고 난 후에, 키 설정은 초기화됩니다.
+Workflow를 인스톨하고 난 후, 초기화된 키 설정을 다시 합니다. 
 
 - Cmd-Shift-Ctrl-P : Workflow launch (검색 조건은 설정에 따릅니다)
 - Cmd-Shift-Ctrl-K : 모든 북마크를 검색에 포함(private, mark 설정 무시)
 - Cmd-Shift-Ctrl-L : Mark 설정된 북마크만 검색
 - Cmd-Shift-Ctrl-; : 북마크 추가 (**브라우저가 활성화된 상태에서만 동작합니다**)
-
-핫 키 설정은 개인별로 추가합니다.
-
 
 ### 북마크 속성 별 검색
 
