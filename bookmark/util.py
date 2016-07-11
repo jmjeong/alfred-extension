@@ -94,7 +94,7 @@ def get_dbpath():
         config = json.loads(open(filename, 'r').read())
         return os.path.expanduser(config["DBPATH"])
     except:
-        return os.path.exppanduser(workflow_dir)
+        return os.path.expanduser(workflow_dir)
     
 def opendb():
     dbpath = get_dbpath();
