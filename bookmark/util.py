@@ -86,19 +86,27 @@ def authinfo(c):
     if r==None: return ''
     else: return r['value']
 
-def get_dbname():
+def get_dbpath():
     workflow_dir = os.environ["alfred_workflow_data"]
-    pinboard_db_name = "pinboard.db"
 
     try:
         filename = os.path.join(workflow_dir,'config.json')
         config = json.loads(open(filename, 'r').read())
-        return os.path.join(config["DBPATH"], pinboard_db_name)
+        return os.path.expanduser(config["DBPATH"])
     except:
-        return os.path.join(workflow_dir, pinboard_db_name)        
+        return os.path.exppanduser(workflow_dir)
     
 def opendb():
-    dbname = get_dbname();
+    dbpath = get_dbpath();
+    
+    pinboard_db_name = "pinboard.db"
+
+    try:
+        os.makedirs(dbpath)
+    except:
+        pass
+
+    dbname = os.path.join(dbpath,pinboard_db_name)
     conn = sqlite3.connect(os.path.expanduser(dbname))
     conn.row_factory = sqlite3.Row
 
