@@ -3,7 +3,7 @@
 Bookmark is alfred workflow which enables to manage and search bookmark.
 You can add browser's URL to bookmark, add multiple tags to it, and search it.
 
-This workflow works without pinboard.in account.
+This workflow works *without* pinboard.in account.
 You can link pinboard.in account with this workflow also.
 
 Download: https://github.com/jmjeong/alfred-extension/blob/master/bookmark/bookmark.alfredworkflow?raw=true
