@@ -12,11 +12,15 @@ import util
 import applescript
 import urllib
 import time
+import re
 from statsd import StatsClient
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
+title_pattern=re.compile('(.*?)[\.:\|\-]+')
+# title_pattern=re.compile('(.*)')
 
 def pretty_date(time=False):
     """
@@ -91,6 +95,15 @@ def query_build(q,tag_list,option,order_by):
 
     return query+"("+" or ".join([dphases, ephases, tphases])+") and "+mark_phase+" and "+private_phase+" and "+tag_phase+order_by
 
+def title_build(title):
+    if len(title)<45:
+        return title
+    
+    short_title=title_pattern.search(title)
+    if short_title != None: return short_title.group(1)
+    
+    return title
+
 def pbsearch_sql(c,option,q):
     if ':' in q:   # tag
         (tags,q) = q.split(':')
@@ -106,7 +119,7 @@ def pbsearch_sql(c,option,q):
         tags = ' '.join(map(lambda x: '#'+x, (r["tags"].strip().split(' ')))) if r['tags'] else ""
         launch_count = ' +'+str(r["launch_count"]) if r["launch_count"] else ''
         icon = "icon-%d.png"%((r['mark']<<1)+r['private'])
-        output.append({"title": r['description'],
+        output.append({"title": title_build(r['description']),
                        "subtitle": r['host']+" "+tags+launch_count, # "uid": r['hash'],
                        "arg": r['href'],
                        "quicklookurl": r['href'],
