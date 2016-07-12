@@ -1,9 +1,10 @@
 # Bookmark
 
 Bookmark is alfred workflow which enables to manage and search bookmark.
-You can bookmark browser's URL, add multiple tags to it, and search it by shortcut.
+You can add browser's URL to bookmark, add multiple tags to it, and search it.
 
-This workflow works without pinboard.in account. But you can link pinboard.in account with this workflow.
+This workflow works without pinboard.in account.
+You can link pinboard.in account with this workflow also.
 
 Download: https://github.com/jmjeong/alfred-extension/blob/master/bookmark/bookmark.alfredworkflow?raw=true
 
@@ -24,7 +25,7 @@ Bookmark workflow provides...
   - added
 - Pinboard integration
   - **Your local bookmarks are replaced with pinboard.in data after integration**
-  - After integration, add and delete operation is synced with pinboard.in
+  - After integration, add/delete operation is synced with pinboard.in
   - You can download pinboard.in bookmark  with `pbreload` command.
 
 ### Install
@@ -68,4 +69,3 @@ You can change search condition from setting menu(**_**).
   - Shift : toggle private attribute 
   - Alt : delete bookmark
   - Cmd : copy URL
-
