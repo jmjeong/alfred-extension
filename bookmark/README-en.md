@@ -18,7 +18,7 @@ Bookmark workflow provides...
 - Search bookmark
 - Delete bookmark
 - Assign [private], [star] attribute in bookmark
-  - You can narrow the search space using this property
+  - You can narrow the search space using this attribute
 - Several sort options
   - launch count
   - accessed
@@ -58,9 +58,9 @@ You can change search condition from setting menu(**_**).
 ### Command 
 
 - bm (ctrl-shift-cmd-p) 
-	- ! (ctrl-shift-cmd-k) - Search every bookmarks (ignore search condition in setting)
+	- ! (ctrl-shift-cmd-k) - Search every bookmarks (ignores search condition in setting)
 	- \* (ctrl-shift-cmd-l) - Search marked bookmark only
-	- \+ (ctrl-shift-cmd-;) - Add URL to bookmark.
+	- \+ (ctrl-shift-cmd-;) - Add URL to bookmark
 	- \# - Tag search
 
 - For entries
