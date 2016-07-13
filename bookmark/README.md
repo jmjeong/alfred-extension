@@ -3,6 +3,8 @@
 Bookmark is alfred workflow which enables to manage and search bookmark.
 You can add browser's URL to bookmark, add multiple tags to it, and search it.
 
+[![youtube](https://img.youtube.com/vi/ImXADq0mBRM/0.jpg)](https://www.youtube.com/watch?v=ImXADq0mBRM)
+
 This workflow works *without* pinboard.in account.
 You can link pinboard.in account with this workflow also.
 

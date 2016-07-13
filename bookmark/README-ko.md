@@ -2,7 +2,9 @@
 
 Browser의 북마크를 alfred로 관리하고 검색하는 workflow입니다. 
 
-단축키를 이용하여 URL을 북마킹, 태그 부여, 검색, 실행할 수 있습니다. 
+단축키를 이용하여 URL을 북마킹, 태그 부여, 검색, 실행할 수 있습니다.
+
+[![youtube](https://img.youtube.com/vi/ImXADq0mBRM/0.jpg)](https://www.youtube.com/watch?v=ImXADq0mBRM)
 
 pinboard.in 검색하고 관리하는
 [alfred-pinboard](https://github.com/jmjeong/alfred-extension/tree/master/alfred-pinboard)를 만들어
@@ -27,7 +29,6 @@ pinboard.in 계정 연동 후에는 pinboard.in에서 수정한 내용을 `pbrel
 	- **첫 연동 시에 pinboard 데이타로 교체되며 local 저장된 북마크는 지워집니다**
 	- 연동 후에는 등록, 삭제가 pinboard와 연동하여 동작합니다. 
 	- `pbreload` 명령으로 pinboard에서 내용을 local db에 반영합니다. 
-
 
 ### 인스톨 
 
