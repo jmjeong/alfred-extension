@@ -43,6 +43,10 @@ If there is no '*export.json*' file or there is an error in '*export.json*' file
 
 ### Version History
 
+#### 2.12 - July 26, 2016
+
+- Open iTerm2 with existing windows (Thanks nikitavoloboev)
+
 #### 2.11 - May 22, 2016
 
 - Update for Alfred 3
