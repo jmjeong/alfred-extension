@@ -96,7 +96,7 @@ def query_build(q,tag_list,option,order_by):
     return query+"("+" or ".join([dphases, ephases, tphases])+") and "+mark_phase+" and "+private_phase+" and "+tag_phase+order_by
 
 def title_build(title):
-    if len(title)<45:
+    if len(title)<35:
         return title
     
     short_title=title_pattern.search(title)
@@ -140,11 +140,13 @@ def sql_update_time(c):
 def add_head_bottom(c,q,output,tag_list,option):
     auth = util.authinfo(c)
     
-    help_string = "!-all, @-private, *-mark, #-tag"
+    help_string = "!-all, @-private, *-mark, #-tag, _-setting"
     sync_time = "Checked: %s    ::: "%pretty_date(sql_update_time(c))
+    
     subtitle_string = "%s"%help_string
     if auth:
         subtitle_string=sync_time+subtitle_string
+        
     help = {
         "valid": False,
         "subtitle": subtitle_string
@@ -155,8 +157,7 @@ def add_head_bottom(c,q,output,tag_list,option):
             "valid": False,
             "icon": {"path": icon}
     }
-    
-    if len(tag_list)==0:  # all
+    if len(q)==0:  # all
         head["autocomplete"]="_"
         head["mods"] = { "alt": help, "ctrl": help, "cmd": help, "shift": help }
     else:
