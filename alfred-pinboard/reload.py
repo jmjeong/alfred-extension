@@ -30,7 +30,7 @@ def note_list_server(user,token):
         url = 'https://api.pinboard.in/v1/notes/list?format=json&auth_token=%s:%s'%(user,token)
         data = urllib.urlopen(url)
         return json.load(data)
-    except IOError:
+    except:
         return {}
 
 def update_content(notes_cache,id,hash):

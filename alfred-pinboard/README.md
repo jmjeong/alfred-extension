@@ -122,9 +122,11 @@ You need to set it manually because of alfred restriction
 
 # Change Log
 
+- v2.31 (2016-07-31)
+  - Error handling for no notes list
+
 - v2.3 (2016-05-20)
   - Update Settings for Alfred v3
-
 - v2.27 (2015-07-23)
   - Move tmp logging folder to /tmp, because /var/tmp is not writable for some user
 - v2.25 (2014-07-16)
