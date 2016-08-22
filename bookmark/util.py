@@ -87,10 +87,13 @@ def authinfo(c):
     else: return r['value']
 
 def get_dbpath():
-    workflow_dir = os.environ["alfred_workflow_data"]
+    try:
+        workflow_dir = os.environ["alfred_workflow_data"]
+    except KeyError:
+        workflow_dir = "~/Library/Application Support/Alfred 3/Workflow Data/com.jmjeong.bookmark"
 
     try:
-        filename = os.path.join(workflow_dir,'config.json')
+        filename = os.path.expanduser(os.path.join(workflow_dir,'config.json'))
         config = json.loads(open(filename, 'r').read())
         return os.path.expanduser(config["DBPATH"])
     except:
@@ -98,7 +101,6 @@ def get_dbpath():
     
 def opendb():
     dbpath = get_dbpath();
-    
     pinboard_db_name = "pinboard.db"
 
     try:
