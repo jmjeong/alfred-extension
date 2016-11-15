@@ -7,7 +7,7 @@ Add to Things workflow. Supports date parsing for easy input.
 ###  Usage
 
 ```
-+ #tag1 #tag2 ::note >duedate (ex. fri, 3d, 2w, 12/31)
++ title #tag1 #tag2 ::note >duedate (ex. fri, 3d, 2w, 12/31)
 ```
 
 ### Version History 
