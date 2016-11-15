@@ -17,7 +17,7 @@ sys.setdefaultencoding('utf-8')
 
 def main():
     q = sys.argv[1]
-    (title, tag, date, note) = util.parse(q)
+    (title, tag, day, note) = util.parse(q)
 
     if not title: return;
 
@@ -26,12 +26,12 @@ def main():
         set name of newToDo to "%s"
     """ % (title)
 
-    today = date.today()
-    delta = date - today
     
     if note:
         script += '    set notes of newToDo to "%s"\n'%(note)
-    if date:
+    if day:
+        today = date.today()
+        delta = day - today
         script += '    set due date of newToDo to (current date)+%d*days\n'% (delta.days)
     if tag:
         script += 'set tag names of newToDo to "%s"\n'%(tag)
