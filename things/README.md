@@ -1,8 +1,8 @@
-## things ([Download](https://raw.github.com/jmjeong/alfred-extension/master/things/AddtoThings.alfredworkflow))
+## things ([Download](https://raw.github.com/jmjeong/alfred-extension/master/things/things.alfredworkflow))
 
 Add to Things workflow. Supports date parsing for easy input.
 
-![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/date/screenshot.png)
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/things/screenshot.jpg)
 
 ###  Usage
 
