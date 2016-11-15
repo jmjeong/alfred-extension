@@ -46,6 +46,13 @@ Yet another command utility
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/date/screenshot.png)
 
+
+## things ([Link](https://github.com/jmjeong/alfred-extension/tree/master/things),[Download](https://raw.github.com/jmjeong/alfred-extension/master/things/things.alfredworkflow))
+
+Add to Things workflow. Supports date parsing for easy input.
+
+![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/things/screenshot.jpg)
+
 ## alfred-pinboard ([Link](https://github.com/jmjeong/alfred-extension/tree/master/alfred-pinboard),[Download](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pinboard.alfredworkflow))
 
 [pinboard](https://pinboard.in) Search Tools
