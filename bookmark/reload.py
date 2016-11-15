@@ -47,10 +47,14 @@ def populate_tags(c,tags,now):
     c.execute('delete from tags where updated < ?', (now,));
     
 def pinboard_update_time(token):
-    url = 'https://api.pinboard.in/v1/posts/update?format=json&auth_token=%s'%token
-    data = json.loads(urllib.urlopen(url).read())
+    try:
+        url = 'https://api.pinboard.in/v1/posts/update?format=json&auth_token=%s'%token
+        data = json.loads(urllib.urlopen(url).read())
     
-    return data['update_time'].replace('T',' ').replace('Z','')
+        return data['update_time'].replace('T',' ').replace('Z','')
+    except IOError as e:
+        print e
+        sys.exit(0)
 
 def update_sql_update_time_to_now(c):
     c.execute("insert or replace into setting(name,value,updated) values('update_time',datetime('now'),datetime('now'))")
@@ -97,7 +101,7 @@ if __name__ == '__main__':
     
     c = conn.cursor()
     util.create_schema(c)
-    
+
     pinboard_token=util.authinfo(c)
     if not pinboard_token:
         print "Setup Pinboard authentication token"
@@ -105,14 +109,13 @@ if __name__ == '__main__':
     
     server_time = pinboard_update_time(pinboard_token)
     sql_time = util.sql_update_time(c)
-
+    
     now = datetime.datetime.utcnow()
     
     if (sql_time < server_time):
-        
         pins = load_pinboard_data(pinboard_token)
         populate_data(c,pins,now)
-        
+
         tags = load_tags_data(pinboard_token)
         populate_tags(c,tags,now)
 
