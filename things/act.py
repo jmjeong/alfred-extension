@@ -27,15 +27,16 @@ def getClipboardText():
 
 def main():
     q = sys.argv[1]
-    (title, tag, day, note) = util.parse(q[1:])
+    (title, area, tag, day, note) = util.parse(q[1:])
 
     if not title: return;
 
     script = """tell application "Things"
-        activate 
+        activate
+        tell list "%s"
         set newToDo to make new to do   
         set name of newToDo to "%s"
-    """ % (title)
+    """ % (area, title)
 
     if q[0] == 'm' and not note:
         note = getClipboardText()
@@ -50,7 +51,7 @@ def main():
         script += '    set due date of newToDo to (current date)+%d*days\n'% (delta.days)
     if tag:
         script += 'set tag names of newToDo to "%s"\n'%(tag)
-    script += 'show newTodo\nend tell'
+    script += 'show newTodo\nend tell\nend tell'
 
     applescript.AppleScript(script).run()
     

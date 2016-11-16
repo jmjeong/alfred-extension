@@ -53,15 +53,21 @@ def parsedate(q):
     return today
 
 def parse(q):
-    
-    title_pt = re.compile('([^#>:]*)[#>:]*.*$')
+    title_pt = re.compile('([^#>:@]*)[#>:@]*.*$')
     tag_pt = re.compile('#(\w+)')
+    area_pt = re.compile('@(\w)')
     day_pt = re.compile('>(.*)$')
     note_pt = re.compile('::([^>#]*)')
 
     title = ''.join(title_pt.findall(q))
     tag = ','.join(tag_pt.findall(q))
     day = parsedate(day_pt.findall(q))
+    area = ''.join(area_pt.findall(q))
     note = ''.join(note_pt.findall(q))
 
-    return (title, tag, day, note)
+    if area == 's': area = 'Someday'
+    elif area == 'n': area = 'Next'
+    elif area == 't': area = 'Today'
+    else: area = 'Inbox'
+
+    return (title, area, tag, day, note)

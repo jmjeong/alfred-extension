@@ -7,14 +7,31 @@ Add to Things workflow. Supports date parsing for easy input.
 ###  Usage
 
 ```
-t title #tag1 #tag2 ::note > duedate (ex. fri, 3d, 2w, 12/31)
-tm title #tag1 #tag2 ::note > duedate 
+t title #tag @t|n|s ::note > duedate (ex. fri, 3d, 2w, 12/31)
+tm title #tag @t|n|s ::note > duedate 
 ```
+- t : create todo
+- tm : create todo with clipboard contents as a note
 
-- t : create things todo
-- tm : create things todo with clipboard
+- Syntax
+	- #tag : tag
+	- Focus : default location is 'Inbox'
+		- @t : @Today 
+		- @n : @Next
+		- @s : @Someday
+	- ::note : note
+	- > duedate
+		- > : today
+		- > 2d : two days after
+		- > fri : next friday 
+		- > -1d : one day before 
+		- > 11/23 : November 23
 
 ### Version History 
+
+#### 1.13 - Nov 16, 2016
+
+- added Focus syntax - @t|n|s
 
 #### 1.12 - Nov 16, 2016
 

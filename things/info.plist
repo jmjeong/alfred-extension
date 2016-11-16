@@ -75,7 +75,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>title #tag1 #tag2 ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
+				<string>title #tag @t|n|s ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
 				<key>title</key>
 				<string>New To-Do</string>
 				<key>type</key>
@@ -141,7 +141,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>title #tag1 #tag2 ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
+				<string>title #tag @t|n|s ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
 				<key>title</key>
 				<string>New To-Do with clipboard</string>
 				<key>type</key>
