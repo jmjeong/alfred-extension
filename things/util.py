@@ -16,7 +16,7 @@ def parsedate(q):
 
     dow_pt = re.compile(' *(mon|tue|wed|thr|fri|sat|sun)')
     day_pt = re.compile(' *(\d+)[\.\-/](\d+)([\.\-/](\d+))*')
-    add_pt = re.compile(' *(\d+)([dw])*')
+    add_pt = re.compile(' *(-?\d+)([dwm])*')
 
     today = date.today()
 
@@ -44,6 +44,8 @@ def parsedate(q):
         (num, metric) = next.group(1,2)
         if metric == 'w':
             ret = today + timedelta(weeks=int(num))
+        if metric == 'm':
+            ret = today + timedelta(days=int(num)*30)
         else:
             ret = today + timedelta(days=int(num))
         return ret

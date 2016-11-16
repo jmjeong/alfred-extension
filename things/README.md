@@ -16,8 +16,10 @@ tm title #tag1 #tag2 ::note > duedate
 
 ### Version History 
 
-#### 1.11 - Nov 16, 2016
+#### 1.12 - Nov 16, 2016
 
+- support previous day/week/month like -3d
+- support month for duedawte such as 1m
 - '>' denotes 'today'
 
 #### 1.1 - Nov 16, 2016

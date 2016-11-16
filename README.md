@@ -59,6 +59,9 @@ Add to Things workflow. Supports date parsing for easy input.
 
 ![Screenshot](https://raw.github.com/jmjeong/alfred-extension/master/alfred-pinboard/pbhelp.jpg)
 
+## bookmark ([Link](https://github.com/jmjeong/alfred-extension/tree/master/bookmark),[Download](https://raw.github.com/jmjeong/alfred-extension/master/bookmark/bookmark.alfredworkflow))
+
+Browser bookmark worflow which can be integrated with pinboard.in
 
 ## ipaddr ([Link](https://github.com/jmjeong/alfred-extension/tree/master/ipaddr),[Download](https://raw.github.com/jmjeong/alfred-extension/master/ipaddr/ipaddr.alfredworkflow))
 
