@@ -10,8 +10,8 @@ Add to Things workflow. Supports date parsing for easy input.
 t title #tag @t|n|s ::note > duedate (ex. fri, 3d, 2w, 12/31)
 tm title #tag @t|n|s ::note > duedate 
 ```
-- t : create todo
-- tm : create todo with clipboard contents as a note
+- `t` : create todo
+- `tm` : create todo with clipboard contents as a note
 
 - Syntax
 	- #tag : tag
@@ -31,7 +31,7 @@ tm title #tag @t|n|s ::note > duedate
 
 #### 1.13 - Nov 16, 2016
 
-- added Focus syntax - @t|n|s
+- add Focus syntax - @t|n|s
 
 #### 1.12 - Nov 16, 2016
 
@@ -41,10 +41,10 @@ tm title #tag @t|n|s ::note > duedate
 
 #### 1.1 - Nov 16, 2016
 
-- Change command to 't, tm'
-- Added 'tm' command - create todo with clipboard note
-- After creation, show the created todo of things
+- change command to 't, tm'
+- add `tm` command - create todo with clipboard contents as a note
+- show item location after creation
 
 #### 1.0 - Nov 15, 2016
 
-- Initial release
+- initial release
