@@ -9,6 +9,9 @@ import re
 from datetime import date, timedelta
 
 def parsedate(q):
+    if len(q) == 0: return None
+
+    q = ''.join(q)    
     dow_str = ['mon', 'tue', 'wed', 'thr', 'fri', 'sat', 'sun']
 
     dow_pt = re.compile(' *(mon|tue|wed|thr|fri|sat|sun)')
@@ -45,8 +48,7 @@ def parsedate(q):
             ret = today + timedelta(days=int(num))
         return ret
     
-    
-    return None
+    return today
 
 def parse(q):
     
@@ -57,7 +59,7 @@ def parse(q):
 
     title = ''.join(title_pt.findall(q))
     tag = ','.join(tag_pt.findall(q))
-    day = parsedate(''.join(day_pt.findall(q)))
+    day = parsedate(day_pt.findall(q))
     note = ''.join(note_pt.findall(q))
 
     return (title, tag, day, note)
