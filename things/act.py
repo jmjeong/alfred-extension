@@ -15,9 +15,19 @@ import util
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+def getClipboardText():
+    s = """
+    tell application "System Events"    
+      Set aText to the clipboard
+      return aText
+    end tell
+    """
+
+    return applescript.AppleScript(s).run()    
+
 def main():
     q = sys.argv[1]
-    (title, tag, day, note) = util.parse(q)
+    (title, tag, day, note) = util.parse(q[1:])
 
     if not title: return;
 
@@ -26,8 +36,12 @@ def main():
         set name of newToDo to "%s"
     """ % (title)
 
+    if q[0] == 'm' and not note:
+        note = getClipboardText()
     
     if note:
+        note = note.replace('"', '\\\"')
+        note = note.replace('\n', '\\\n')
         script += '    set notes of newToDo to "%s"\n'%(note)
     if day:
         today = date.today()
@@ -35,7 +49,7 @@ def main():
         script += '    set due date of newToDo to (current date)+%d*days\n'% (delta.days)
     if tag:
         script += 'set tag names of newToDo to "%s"\n'%(tag)
-    script += 'end tell'
+    script += 'show newTodo\nend tell'
 
     applescript.AppleScript(script).run()
     

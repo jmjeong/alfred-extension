@@ -21,7 +21,7 @@ def main():
     try: q = unicodedata.normalize('NFC',  unicode(sys.argv[1].strip()))
     except: q = ""
 
-    (title, tag, day, note) = util.parse(q)
+    (title, tag, day, note) = util.parse(q[1:])
 
     if day:
         title = title + '> ' + day.strftime('%m/%d %a')
@@ -35,7 +35,6 @@ def main():
     output.append({"title": title, "subtitle": subtitle, "arg":q, "valid": True,
                   "mods": { "alt": help, "ctrl":help, "cmd":help, "shift":help}})
     print json.dumps({"items": output})
-
 
 if __name__ == '__main__':
     main()
