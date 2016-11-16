@@ -18,8 +18,8 @@ tm title #tag1 #tag2 ::note > duedate
 
 #### 1.12 - Nov 16, 2016
 
-- support previous day/week/month like -3d
-- support month for duedawte such as 1m
+- support previous day/week/month like '-3d'
+- support month for duedate such as '2m'
 - '>' denotes 'today'
 
 #### 1.1 - Nov 16, 2016
