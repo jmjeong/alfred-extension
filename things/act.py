@@ -32,7 +32,8 @@ def main():
     if not title: return;
 
     script = """tell application "Things"
-        set newToDo to make new to do    
+        activate 
+        set newToDo to make new to do   
         set name of newToDo to "%s"
     """ % (title)
 
