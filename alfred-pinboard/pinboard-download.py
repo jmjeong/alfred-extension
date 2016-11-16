@@ -34,6 +34,9 @@ def note_list_server(token):
     except IOError as e:
         print e
         sys.exit(0)
+    except ValueError as e:
+        print e
+        return { 'notes': [] }
 
 def update_content(notes_cache,id,hash,token):
     try:
@@ -62,9 +65,16 @@ def load_pinboard_data(token):
         print "Loading links from pinboard.in"
         url = 'https://api.pinboard.in/v1/posts/all?format=json&auth_token=%s'%token
         data = urllib.urlopen(url).read()
-        with open(os.environ['HOME']+'/.bookmarks.json', "w+") as f:
-            f.write(data)
-        print "Loading links completed"
+
+        try:
+            bookmark = json.loads(data)
+        except:
+            print data
+            sys.exit(0)
+        else:
+            with open(os.environ['HOME']+'/.bookmarks.json', "w+") as f:
+                f.write(data)
+            print "Loading links completed"
     except IOError as e:
         print e
         sys.exit(0)
@@ -80,7 +90,7 @@ if __name__ == '__main__':
     
     notes_server = note_list_server(pinboard_token)
     notes_cache = note_list_cache()
-    
+
     for n in notes_server['notes']:
         text = update_content(notes_cache,n['id'],n['hash'],pinboard_token)
         n['text'] = text
@@ -91,3 +101,7 @@ if __name__ == '__main__':
     print "Loading notes completed"
 
     load_pinboard_data(pinboard_token)
+    
+    config['last_updated'] = int(time.time())
+    with open(os.path.join(os.path.expanduser(ALFRED_WORKDIR), 'config.json'), 'w+') as myFile:
+        myFile.write(json.dumps(config))
