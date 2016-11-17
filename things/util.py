@@ -7,6 +7,11 @@
 
 import re
 from datetime import date, timedelta
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 def parsedate(q):
     if len(q) == 0: return None
@@ -54,7 +59,7 @@ def parsedate(q):
 
 def parse(q):
     title_pt = re.compile('([^#>:@]*)[#>:@]*.*$')
-    tag_pt = re.compile('#(\w+)')
+    tag_pt = re.compile('#([^\s]+)')
     area_pt = re.compile('@(\w)')
     day_pt = re.compile('>(.*)$')
     note_pt = re.compile('::([^>#]*)')

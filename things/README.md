@@ -29,6 +29,10 @@ tm title #tag @t|n|s ::note > duedate
 
 ### Version History 
 
+#### 1.14 - Nov 17, 2016
+
+- unicode tag support
+
 #### 1.13 - Nov 16, 2016
 
 - add Focus syntax - @t|n|s
