@@ -58,10 +58,10 @@ def parsedate(q):
     return today
 
 def parse(q):
-    title_pt = re.compile('([^#:@]*)[#>:@]+.*$')
+    title_pt = re.compile('([^#>:@]*)[#>:@]*.*$')
     tag_pt = re.compile('#([^\s]+)')
     area_pt = re.compile('@(\w)')
-    day_pt = re.compile('>([^>]*?)$')
+    day_pt = re.compile('>(.*)$')
     note_pt = re.compile('::([^>#]*)')
 
     title = ''.join(title_pt.findall(q))
