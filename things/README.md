@@ -29,6 +29,15 @@ tm title #tag @t|n|s ::note > duedate
 
 ### Version History 
 
+#### 1.16 - Nov 29, 2016
+
+- fix a bug in v1.15
+
+#### 1.15 - Nov 25, 2016
+
+- fix parsing error containing '>' (for example, '1->2 test >1d')
+
+
 #### 1.14 - Nov 17, 2016
 
 - unicode tag support
