@@ -17,9 +17,9 @@ def parsedate(q):
     if len(q) == 0: return None
 
     q = ''.join(q)    
-    dow_str = ['mon', 'tue', 'wed', 'thr', 'fri', 'sat', 'sun']
+    dow_str = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
-    dow_pt = re.compile(' *(mon|tue|wed|thr|fri|sat|sun)')
+    dow_pt = re.compile(' *(mon|tue|wed|thu|fri|sat|sun)')
     day_pt = re.compile(' *(\d+)[\.\-/](\d+)([\.\-/](\d+))*')
     add_pt = re.compile(' *(-?\d+)([dwm])*')
 

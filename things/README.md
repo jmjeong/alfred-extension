@@ -29,6 +29,10 @@ tm title #tag @t|n|s ::note > duedate
 
 ### Version History 
 
+#### 1.17 - Dec 5, 2016
+
+- change duedate string for thursday into 'thu' from 'thr'
+
 #### 1.16 - Nov 29, 2016
 
 - fix a bug in v1.15
