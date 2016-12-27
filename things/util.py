@@ -39,6 +39,8 @@ def parsedate(q):
         (month, day, year) = [x and int(x) for x in next.group(1,2,4)]
         if year == None:
             ret = date(today.year, month, day)
+            if (ret < today):
+                ret = date(today.year+1, month, day)
         else:
             if year<100: year+= 2000
             ret = date(year, month, day)

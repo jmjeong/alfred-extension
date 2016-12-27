@@ -29,6 +29,11 @@ tm title #tag @t|n|s ::note > duedate
 
 ### Version History 
 
+#### 1.18 - Dec 27, 2016
+
+- set due date to upcoming date 
+	- ex. today is 12/28 and input date 1/1, then due date is 1/1 of next year
+
 #### 1.17 - Dec 5, 2016
 
 - change duedate string for thursday into 'thu' from 'thr'
