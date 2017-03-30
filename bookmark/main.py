@@ -421,10 +421,13 @@ def main():
     util.closedb(conn)
 
 if __name__ == '__main__':
-    statsd = StatsClient(host='g.jmjeong.com',
-                         port=8125,
-                         prefix='jmjeong.alfred.bookmark')
-    
-    with statsd.timer('main'):
-        statsd.incr('launch');
+    try:
+        statsd = StatsClient(host='g.jmjeong.com',
+                             port=8125,
+                             prefix='jmjeong.alfred.bookmark')
+
+        with statsd.timer('main'):
+            statsd.incr('launch');
+            main()
+    except:
         main()
