@@ -20,7 +20,7 @@ tm title #tag @t|n|s ::note > duedate
 		- @n : @Next
 		- @s : @Someday
 	- ::note : note
-	- > duedate
+	- `>` duedate
 		- `>` : today
 		- `> 2d` : two days after
 		- `> fri` : next friday 
