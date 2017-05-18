@@ -21,11 +21,11 @@ tm title #tag @t|n|s ::note > duedate
 		- @s : @Someday
 	- ::note : note
 	- > duedate
-		- > : today
-		- > 2d : two days after
-		- > fri : next friday 
-		- > -1d : one day before 
-		- > 11/23 : November 23
+		- `>` : today
+		- `> 2d` : two days after
+		- `> fri` : next friday 
+		- `> -1d` : one day before 
+		- `> 11/23` : November 23
 
 ### Version History 
 
