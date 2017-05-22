@@ -31,7 +31,7 @@ def main():
 
     if not title: return;
 
-    script = """tell application "Things3"
+    script = """tell application id "com.culturedcode.ThingsMac"
         activate
         set newToDo to make new to do   
         set name of newToDo to "%s"
