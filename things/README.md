@@ -7,8 +7,8 @@ Add to Things workflow. Supports date parsing for easy input.
 ###  Usage
 
 ```
-t title #tag @t|n|s ::note > duedate (ex. fri, 3d, 2w, 12/31)
-tm title #tag @t|n|s ::note > duedate 
+t title #tag @t|a|s ::note > duedate (ex. fri, 3d, 2w, 12/31)
+tm title #tag @t|a|s ::note > duedate 
 ```
 - `t` : create todo
 - `tm` : create todo with clipboard contents as a note
@@ -17,7 +17,7 @@ tm title #tag @t|n|s ::note > duedate
 	- #tag : tag
 	- Focus : default location is 'Inbox'
 		- @t : @Today 
-		- @n : @Next
+		- @a : @Anytime
 		- @s : @Someday
 	- ::note : note
 	- `>` duedate
@@ -28,6 +28,10 @@ tm title #tag @t|n|s ::note > duedate
 		- `> 11/23` : November 23
 
 ### Version History 
+
+#### 1.2 - May 22, 2017
+
+- things 3 support 
 
 #### 1.18 - Dec 27, 2016
 

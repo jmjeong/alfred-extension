@@ -73,7 +73,7 @@ def parse(q):
     note = ''.join(note_pt.findall(q))
 
     if area == 's': area = 'Someday'
-    elif area == 'n': area = 'Next'
+    elif area == 'a' or area == 'n': area = 'Anytime'
     elif area == 't': area = 'Today'
     else: area = 'Inbox'
 

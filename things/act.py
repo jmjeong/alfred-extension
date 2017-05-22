@@ -31,12 +31,11 @@ def main():
 
     if not title: return;
 
-    script = """tell application "Things"
+    script = """tell application "Things3"
         activate
-        tell list "%s"
         set newToDo to make new to do   
         set name of newToDo to "%s"
-    """ % (area, title)
+    """ % title
 
     if q[0] == 'm' and not note:
         note = getClipboardText()
@@ -51,8 +50,9 @@ def main():
         script += '    set due date of newToDo to (current date)+%d*days\n'% (delta.days)
     if tag:
         script += 'set tag names of newToDo to "%s"\n'%(tag)
-    script += 'show newTodo\nend tell\nend tell'
+    script += 'show newTodo\nmove newTodo to list "%s"\nend tell' % area
 
+    # print script
     applescript.AppleScript(script).run()
     
 if __name__ == '__main__':

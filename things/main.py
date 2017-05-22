@@ -30,7 +30,7 @@ def main():
     if day:
         display += '> ' + day.strftime('%m/%d %a')
 
-    subtitle = "title #tag @t|n|s ::note >duedate (ex. fri, 3d, 2w, 12/31)"
+    subtitle = "title #tag @t|a|s ::note >duedate (ex. fri, 3d, 2w, 12/31)"
     help = {"valid": False, "subtitle": subtitle}
     
     output = []

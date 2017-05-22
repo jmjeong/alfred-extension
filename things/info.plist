@@ -50,6 +50,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/bin/python act.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string>act.py</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>06C9C4A9-38CE-441A-8D06-E2F2D8B39B60</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -75,7 +98,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>title #tag @t|n|s ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
+				<string>title #tag @t|a|s ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
 				<key>title</key>
 				<string>New To-Do</string>
 				<key>type</key>
@@ -87,29 +110,6 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/usr/bin/python act.py "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>06C9C4A9-38CE-441A-8D06-E2F2D8B39B60</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -141,7 +141,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>title #tag @t|n|s ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
+				<string>title #tag @t|a|s ::note &gt;duedate (ex. fri, 3d, 12/31)</string>
 				<key>title</key>
 				<string>New To-Do with clipboard</string>
 				<key>type</key>
