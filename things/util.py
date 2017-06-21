@@ -72,9 +72,9 @@ def parse(q):
     area = ''.join(area_pt.findall(q))
     note = ''.join(note_pt.findall(q))
 
-    if area == 's': area = 'Someday'
-    elif area == 'a' or area == 'n': area = 'Anytime'
-    elif area == 't': area = 'Today'
-    else: area = 'Inbox'
+    if area == 's': area = 'TMSomedayListSource'
+    elif area == 'a' or area == 'n': area = 'TMNextListSource'
+    elif area == 't': area = 'TMTodayListSource'
+    else: area = 'TMInboxListSource'
 
     return (title, area, tag, day, note)

@@ -50,7 +50,7 @@ def main():
         script += '    set due date of newToDo to (current date)+%d*days\n'% (delta.days)
     if tag:
         script += 'set tag names of newToDo to "%s"\n'%(tag)
-    script += 'show newTodo\nmove newTodo to list "%s"\nend tell' % area
+    script += 'show newTodo\nmove newTodo to list id "%s"\nend tell' % area
 
     # print script
     applescript.AppleScript(script).run()

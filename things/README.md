@@ -29,6 +29,10 @@ tm title #tag @t|a|s ::note > duedate
 
 ### Version History 
 
+#### 1.3 - June 21, 2017
+
+- Support localization 
+
 #### 1.2 - May 22, 2017
 
 - things 3 support 
