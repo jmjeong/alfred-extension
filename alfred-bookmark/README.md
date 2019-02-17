@@ -5,7 +5,7 @@ It is tested on Google Chrome and Safari.
 
 ## Install 
 
-To install, download [the latest file](https://github.com/jmjeong/alfred-extension/blob/master/alfred-bookmark/alfred-bookmark.alfredworkflow) and double-click to open in Alfred 3. 
+To install, download [the latest file](https://github.com/jmjeong/alfred-extension/raw/master/alfred-bookmark/alfred-bookmark.alfredworkflow) and double-click to open in Alfred 3. 
 
 ## Setup & Keys
 
