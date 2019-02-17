@@ -24,11 +24,11 @@ To install, download [the latest file](https://github.com/jmjeong/alfred-extensi
 
 ### Search Bookmark (F1)
 
-<img src="https://cl.ly/f5fd62635794/search.png" width="720px">
+<img src="https://cl.ly/f5fd62635794/search.png" width="640px">
 
 ### Add Bookmark (F5)
 
-<img src="https://cl.ly/edac6d3969fc/add.png" width="720px">
+<img src="https://cl.ly/edac6d3969fc/add.png" width="640px">
 
 #### Search terms
 
