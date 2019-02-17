@@ -5,11 +5,11 @@ It is tested on Google Chrome and Safari.
 
 ## Install 
 
-To install, download the latest file and double-click to open in Alfred 3. 
+To install, download [the latest file](https://github.com/jmjeong/alfred-extension/blob/master/alfred-bookmark/alfred-bookmark.alfredworkflow) and double-click to open in Alfred 3. 
 
 ## Setup & Keys
 
-![](https://cl.ly/5ffd060608d0/Screenshot%20of%20Alfred%20Preferences%20(2-8-19,%2011-56-21%20AM).jpg)
+<img src="https://cl.ly/31bb608680b5/download/Screenshot%20of%20Alfred%20Preferences%20(2-18-19,%202-24-43%20AM).png" width="720px"> 
 
 - Add Bookmark (Configurable: **F5**)
 - Search Bookmark - Supports Incremental search (Configurable: **F1**)
@@ -24,11 +24,11 @@ To install, download the latest file and double-click to open in Alfred 3.
 
 ### Search Bookmark (F1)
 
-![](https://cl.ly/f5fd62635794/search.png)
+<img src="https://cl.ly/f5fd62635794/search.png" width="720px">
 
 ### Add Bookmark (F5)
 
-![](https://cl.ly/edac6d3969fc/add.png)
+<img src="https://cl.ly/edac6d3969fc/add.png" width="720px">
 
 #### Search terms
 
