@@ -9,6 +9,7 @@ import sqlite3
 import applescript
 import os
 import json
+import urllib
 
 CREATE_PINBOARD_TABLE = """
 create table if not exists pinboard (
@@ -65,27 +66,6 @@ def closedb(conn):
     conn.commit()
     conn.close()
 
-
-from datetime import datetime, timedelta
-
-class cached(object):
-    def __init__(self, *args, **kwargs):
-        self.cached_function_responses = {}
-        self.default_max_age = kwargs.get("default_cache_max_age", timedelta(seconds=0))
-
-    def __call__(self, func):
-        def inner(*args, **kwargs):
-            max_age = kwargs.get('max_age', self.default_max_age)
-            if not max_age or func not in self.cached_function_responses or (
-                    datetime.now() - self.cached_function_responses[func]['fetch_time'] > max_age):
-                if 'max_age' in kwargs: del kwargs['max_age']
-                res = func(*args, **kwargs)
-                self.cached_function_responses[func] = {'data': res, 'fetch_time': datetime.now()}
-            return self.cached_function_responses[func]['data']
-
-        return inner
-
-@cached(default_max_age = timedelta(seconds=60))
 def get_browser_url_info():
     script="""
         tell application "System Events" to set frontApp to name of first process whose frontmost is true
@@ -108,5 +88,18 @@ def get_browser_url_info():
     """
     return applescript.AppleScript(script).run()
 
+
 def act_param(action, title, url):
     return json.dumps({'action': action, 'title': title, 'url': url})
+
+
+def set_variables(**kwargs):
+    launch_args = """
+        set bundleID to(system attribute "alfred_workflow_bundleid")
+        tell application "Alfred 3"
+    """
+    for key, value in kwargs.items():
+        launch_args += """set configuration "%s" to value "%s" in workflow bundleID\n""" % (key, urllib.quote(str(value)))
+    launch_args += "end tell"
+
+    applescript.AppleScript(launch_args).run()

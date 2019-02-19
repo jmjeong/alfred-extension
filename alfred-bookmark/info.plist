@@ -477,18 +477,6 @@ https://github.com/jmjeong/alfred-extension/tree/master/alfred-bookmark</string>
 			<integer>80</integer>
 		</dict>
 	</dict>
-	<key>variables</key>
-	<dict>
-		<key>alfred-bookmark-title</key>
-		<string>%22</string>
-		<key>alfred-bookmark-url</key>
-		<string>https%3A//www.alfredforum.com/forum/3-share-your-workflows/</string>
-	</dict>
-	<key>variablesdontexport</key>
-	<array>
-		<string>alfred-bookmark-url</string>
-		<string>alfred-bookmark-title</string>
-	</array>
 	<key>version</key>
 	<string>1.0</string>
 	<key>webaddress</key>

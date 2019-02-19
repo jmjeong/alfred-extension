@@ -8,6 +8,7 @@ import json
 import unicodedata
 import util
 import urllib
+from time import time
 
 import sys
 reload(sys)
@@ -71,12 +72,21 @@ def add_help(title, subtitle, result):
 def add_bookmark(c, q):
     add_flag = os.getenv('add-bookmark')
 
-    if add_flag == '1':
-        (url, title) = util.get_browser_url_info()
-        if url == "error":
-            print title
-            sys.exit(0)
-    else:
+    if add_flag == '1': # call from F5
+        cache_time = int(os.getenv('cache-time') or "0")
+        current_time = int(time())
+
+        if current_time - cache_time < 5:
+            util.set_variables(**{'cache-time': current_time})
+            url = urllib.unquote(os.getenv('cache-url'))
+            title = urllib.unquote(os.getenv('cache-title'))
+        else:
+            (url, title) = util.get_browser_url_info()
+            if url == "error":
+                print title
+                sys.exit(0)
+            util.set_variables(**{'cache-time': current_time, 'cache-url': url, 'cache-title': title})
+    else:               # call from search menu
         url = urllib.unquote(os.getenv('alfred-bookmark-url'))
         title = urllib.unquote(os.getenv('alfred-bookmark-title'))
 

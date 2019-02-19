@@ -6,7 +6,6 @@
 import os
 import json
 import urlparse
-import urllib
 import applescript
 import sys
 import util
@@ -29,17 +28,6 @@ def relaunch(cmd, title):
     """ % (cmd, title.replace('"', '\\"'))
     applescript.AppleScript(launch_args).run()
 
-
-def set_variables(url, title):
-    launch_args = """
-        set bundleID to(system attribute "alfred_workflow_bundleid")
-        tell application "Alfred 3" 
-            set configuration "alfred-bookmark-url" to value "%s" in workflow bundleID
-            set configuration "alfred-bookmark-title" to value "%s" in workflow bundleID
-        end tell
-    """ % (urllib.quote(url), urllib.quote(title))
-
-    applescript.AppleScript(launch_args).run()
 
 def write_to_clipboard(output):
     process = subprocess.Popen(
@@ -75,8 +63,7 @@ def edit_bookmark(params):
     url = params['url']
     title = params['title']
 
-    set_variables(url, title)
-
+    util.set_variables(**{'alfred-bookmark-url':url, 'alfred-bookmark-title':title})
     relaunch("add", title)
 
 
