@@ -75,3 +75,7 @@ Search Mac AppStore
 
 ![Demo screenshot](https://raw.github.com/jmjeong/alfred-extension/master/searchmacappstore/screenshot.png)
 
+## Google Drive Search ([Link](https://github.com/jmjeong/alfred-extension/tree/master/google-drive-search))
+
+Search and open Google Docs, Sheets, Slides from locally synced Google Drive. No API key required.
+
