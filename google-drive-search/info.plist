@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.jmjeong.google-drive-search</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>2C6A1B3E-4D5F-4A8B-9C0D-1E2F3A4B5C6D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3D7B2C4F-5E6A-4B9C-AD1E-2F3A4B5C6D7E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>jmjeong</string>
+	<key>description</key>
+	<string>Search and open Google Drive documents from local sync</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Google Drive Search</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>gd</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching Google Drive...</string>
+				<key>script</key>
+				<string>python3 gdocs_search.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search Google Docs, Sheets, and Slides</string>
+				<key>title</key>
+				<string>Google Drive Search</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>uid</key>
+			<string>2C6A1B3E-4D5F-4A8B-9C0D-1E2F3A4B5C6D</string>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>uid</key>
+			<string>3D7B2C4F-5E6A-4B9C-AD1E-2F3A4B5C6D7E</string>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>2C6A1B3E-4D5F-4A8B-9C0D-1E2F3A4B5C6D</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>3D7B2C4F-5E6A-4B9C-AD1E-2F3A4B5C6D7E</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.0.0</string>
+</dict>
+</plist>
